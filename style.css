@@ -1,0 +1,173 @@
+body {
+    font-family: Arial;
+    margin: 0;
+    background-color: #fff;
+    padding-top: 70px;
+}
+
+header {
+    background-color: rgb(57, 45, 45);
+    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li,h1,ul {
+    display: inline;
+
+}
+ul{
+    list-style: none;
+    padding: 0;
+}
+li{
+    display: inline;
+    margin-left: 10px;
+    color: gray;
+    cursor: pointer;
+}
+li:hover{
+    color: white;
+
+}
+
+.searchbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+     margin-top: 20px; 
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 100px;
+    margin-bottom: 10px;
+   
+
+}
+
+input{
+    
+    width: 420px;
+    height: 10px;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.places {
+    padding: 25px;
+    text-align:center ;
+    color:rgb(58, 44, 44);
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.place {
+    background: white;
+    padding: 10px;
+    margin: 15px;
+    border: 2px solid rgb(57, 45, 45);
+    display: inline-block;
+    width: 220px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.place img {
+    width: 100%;
+    height: 140px;
+    border-radius: 5px;
+}
+
+.place:hover{
+    background: rgba(105, 97, 97, 0.886);
+    color: white;
+    transform: scale(1.05);
+
+}
+
+.buttons {
+    margin-top: 10px;
+}
+
+.buttons button {
+    margin: 5px;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.view-btn {
+    background-color: rgb(57, 45, 45);
+    color: white;
+}
+
+.map-btn {
+    background-color: gray;
+    color: white;
+}
+
+.buttons button:hover {
+    opacity: 0.5;
+}
+
+.hidden {
+    display: none;
+}
+
+.load-more-container {
+    display: inline-block;
+    vertical-align: top;
+    margin: 15px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(290%);
+    
+    
+}
+
+#loadMoreBtn {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-size: 30px;
+    cursor: pointer;
+    border: 2px solid rgb(57, 45, 45);
+    background-color: white;
+    color: rgb(57, 45, 45);
+    border-radius: 50px;
+}
+
+#loadMoreBtn:hover {
+     background-color: rgb(57, 45, 45);
+    color: white;
+}
+
+
+/* Footer */
+footer {
+    background-color: rgb(57, 45, 45);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+}
