@@ -25,15 +25,20 @@
 <section class="places">
     <div class="searchbar">
         <div class="logo">
-        <img src="C:\Users\PC\Desktop\keerththy\VisitNavora\VisitNavora logo.jfif" alt="VisitNavora Logo">
+         <img src="VisitNavora logo.jfif" alt="VisitNavora Logo">
+        </div>
+
+        <div class="search-box">
+         <input id="searchInput" placeholder="Search">
+         <span class="search-icon" id="searchBtn">🔍︎</span>
+        </div>
     </div>
-        <input placeholder="Search">
-    </div>
+
     <h2>Places to Visit</h2>
 
     <!-- First 3 (visible) -->
     <div class="place">
-        <img src="C:\Users\PC\Desktop\keerththy\VisitNavora\st'peters.jfif" >
+        <img src="st'peters.jfif">
         <h3>Navaly St. Peter’s Church</h3>
         <p>Beautiful local church near Navaly.</p>
         <div class="buttons">
@@ -44,7 +49,7 @@
     </div>
 
     <div class="place">
-        <img src="C:\Users\PC\Desktop\keerththy\VisitNavora\pannai beach.jpg">
+        <img src="pannai beach.jpg">
         <h3>Pannai Beach</h3>
         <p>Relaxing beach area.</p>
         <p>Distance: 6.6 km</p>
@@ -55,7 +60,7 @@
     </div>
 
     <div class="place">
-        <img src="C:\Users\PC\Desktop\keerththy\VisitNavora\jaffna fort.jpg">
+        <img src="jaffna fort.jpg">
         <h3>Jaffna Fort</h3>
         <p>Historic fort with cultural value.</p>
         <p>Distance: 7 km</p>
@@ -66,8 +71,8 @@
     </div>
 
     <!-- Next 3 (hidden first) -->
-    <div class="place hidden">
-        <img src="C:\Users\PC\Desktop\keerththy\VisitNavora\public library.jfif">
+    <div class="place">
+        <img src="public library.jfif">
         <h3>Jaffna Library</h3>
         <p>Famous cultural place.</p>
         <div class="buttons">
@@ -76,8 +81,8 @@
         </div>
     </div>
 
-    <div class="place hidden">
-        <img src="C:\Users\PC\Desktop\keerththy\VisitNavora\nallur.jfif">
+    <div class="place">
+        <img src="nallur.jfif">
         <h3>Nallur Temple</h3>
         <p>Popular religious temple.</p>
         <div class="buttons">
@@ -86,8 +91,8 @@
         </div>
     </div>
 
-    <div class="place hidden">
-        <img src="C:\Users\PC\Desktop\keerththy\VisitNavora\subramaniyam park.jfif">
+    <div class="place">
+        <img src="subramaniyam park.jfif">
         <h3>Subramaniya Park</h3>
         <p>Relaxing green park.</p>
         <div class="buttons">
@@ -97,8 +102,8 @@
     </div>
 
     <!-- Last 4 -->
-    <div class="place hidden">
-        <img src="C:\Users\PC\Desktop\keerththy\VisitNavora\clock tower.jfif">
+    <div class="place">
+        <img src="clock tower.jfif">
         <h3>Jaffna Clock Tower</h3>
         <p>Famous landmark.</p>
         <div class="buttons">
@@ -107,8 +112,8 @@
          </div>
     </div>
 
-    <div class="place hidden">
-        <img src="C:\Users\PC\Desktop\keerththy\VisitNavora\naguleswaram.jfif">
+    <div class="place">
+        <img src="naguleswaram.jfif">
         <h3>Keerimalai Temple</h3>
         <p>Historic temple near sea.</p>
         <div class="buttons">
@@ -117,8 +122,8 @@
         </div>
     </div>
 
-    <div class="place hidden">
-        <img src="C:\Users\PC\Desktop\keerththy\VisitNavora\casurna.jfif">
+    <div class="place">
+        <img src="casurna.jfif">
         <h3>Casuarina Beach</h3>
         <p>Clean and calm beach.</p>
         <div class="buttons">
@@ -127,8 +132,8 @@
         </div>
     </div>
 
-    <div class="place hidden">
-        <img src="C:\Users\PC\Desktop\keerththy\VisitNavora\maruthadi pillayar.jfif">
+    <div class="place">
+        <img src="maruthadi pillayar.jfif">
         <h3>Maruthadi Pillayar Kovil</h3>
         <p>Peaceful Hindu temple.</p>
         <div class="buttons">
@@ -138,16 +143,51 @@
     </div>
 
     <!-- Button -->
-    <div class="load-more-container">
-        <button id="loadMoreBtn">></button>
-    </div>
+    <div class="nav-buttons">
+    <button id="prevBtn"><</button>
+    <button id="nextBtn">></button>
+</div>
 
 
 </section>
 
 <!-- Footer -->
 <footer>
-    <p>© 2026 VisitNavora | Navigate. Explore. Enjoy Navaly</p>
+    <div class="footer-center">
+
+        <h3>About Us</h3>
+        <p>
+            VisitNavora helps you explore the best places in Navaly with ease. 
+            Discover locations, view maps, and plan your journey smoothly.
+        </p>
+
+        <!-- Social Icons -->
+        <div class="footer-icons">
+            <div>
+                <span>ⓕ</span>
+                <p>VisitNavora</p>
+            </div>
+
+            <div>
+                <span>📧</span>
+                <p>info@visitnavora.com</p>
+            </div>
+
+            <div>
+                <span>✆</span>
+                <p>+94 77 123 4567</p>
+            </div>
+        </div>
+
+        <!-- Line -->
+        <div class="footer-line"></div>
+
+        <!-- Rights -->
+        <p class="footer-rights">
+            © 2026 VisitNavora | Navigate. Explore. Enjoy Navaly
+        </p>
+
+    </div>
 </footer>
 
 <script src="script.js"></script>
