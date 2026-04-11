@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Places - VisitNavora</title>
+
+    <!-- Existing styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- New page style -->
+    <link rel="stylesheet" href="places.css">
+</head>
+<body>
+
+<!-- SAME NAVBAR -->
+<header>
+    <nav>
+        <h1>VisitNavora</h1>
+        <ul>
+            <li><a href="HomePage.html">Home |</a></li>
+            <li><a href="">One-Day-Plan |</a></li>
+            <li>Map |</li>
+            <li>About us</li>
+        </ul>
+    </nav>
+</header>
+
+<section class="places-page">
+
+  <h2>Explore Places</h2>
+
+  <div class="filter-box">
+    
+    <select id="categoryFilter" class="styled-select" required>
+      <option value="" disabled selected hidden>Filter By Category</option>
+        <option value="all">All</option>
+        <option value="religious">Religious Site</option>
+        <option value="natural">Natural Attraction</option>
+        <option value="park">Park / Garden</option>
+        <option value="historical">Historical / Cultural</option>
+        <option value="landmark">Landmark</option>
+    </select>
+</div>
+
+    
+
+    <!-- PLACE 1 -->
+    <div class="place-box" id="church" data-category="religious">
+        <h3>Navaly St. Peter’s Church</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+            <img src="st'peters.jfif" class="slide active">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+        <p class="desc">
+            A local Catholic church, very close and easy to visit on foot. A calm place to visit and relax
+        </p>
+
+        <p>Distance: 0.14 km</p>
+
+        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+    </div>
+
+    <!-- PLACE 2 -->
+    <div class="place-box" id="beach" data-category="natural">
+        <h3>Pannai Beach</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+            <img src="pannai beach.jpg" class="slide active">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+            A small beach area for relaxing and enjoying the sea with a beautiful sunset view and peaceful environment.
+        </p>
+
+        <p>Distance: 6.6 km</p>
+
+        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+    </div>
+
+    <!-- ADD MORE SAME LIKE THIS (10 places total) -->
+     <div class="place-box" id="fort" data-category="historical">
+        <h3>Jaffna Fort</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+            <img src="jaffna fort.jpg" class="slide active">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+            Relaxing beach with a beautiful sunset view and peaceful environment.
+        </p>
+
+        <p>Distance: 6.6 km</p>
+
+        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+    </div>
+
+    <div class="place-box" id="library" data-category="historical">
+        <h3>Jaffna Library</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+            <img src="public library.jfif" class="slide active">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+            A famous library in Jaffna with historical importance and a large collection of books.
+        </p>
+
+        <p>Distance: 7 km</p>
+
+        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+    </div>
+
+    <div class="place-box" id="nallur" data-category="religious">
+        <h3>Nallur Temple </h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+            <img src="nallur.jfif" class="slide active">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+            One of the most famous Hindu temples in Jaffna, known for its beautiful architecture.
+        </p>
+
+        <p>Distance: 7 km</p>
+
+        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+    </div>
+
+    <div class="place-box" id="park" data-category="park">
+        <h3>Subramaniya Park</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+            <img src="subramaniyam park.jfif" class="slide active">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+            A public park for families and children to relax and enjoy nature. 
+        </p>
+
+        <p>Distance: 7 km</p>
+
+        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+    </div>
+
+    <div class="place-box" id="clock" data-category="landmark">
+        <h3>Cloack Tower</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+            <img src="clock tower.jfif" class="slide active">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+        <p class="desc">
+            A well-known landmark in Jaffna town representing the city’s identity. 
+        </p>
+
+        <p>Distance: 7.2 km</p>
+
+        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+    </div>
+
+    <div class="place-box" id="keerimalai" data-category="religious">
+        <h3>Naguleswaram Temple</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+            <img src="naguleswaram.jfif" class="slide active">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+            An ancient temple near the sea, important for culture and religion.
+        </p>
+
+        <p>Distance: 15 km</p>
+
+        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+    </div>
+
+    <div class="place-box" id="casuarina" data-category="natural">
+        <h3>Casurina</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+            <img src="casurna.jfif" class="slide active">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+            A calm and clean beach in Karainagar, perfect for relaxing and enjoying nature.
+        </p>
+
+        <p>Distance: 17 km</p>
+
+        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+    </div>
+
+    <div class="place-box" id="pillayar" data-category="religious">
+        <h3>Maruthadi Pillayar Temple</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+            <img src="maruthadi pillayar.jfif" class="slide active">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters.jfif" class="slide">
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+            A peaceful Hindu temple dedicated to Lord Ganesha, visited by many devotees.
+        </p>
+
+        <p>Distance: 3.3 km </p>
+
+        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+    </div>
+
+</section>
+
+<footer>
+    <div class="footer-center">
+
+        
+        <img src="VisitNavora logo.jfif" alt="VisitNavora Logo" style="width: 150px; border-radius: 50%;">
+        <p>
+            VisitNavora helps you explore the best places in Navaly with ease. 
+            Discover locations, view maps, and plan your journey smoothly.
+        </p>
+
+        
+        
+
+        <!-- Line -->
+        <div class="footer-line"></div>
+
+        <!-- Rights -->
+        <p class="footer-rights">
+            © 2026 VisitNavora | Navigate. Explore. Enjoy Navaly
+        </p>
+
+    </div>
+</footer>
+
+<script src="places.js"></script>
+
+</body>
+</html>

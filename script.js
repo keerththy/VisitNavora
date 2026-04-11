@@ -1,3 +1,6 @@
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
+
 const places = document.querySelectorAll(".place");
 
 const prevBtn = document.getElementById("prevBtn");
@@ -41,16 +44,31 @@ const viewButtons = document.querySelectorAll(".view-btn");
 
 viewButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-        alert("Go to detailed page (we will build this next)");
+        const place = btn.getAttribute("onclick").match(/'(.+?)'/)[1];
+        window.location.href = "places.html?place=" + place;
     });
 });
 
 // MAP BUTTON FUNCTION
 const mapButtons = document.querySelectorAll(".map-btn");
 
-mapButtons.forEach((btn) => {
+mapButtons.forEach((btn, index) => {
+
+    const mapLinks = [
+        "https://www.google.com/maps?q=Navaly+St+Peter+Church",
+        "https://www.google.com/maps?q=Pannai+Beach",
+        "https://www.google.com/maps?q=Jaffna+Fort",
+        "https://www.google.com/maps?q=Jaffna+Library",
+        "https://www.google.com/maps?q=Nallur+Kovil",
+        "https://www.google.com/maps?q=Subramaniyam+Park",
+        "https://www.google.com/maps?q=Jaffna+Clock+Tower",
+        "https://www.google.com/maps?q=Keerimalai",
+        "https://www.google.com/maps?q=Casuarina+Beach",
+        "https://www.google.com/maps?q=Maruthadi+Pillayar+Kovil"
+    ];
+
     btn.addEventListener("click", () => {
-        window.open("https://www.google.com/maps", "_blank");
+        window.open(mapLinks[index], "_blank");
     });
 });
 

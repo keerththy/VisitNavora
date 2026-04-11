@@ -1,0 +1,146 @@
+.places-page {
+    padding: 100px 20px 40px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.filter-box {
+    margin: 25px 0;
+    text-align: center;
+    
+    
+}
+h2{
+    text-align: center;
+}
+
+.styled-select {
+    padding: 10px 15px;
+    font-size: 15px;
+    border-radius: 25px;
+    border: 2px solid #ddd;
+    outline: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, #43332184, #f6f7f8);
+    color: rgb(57,45,45);
+    transition: all 0.3s ease;
+    width: 450px;
+}
+
+#categoryFilter:invalid {
+    color: gray;
+}
+
+/* Hover effect */
+.styled-select:hover {
+    border-color: #62382c60;
+}
+
+/* Focus (click effect) */
+.styled-select:focus {
+    border-color: #2d1e13;
+    box-shadow: 0 0 8px rgba(79, 40, 12, 0.4);
+}
+
+/* Dropdown arrow styling */
+.styled-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image: url("data:image/svg+xml;utf8,<svg fill='dark brown' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 18px;
+    padding-right: 35px;
+}
+
+#categoryFilter {
+    padding: 8px;
+    border-radius: 5px;
+}
+
+/* Each place */
+.place-box {
+    margin-bottom: 40px;
+    padding: 15px;
+    border: 2px solid rgb(146, 138, 138);
+    border-radius: 35px;
+    transition: 0.3s;
+    text-align:center ;
+    
+}
+.place-box:hover{
+    background-color: rgb(247, 242, 242);
+}
+
+/* Highlight style */
+.highlight {
+    background-color: rgba(195, 193, 193, 0.872);
+    border: 3px solid rgb(57,45,45);
+    color:rgb(57,45,45) ;
+}
+
+/* Images row */
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides img {
+    width: 100%;
+    display: none;
+    border-radius: 20px;
+}
+
+.slide.active {
+    display: block;
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.prev { left: 5px; }
+.next { right: 5px; }
+
+ .next:hover{
+    background: rgba(57,45,45);
+}
+.prev:hover{
+    background: rgba(57,45,45);
+}
+
+/* Description */
+.desc {
+    margin: 10px 0;
+}
+
+/* Map button */
+.map-btn {
+    padding: 8px 12px;
+    border: none;
+    background-color: rgb(57,45,45);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* 📱 Responsive */
+@media (max-width: 600px) {
+    .images img {
+        width: 120px;
+        height: 80px;
+    }
+}
