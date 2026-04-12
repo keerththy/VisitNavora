@@ -1,8 +1,12 @@
 // Open map
-function openMap() {
-    window.open("https://www.google.com/maps", "_blank");
-}
+const mapButtons = document.querySelectorAll(".map-btn");
 
+mapButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const url = btn.getAttribute("data-map");
+        window.open(url, "_blank");
+    });
+});
 // Highlight logic
 const params = new URLSearchParams(window.location.search);
 const placeId = params.get("place");
@@ -14,7 +18,10 @@ if (placeId) {
         element.classList.add("highlight");
 
         // scroll to that place
-        element.scrollIntoView({ behavior: "smooth" });
+        element.scrollIntoView({
+           behavior: "smooth",
+           block: "start"
+        });
     }
 }
 
@@ -32,30 +39,39 @@ sliders.forEach((slider) => {
         slides[i].classList.add("active");
     }
 
-    nextBtn.addEventListener("click", () => {
-        index = (index + 1) % slides.length;
-        showSlide(index);
-    });
+    if (nextBtn) {
+        nextBtn.addEventListener("click", () => {
+            index = (index + 1) % slides.length;
+            showSlide(index);
+        });
+    }
 
-    prevBtn.addEventListener("click", () => {
-        index = (index - 1 + slides.length) % slides.length;
-        showSlide(index);
-    });
+    if (prevBtn) {
+        prevBtn.addEventListener("click", () => {
+            index = (index - 1 + slides.length) % slides.length;
+            showSlide(index);
+        });
+    }
 });
+
+
 
 const filter = document.getElementById("categoryFilter");
-const placeBoxes = document.querySelectorAll(".place-box");
 
-filter.addEventListener("change", () => {
-    const value = filter.value;
+if (filter) {
+    const placeBoxes = document.querySelectorAll(".place-box");
 
-    placeBoxes.forEach(place => {
-        const category = place.getAttribute("data-category");
+    filter.addEventListener("change", () => {
+        const value = filter.value;
 
-        if (value === "all" || value === category) {
-            place.style.display = "block";
-        } else {
-            place.style.display = "none";
-        }
+        placeBoxes.forEach(place => {
+            const category = place.getAttribute("data-category");
+
+            if (value === "all" || value === category) {
+                place.style.display = "block";
+            } else {
+                place.style.display = "none";
+            }
+        });
     });
-});
+}

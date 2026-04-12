@@ -1,21 +1,40 @@
 .places-page {
-    padding: 100px 20px 40px;
+    
+    padding: 20px 20px 20px;  /*reduce top gap */
     max-width: 900px;
     margin: auto;
+
 }
+
+
 
 .filter-box {
-    margin: 25px 0;
-    text-align: center;
+    display: flex;
+    justify-content: space-between; /* LEFT + RIGHT */
+    align-items: center;
+
+    width: 100%;
+      /* SAME as page */
+    margin: 0 auto ; /* center + bottom gap */
+    margin-top: 25px;
+    padding:  30px;
     
     
 }
-h2{
-    text-align: center;
+.filter-box h2 {
+    margin: 0;
+    color: gray;
 }
 
+@media (max-width: 600px) {
+    .filter-box {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
 .styled-select {
-    padding: 10px 15px;
+    padding: 8px;
     font-size: 15px;
     border-radius: 25px;
     border: 2px solid #ddd;
@@ -24,7 +43,7 @@ h2{
     background: linear-gradient(135deg, #43332184, #f6f7f8);
     color: rgb(57,45,45);
     transition: all 0.3s ease;
-    width: 450px;
+    width: 200px;
 }
 
 #categoryFilter:invalid {
@@ -65,13 +84,16 @@ h2{
     margin-bottom: 40px;
     padding: 15px;
     border: 2px solid rgb(146, 138, 138);
+    background-color: rgb(102, 96, 96);
     border-radius: 35px;
     transition: 0.3s;
     text-align:center ;
+    color: rgb(227,197,128) ;
     
 }
 .place-box:hover{
-    background-color: rgb(247, 242, 242);
+    background-color: rgb(244, 244, 244);
+    color: rgb(57,45,45);
 }
 
 /* Highlight style */
@@ -86,19 +108,32 @@ h2{
     position: relative;
     width: 100%;
     max-width: 400px;
+    height: 250px; /* 🔥 FIXED HEIGHT */
     margin: auto;
     overflow: hidden;
 }
 
-.slides img {
+.slides {
     width: 100%;
+    height: 100%;
+}
+
+.slide {
+    width: 100%;
+    height: 100%; /* 🔥 SAME HEIGHT */
+    object-fit: cover; /* 🔥 MOST IMPORTANT */
     display: none;
     border-radius: 20px;
+    transition: opacity 0.5s ease-in-out;
 }
 
 .slide.active {
     display: block;
 }
+
+
+
+
 
 .prev, .next {
     position: absolute;
@@ -130,17 +165,74 @@ h2{
 /* Map button */
 .map-btn {
     padding: 8px 12px;
+    margin-top: 10px;
     border: none;
     background-color: rgb(57,45,45);
-    color: white;
+    color: rgb(227,197,128);
     border-radius: 5px;
     cursor: pointer;
 }
 
 /* 📱 Responsive */
-@media (max-width: 600px) {
-    .images img {
-        width: 120px;
-        height: 80px;
+
+
+/* 📱 MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+
+    /* Page padding */
+    .places-page {
+        padding: 10px;
+        margin-top: 25px;
+    }
+
+    /* Filter box */
+    .filter-box {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 20px 10px;
+        text-align: center;
+        margin-top: 64px;
+        margin-bottom: 20px;
+    }
+
+    
+
+    .styled-select {
+        width: 100%;
+        max-width: 250px;
+    }
+
+    /* Place box */
+    .place-box {
+        padding: 12px;
+        border-radius: 20px;
+    }
+
+    /* Slider smaller for mobile */
+    .slider {
+        max-width: 100%;
+        height: 200px; /* 🔽 slightly smaller */
+    }
+
+    /* Text adjustments */
+    .place-box h3 {
+        font-size: 18px;
+    }
+
+    .desc {
+        font-size: 14px;
+    }
+
+    /* Buttons */
+    .map-btn {
+        width: 100%;
+        font-size: 14px;
+    }
+
+    /* Arrows smaller */
+    .prev, .next {
+        padding: 6px 10px;
+        font-size: 14px;
     }
 }

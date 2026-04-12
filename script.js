@@ -30,11 +30,23 @@ function showPage(page) {
 nextBtn.addEventListener("click", () => {
     currentPage++;
     showPage(currentPage);
+
+    // 🔥 ADD THIS (scroll to top)
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 });
 
 prevBtn.addEventListener("click", () => {
     currentPage--;
     showPage(currentPage);
+
+    // 🔥 ADD THIS (scroll to top)
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 });
 
 showPage(currentPage);

@@ -18,19 +18,15 @@
     <nav>
         <h1>VisitNavora</h1>
         <ul>
-            <li><a href="HomePage.html">Home |</a></li>
-            <li><a href="">One-Day-Plan |</a></li>
-            <li>Map |</li>
+            <li><a href="HomePage.html">Home</a></li>
+            <li><a href="">One-Day-Plan</a></li>
+            <li>Map</li>
             <li>About us</li>
         </ul>
     </nav>
 </header>
-
-<section class="places-page">
-
-  <h2>Explore Places</h2>
-
-  <div class="filter-box">
+<div class="filter-box">
+    <h2>🧭 Explore Places</h2>
     
     <select id="categoryFilter" class="styled-select" required>
       <option value="" disabled selected hidden>Filter By Category</option>
@@ -43,7 +39,10 @@
     </select>
 </div>
 
-    
+<section class="places-page">
+
+
+
 
     <!-- PLACE 1 -->
     <div class="place-box" id="church" data-category="religious">
@@ -54,10 +53,9 @@
 
           <div class="slides">
             <img src="st'peters.jfif" class="slide active">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
+            <img src="st'peters2.png" class="slide">
+            <img src="st'peters3.png" class="slide">
+            
           </div>
 
           <button class="next">❯</button>
@@ -69,7 +67,7 @@
 
         <p>Distance: 0.14 km</p>
 
-        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Navaly+St+Peter+Church">📍 View Map</button>
     </div>
 
     <!-- PLACE 2 -->
@@ -81,10 +79,9 @@
 
           <div class="slides">
             <img src="pannai beach.jpg" class="slide active">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
+            <img src="pannai beach2.jfif" class="slide">
+            <img src="pannai beach3.png" class="slide">
+            
           </div>
 
           <button class="next">❯</button>
@@ -97,7 +94,7 @@
 
         <p>Distance: 6.6 km</p>
 
-        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Pannai+Beach+Jaffna">📍 View Map</button>
     </div>
 
     <!-- ADD MORE SAME LIKE THIS (10 places total) -->
@@ -109,10 +106,10 @@
 
           <div class="slides">
             <img src="jaffna fort.jpg" class="slide active">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
+            <img src="jaffna fort2.jfif" class="slide">
+            <img src="jaffna fort3.jfif" class="slide">
+            <img src="jaffna fort4.jfif" class="slide">
+            
           </div>
 
           <button class="next">❯</button>
@@ -125,7 +122,7 @@
 
         <p>Distance: 6.6 km</p>
 
-        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Jaffna+Fort">📍 View Map</button>
     </div>
 
     <div class="place-box" id="library" data-category="historical">
@@ -136,10 +133,9 @@
 
           <div class="slides">
             <img src="public library.jfif" class="slide active">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
+            <img src="public library2.jfif" class="slide">
+            <img src="public library3.jfif" class="slide">
+            
           </div>
 
           <button class="next">❯</button>
@@ -152,7 +148,7 @@
 
         <p>Distance: 7 km</p>
 
-        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Jaffna+Public+Library">📍 View Map</button>
     </div>
 
     <div class="place-box" id="nallur" data-category="religious">
@@ -163,10 +159,10 @@
 
           <div class="slides">
             <img src="nallur.jfif" class="slide active">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
+            <img src="nallur2.jfif" class="slide">
+            <img src="nallur3.jfif" class="slide">
+            <img src="nallur4.jfif" class="slide">
+            
           </div>
 
           <button class="next">❯</button>
@@ -179,7 +175,7 @@
 
         <p>Distance: 7 km</p>
 
-        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Nallur+Kandaswamy+Temple">📍 View Map</button>
     </div>
 
     <div class="place-box" id="park" data-category="park">
@@ -190,10 +186,10 @@
 
           <div class="slides">
             <img src="subramaniyam park.jfif" class="slide active">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
+            <img src="subramaniyam2.jfif" class="slide">
+            <img src="subramaniyam3.jfif" class="slide">
+            <img src="subramaniyam4.jfif" class="slide">
+            
           </div>
 
           <button class="next">❯</button>
@@ -206,7 +202,7 @@
 
         <p>Distance: 7 km</p>
 
-        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Subramaniyam+Park+Jaffna">📍 View Map</button>
     </div>
 
     <div class="place-box" id="clock" data-category="landmark">
@@ -232,7 +228,7 @@
 
         <p>Distance: 7.2 km</p>
 
-        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Jaffna+Clock+Tower">📍 View Map</button>
     </div>
 
     <div class="place-box" id="keerimalai" data-category="religious">
@@ -243,10 +239,9 @@
 
           <div class="slides">
             <img src="naguleswaram.jfif" class="slide active">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
+            <img src="naguleswaram2.jfif" class="slide">
+            <img src="naguleswaram3.jfif" class="slide">
+            
           </div>
 
           <button class="next">❯</button>
@@ -259,7 +254,7 @@
 
         <p>Distance: 15 km</p>
 
-        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Naguleswaram+Temple+Keerimalai">📍 View Map</button>
     </div>
 
     <div class="place-box" id="casuarina" data-category="natural">
@@ -270,10 +265,10 @@
 
           <div class="slides">
             <img src="casurna.jfif" class="slide active">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
+            <img src="casurna2.jfif" class="slide">
+            <img src="casurna3.jfif" class="slide">
+            <img src="casurna4.jfif" class="slide">
+           
           </div>
 
           <button class="next">❯</button>
@@ -286,7 +281,7 @@
 
         <p>Distance: 17 km</p>
 
-        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Casuarina+Beach+Jaffna">📍 View Map</button>
     </div>
 
     <div class="place-box" id="pillayar" data-category="religious">
@@ -296,11 +291,10 @@
           <button class="prev">❮</button>
 
           <div class="slides">
-            <img src="maruthadi pillayar.jfif" class="slide active">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
-            <img src="st'peters.jfif" class="slide">
+            <img src="maruthadi2.jfif" class="slide active">
+            <img src="maruthadi1.jfif" class="slide">
+            <img src="maruthadi3.jfif" class="slide">
+            
           </div>
 
           <button class="next">❯</button>
@@ -313,7 +307,7 @@
 
         <p>Distance: 3.3 km </p>
 
-        <button class="map-btn" onclick="openMap()">📍 View Map</button>
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Maruthadi+Pillayar+Kovil+Jaffna">📍 View Map</button>
     </div>
 
 </section>

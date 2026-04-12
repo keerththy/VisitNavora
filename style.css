@@ -1,4 +1,6 @@
-/* RESET */
+/* =========================
+   RESET
+========================= */
 * {
     margin: 0;
     padding: 0;
@@ -8,14 +10,17 @@
 body {
     font-family: Arial;
     background-color: #fff;
-    padding-top: 70px;
+    padding-top: 90px; 
 }
 
-/* HEADER */
+
+/* =========================
+   HEADER & NAVBAR
+========================= */
 header {
-    background-color: rgb(57, 45, 45);
-    color: white;
-    padding: 10px 20px;
+    background-color:  rgb(57, 45, 45);
+    color: rgb(227,197,128) ;
+    padding: 20px 20px;
     position: fixed;
     top: 0;
     left: 0;
@@ -23,181 +28,174 @@ header {
     z-index: 1000;
 }
 
-/* NAVBAR MAIN */
+/* NAV CONTAINER */
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: auto;
     padding: 10px 20px;
 }
 
-/* LEFT SIDE (LOGO + TITLE) */
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* NAV TITLE */
+nav h1 {
+    font-size: 25px;
 }
 
-.logo img {
-    
-    width: 70px;
-    height: auto;
-    border-radius: 50%;
-
-}
-
-/* TITLE */
-.logo h1 {
-    font-size:20px;
-    color: white;
-}
-
-/* RIGHT SIDE MENU */
+/* NAV MENU */
 nav ul {
     display: flex;
     gap: 20px;
     list-style: none;
+    margin-left: auto;
 }
 
 nav ul li {
-    color: gray;
+    color: rgb(236, 225, 200);
     cursor: pointer;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: gray;
+    color:rgb(236, 225, 200);
 }
 
 nav ul li:hover,
 nav ul li a:hover {
-    color: white;
+    color: rgb(227,197,128);
 }
 
-@media (max-width: 768px) {
-    nav ul {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
+
+/* =========================
+   LOGO SECTION (BODY)
+========================= */
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 40px;
 }
 
-/* KEEP DESKTOP SAME */
+.logo img {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+}
 
 
-/* SEARCH BAR */
+/* =========================
+   PLACES SECTION
+========================= */
+.places {
+    text-align: center;
+    
+    color: rgb(96, 77, 77);
+}
+
+h3 {
+    margin-bottom: 20px;
+    padding-top: 15px;
+}
+
+
+/* =========================
+   SEARCH BAR
+========================= */
 .searchbar {
     display: flex;
-   justify-content: space-between;
-
+    flex-direction: column;
     align-items: center;
-    gap: 20px;
-     margin-top: 20px; 
+    gap: 25px;
+    margin-top: 20px;
     margin-bottom: 20px;
-    
-}
-@media (max-width: 600px) {
-    .searchbar {
-        padding-top: 20px;
-    }
 }
 
-.search-box  {
+.search-box {
     position: relative;
-    
-    
 }
+
+
 .search-box input {
-   width: 100%;
-   max-width: 450px;
-    padding: 10px 40px 10px 10px; /* space for icon */
-    border-radius: 10px;
-    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 500px;
     height: 45px;
+    padding: 10px 40px 10px 10px;
+    border: 1px solid gray;
     border-radius: 35px;
+    color: rgb(57,45,45);
 }
 
-
-
-
+.search-box input:hover{
+    transform: scale(1.05);
+}
 
 .search-icon {
     position: absolute;
-    right: 10px;
+    right: 20px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 18px;
     color: gray;
     cursor: pointer;
-    border-radius: 50%;
 }
 
 
-
-
-
-
-/* PLACES */
-.places {
-    padding: 25px;
-    text-align: center;
-    color: rgb(58, 44, 44);
-}
-
-h2 {
-    margin-bottom: 20px;
-}
-
-@media (max-width: 600px) {
-    .place {
-        width: 90%;
-        display: block;
-        margin: 15px auto;
-    }
-}
-
+/* =========================
+   PLACE CARDS
+========================= */
 .place {
-    background: white;
-    padding: 10px;
-    margin: 15px;
+    background-color:rgb(96, 77, 77) ;
     border: 2px solid rgb(57, 45, 45);
-    display: inline-block;
-    width: 240px;
     border-radius: 10px;
-    transition: 0.3s;
+    width: 240px;
+    min-height: 320px;
+    color: rgb(227,197,128);
+
+    margin: 15px;
+    padding: 10px;
+
+    display: inline-block;
     vertical-align: top;
 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-    min-height: 320px;   
+    transition: 0.3s;
 }
 
 .place img {
     width: 100%;
-
     height: 150px;
-    border-radius:5px;
+    object-fit: cover;
+    border-radius: 5px;
 }
 
+/* Hover (only desktop devices) */
 @media (hover: hover) {
     .place:hover {
         transform: scale(1.05);
+        background-color: rgb(87, 83, 83);
+        color: white;
     }
 }
 
-/* BUTTONS */
+
+/* =========================
+   BUTTONS
+========================= */
 .buttons {
     margin-top: 10px;
+    
 }
 
 .buttons button {
     margin: 5px;
     padding: 8px 12px;
     border: none;
-    cursor: pointer;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .view-btn {
@@ -214,24 +212,34 @@ h2 {
     opacity: 0.5;
 }
 
-/* NAV BUTTONS */
+
+/* =========================
+   NAV BUTTONS (SLIDER)
+========================= */
 .nav-buttons {
     text-align: center;
     margin-top: 20px;
 }
 
 .nav-buttons button {
-    padding: 10px 15px;
-    margin: 5px;
-    font-size: 20px;
-    cursor: pointer;
     width: 50px;
     height: 50px;
+
+    margin: 5px;
+    font-size: 20px;
+
+    border-radius: 50%;
     border: 2px solid rgb(57, 45, 45);
+
     background-color: white;
     color: rgb(57, 45, 45);
-    border-radius: 50%;
+    cursor: pointer;
+
     transition: 0.3s;
+
+    margin-bottom: 40px;
+
+    
 }
 
 .nav-buttons button:hover {
@@ -239,10 +247,13 @@ h2 {
     color: white;
 }
 
-/* FOOTER */
+
+/* =========================
+   FOOTER
+========================= */
 footer {
     background-color: rgb(57, 45, 45);
-    color: white;
+    color: rgb(227,197,128);
     padding: 40px 20px;
     text-align: center;
     cursor: pointer;
@@ -267,8 +278,8 @@ footer {
 }
 
 .footer-icons div {
-    text-align: center;
     flex: 1;
+    text-align: center;
 }
 
 .footer-icons span {
@@ -280,20 +291,18 @@ footer {
 .footer-line {
     width: 80%;
     height: 1px;
-    background-color: rgba(255, 255, 255, 0.3);
     margin: 20px auto;
+    background-color: rgba(255, 255, 255, 0.3);
 }
 
 .footer-rights {
     font-size: 14px;
-    margin-top: 10px;
 }
 
-/* =========================
-   RESPONSIVE (NO DESKTOP CHANGE)
-========================= */
 
-/* Tablet */
+/* =========================
+   RESPONSIVE - TABLET
+========================= */
 @media (max-width: 900px) {
 
     nav {
@@ -302,42 +311,55 @@ footer {
         text-align: center;
     }
 
-    ul {
-        display: flex;
+    nav ul {
         flex-wrap: wrap;
         justify-content: center;
         margin-top: 10px;
     }
 
-    li {
-        margin: 5px;
-    }
-
-    .searchbar {
-        flex-direction: column;
-    }
-
-    .search-box input,
-    input {
+    .search-box input {
         width: 90%;
         max-width: 400px;
     }
 }
 
-/* Mobile */
+
+/* =========================
+   RESPONSIVE - MOBILE
+========================= */
 @media (max-width: 600px) {
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 10px;
+        width: 90%;
+        max-width: 400px;
+        margin-top: 10px;
+    }
+
+    nav ul li {
+        font-size: 13px;
+    }
 
     .logo img {
         width: 70px;
     }
 
     .search-box input {
-        width: 95%;
+        width: 90%;
+        max-width: 280px;
+        height: 40px;
+        font-size: 14px;
     }
 
     .place {
-        width: 90%;
-        display: block;
+        width: 95%;
         margin: 15px auto;
     }
 
@@ -355,10 +377,6 @@ footer {
     .footer-icons {
         flex-direction: column;
         align-items: center;
-    }
-
-    .footer-icons div {
-        margin-bottom: 10px;
     }
 
     .footer-line {
