@@ -5,13 +5,19 @@
     <meta charset="UTF-8">
     <title>VisitNavora</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
 <header>
     <nav>
+        <div class="nav-left">
+        <img src="VisitNavora logo.jfif" alt="VisitNavora Logo" class="nav-logo">
+        <h1>VisitNavora</h1>
+       </div>
         
-         <h1>VisitNavora</h1>
+        
+         
         
        
         
@@ -29,10 +35,7 @@
 
 <section class="places">
     
-        <div class="logo">
-         <img src="VisitNavora logo.jfif" alt="VisitNavora Logo">
-         
-        </div> 
+        
         <h3>Navigate | Explore | Enjoy Navaly</h3>
 
     
@@ -51,12 +54,12 @@
     <div class="place">
         <div>
         <img src="st'peters.jfif">
-        <h3>Navaly St. Peter’s Church</h3>
+        <h3> St. Peter’s Church</h3>
         <p>Beautiful local church </p>
         </div>
         <div class="buttons">
-        <button class="view-btn" onclick="goToPlace('church')">👁️</button>
-        <button class="map-btn">📍</button>
+        <button class="view-btn" onclick="goToPlace('church')"><i class="fa-solid fa-eye"></i></button>
+        <button class="map-btn"><i class="fa-solid fa-location-dot"></i></button>
         </div>
     </div>
         
@@ -67,11 +70,11 @@
           <img src="pannai beach.jpg">
           <h3>Pannai Beach</h3>
           <p>Relaxing beach area.</p>
-          <p>Distance: 6.6 km</p>
+          
         </div>
         <div class="buttons">
-          <button class="view-btn" onclick="goToPlace('beach')">👁️</button>
-          <button class="map-btn">📍</button>
+          <button class="view-btn" onclick="goToPlace('beach')"><i class="fa-solid fa-eye"></i></button>
+          <button class="map-btn"><i class="fa-solid fa-location-dot"></i></button>
        </div>
     </div>
 
@@ -81,8 +84,8 @@
         <p>Historic fort with cultural value.</p>
         
         <div class="buttons">
-         <button class="view-btn" onclick="goToPlace('fort')">👁️</button>
-         <button class="map-btn">📍</button>
+         <button class="view-btn" onclick="goToPlace('fort')"><i class="fa-solid fa-eye"></i></button>
+         <button class="map-btn"><i class="fa-solid fa-location-dot"></i></button>
        </div>
     </div>
 
@@ -92,8 +95,8 @@
         <h3>Jaffna Library</h3>
         <p>Famous cultural place.</p>
         <div class="buttons">
-          <button class="view-btn" onclick="goToPlace('library')">👁️</button>
-          <button class="map-btn">📍</button>
+          <button class="view-btn" onclick="goToPlace('library')"><i class="fa-solid fa-eye"></i></button>
+          <button class="map-btn"><i class="fa-solid fa-location-dot"></i></button>
         </div>
     </div>
 
@@ -102,8 +105,8 @@
         <h3>Nallur Temple</h3>
         <p>Popular religious temple.</p>
         <div class="buttons">
-         <button class="view-btn" onclick="goToPlace('nallur')">👁️</button>
-         <button class="map-btn">📍</button>
+         <button class="view-btn" onclick="goToPlace('nallur')"><i class="fa-solid fa-eye"></i></button>
+         <button class="map-btn"><i class="fa-solid fa-location-dot"></i></button>
         </div>
     </div>
 
@@ -112,8 +115,8 @@
         <h3>Subramaniya Park</h3>
         <p>Relaxing green park.</p>
         <div class="buttons">
-         <button class="view-btn" onclick="goToPlace('park')">👁️</button>
-         <button class="map-btn">📍</button>
+         <button class="view-btn" onclick="goToPlace('park')"><i class="fa-solid fa-eye"></i></button>
+         <button class="map-btn"><i class="fa-solid fa-location-dot"></i></button>
         </div>
     </div>
 
@@ -123,8 +126,8 @@
         <h3>Jaffna Clock Tower</h3>
         <p>Famous landmark.</p>
         <div class="buttons">
-         <button class="view-btn" onclick="goToPlace('clock')">👁️</button>
-         <button class="map-btn">📍</button>
+         <button class="view-btn" onclick="goToPlace('clock')"><i class="fa-solid fa-eye"></i></button>
+         <button class="map-btn"><i class="fa-solid fa-location-dot"></i></button>
          </div>
     </div>
 
@@ -133,8 +136,8 @@
         <h3>Keerimalai Temple</h3>
         <p>Historic temple near sea.</p>
         <div class="buttons">
-        <button class="view-btn" onclick="goToPlace('keerimalai')">👁️</button>
-        <button class="map-btn">📍</button>
+        <button class="view-btn" onclick="goToPlace('keerimalai')"><i class="fa-solid fa-eye"></i></button>
+        <button class="map-btn"><i class="fa-solid fa-location-dot"></i></button>
         </div>
     </div>
 
@@ -143,8 +146,8 @@
         <h3>Casuarina Beach</h3>
         <p>Clean and calm beach.</p>
         <div class="buttons">
-        <button class="view-btn" onclick="goToPlace('casuarina')">👁️</button>
-        <button class="map-btn">📍</button>
+        <button class="view-btn" onclick="goToPlace('casuarina')"><i class="fa-solid fa-eye"></i></button>
+        <button class="map-btn"><i class="fa-solid fa-location-dot"></i></button>
         </div>
     </div>
 
@@ -153,8 +156,8 @@
         <h3>Maruthadi Pillayar Kovil</h3>
         <p>Peaceful Hindu temple.</p>
         <div class="buttons">
-        <button class="view-btn" onclick="goToPlace('pillayar')">👁️</button>
-        <button class="map-btn">📍</button>
+        <button class="view-btn" onclick="goToPlace('pillayar')"><i class="fa-solid fa-eye"></i></button>
+        <button class="map-btn"><i class="fa-solid fa-location-dot"></i></button>
         </div>
     </div>
 

@@ -32,12 +32,20 @@ sliders.forEach((slider) => {
     const nextBtn = slider.querySelector(".next");
     const prevBtn = slider.querySelector(".prev");
 
+    if (slides.length === 0) return;
+
     let index = 0;
 
     function showSlide(i) {
-        slides.forEach(slide => slide.classList.remove("active"));
-        slides[i].classList.add("active");
+    if (slides.length > 0) {
+      slides.forEach(s => s.classList.remove("active"));
+       slides[i].classList.add("active");
     }
+
+    
+}
+    // ✅ ADD THIS LINE (VERY IMPORTANT)
+    showSlide(0);
 
     if (nextBtn) {
         nextBtn.addEventListener("click", () => {
@@ -55,7 +63,6 @@ sliders.forEach((slider) => {
 });
 
 
-
 const filter = document.getElementById("categoryFilter");
 
 if (filter) {
@@ -68,9 +75,18 @@ if (filter) {
             const category = place.getAttribute("data-category");
 
             if (value === "all" || value === category) {
-                place.style.display = "block";
+              place.style.display = "block";
+
+              // 🔥 ADD THIS
+             const slider = place.querySelector(".slider");
+              if (slider) {
+                const slides = slider.querySelectorAll(".slide");
+                slides.forEach(s => s.classList.remove("active"));
+                slides[0].classList.add("active");
+              }
+
             } else {
-                place.style.display = "none";
+               place.style.display = "none";
             }
         });
     });

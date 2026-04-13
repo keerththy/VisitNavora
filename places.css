@@ -10,15 +10,17 @@
 
 .filter-box {
     display: flex;
-    justify-content: space-between; /* LEFT + RIGHT */
+    justify-content: space-between;
     align-items: center;
 
-    width: 100%;
-      /* SAME as page */
-    margin: 0 auto ; /* center + bottom gap */
-    margin-top: 25px;
-    padding:  30px;
-    
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+
+    background: #fff;
+    border-radius: 20px;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     
 }
 .filter-box h2 {
@@ -82,18 +84,23 @@
 /* Each place */
 .place-box {
     margin-bottom: 40px;
-    padding: 15px;
-    border: 2px solid rgb(146, 138, 138);
-    background-color: rgb(102, 96, 96);
-    border-radius: 35px;
-    transition: 0.3s;
-    text-align:center ;
-    color: rgb(227,197,128) ;
+    padding: 18px;
+    border-radius: 25px;
+
+    background: #ffffff;
+    color: #3a2e2e;
+
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transition: all 0.35s ease;
+
+    text-align: center;
     
 }
 .place-box:hover{
-    background-color: rgb(244, 244, 244);
-    color: rgb(57,45,45);
+    transform: translateY(-6px);
+    background: linear-gradient(135deg, #5c4b4b, #3a2e2e);
+    color: white;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.25);
 }
 
 /* Highlight style */
@@ -107,10 +114,11 @@
 .slider {
     position: relative;
     width: 100%;
-    max-width: 400px;
-    height: 250px; /* 🔥 FIXED HEIGHT */
-    margin: auto;
+    max-width: 420px;
+    height: 250px;
+    margin: 15px auto;
     overflow: hidden;
+    border-radius: 20px;
 }
 
 .slides {
@@ -120,15 +128,21 @@
 
 .slide {
     width: 100%;
-    height: 100%; /* 🔥 SAME HEIGHT */
-    object-fit: cover; /* 🔥 MOST IMPORTANT */
+    height: 100%;
+    object-fit: cover;
     display: none;
     border-radius: 20px;
-    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.4s ease;
 }
 
 .slide.active {
     display: block;
+    opacity: 1;
+}
+
+.place-box:hover .slide.active {
+    transform: scale(1.05); /* subtle zoom */
 }
 
 
@@ -139,22 +153,28 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+
     background: rgba(0,0,0,0.5);
     color: white;
+
     border: none;
     padding: 8px 12px;
-    cursor: pointer;
     border-radius: 50%;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
 }
 
 .prev { left: 5px; }
 .next { right: 5px; }
 
  .next:hover{
-    background: rgba(57,45,45);
+    background: #3a2e2e;
+    box-shadow: 0 0 10px rgba(255,255,255,0.4);
 }
 .prev:hover{
-    background: rgba(57,45,45);
+   background: #3a2e2e;
+    box-shadow: 0 0 10px rgba(255,255,255,0.4);
 }
 
 /* Description */
@@ -164,13 +184,22 @@
 
 /* Map button */
 .map-btn {
-    padding: 8px 12px;
-    margin-top: 10px;
+    margin-top: 12px;
+    padding: 10px 16px;
+
     border: none;
-    background-color: rgb(57,45,45);
-    color: rgb(227,197,128);
-    border-radius: 5px;
+    border-radius: 25px;
+
+    background: linear-gradient(135deg, #8b6f47, #b89b6a);
+    color: white;
+
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.map-btn:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 12px rgba(255,255,255,0.4);
 }
 
 /* 📱 Responsive */
@@ -181,8 +210,10 @@
 
     /* Page padding */
     .places-page {
-        padding: 10px;
+        
         margin-top: 25px;
+        padding: 12px;
+        border-radius: 20px;
     }
 
     /* Filter box */
