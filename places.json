@@ -1,0 +1,112 @@
+[
+  {
+    "id": "church",
+    "name": "Navaly St. Peter’s Church",
+    "category": "religious",
+    "suitable": ["family", "adults"],
+    "bestTime": ["morning","afternoon","evening"],
+    "duration": 30,
+    "priority": 1,
+    "description": "Famous historic church in Navaly, peaceful and spiritual environment.",
+    "image": "st'peters.jfif"
+  },
+  {
+    "id": "beach",
+    "name": "Pannai Beach",
+    "category": "natural",
+    "suitable": ["family", "children"],
+    "bestTime": "afternoon",
+    "duration": 60,
+    "priority": 1,
+    "description": "Beautiful beach suitable for relaxing and family time.",
+    "image": "pannai beach.jpg"
+  },
+  {
+    "id": "fort",
+    "name": "Jaffna Fort",
+    "category": "historical",
+    "suitable": ["adults"],
+    "bestTime": "evening",
+    "duration": 45,
+    "priority": 2,
+    "description": "Historic Dutch fort with scenic views and cultural value.",
+    "image": "jaffna fort.jpg"
+  },
+  {
+    "id": "library",
+    "name": "Jaffna Library",
+    "category": "historical",
+    "suitable": ["adults", "family"],
+    "bestTime": "afternoon",
+    "duration": 40,
+    "priority": 2,
+    "description": "One of the most important libraries in Sri Lanka.",
+    "image": "public library.jfif"
+  },
+  {
+    "id": "nallur",
+    "name": "Nallur Temple",
+    "category": "religious",
+    "suitable": ["family"],
+    "bestTime": "morning",
+    "duration": 50,
+    "priority": 1,
+    "description": "Famous Hindu temple with strong cultural importance.",
+    "image": "nallur.jfif"
+  },
+  {
+    "id": "park",
+    "name": "Subramaniya Park",
+    "category": "park",
+    "suitable": ["family", "children"],
+    "bestTime": "evening",
+    "duration": 40,
+    "priority": 2,
+    "description": "Green park area for relaxation and children activities.",
+    "image": "subramaniyam park.jfif"
+  },
+  {
+    "id": "clock",
+    "name": "Clock Tower",
+    "category": "landmark",
+    "suitable": ["adults"],
+    "bestTime": "evening",
+    "duration": 20,
+    "priority": 3,
+    "description": "Famous landmark in Jaffna city center.",
+    "image": "clock tower.jfif"
+  },
+  {
+    "id": "keerimalai",
+    "name": "Naguleswaram Temple",
+    "category": "religious",
+    "suitable": ["family"],
+    "bestTime": "morning",
+    "duration": 45,
+    "priority": 1,
+    "description": "Ancient Hindu temple with religious significance.",
+    "image": "naguleswaram.jfif"
+  },
+  {
+    "id": "casuarina",
+    "name": "Casuarina Beach",
+    "category": "natural",
+    "suitable": ["family", "children"],
+    "bestTime": "afternoon",
+    "duration": 70,
+    "priority": 1,
+    "description": "Shallow calm beach ideal for families and kids.",
+    "image": "casurna.jfif"
+  },
+  {
+    "id": "pillayar",
+    "name": "Maruthadi Pillayar Temple",
+    "category": "religious",
+    "suitable": ["family"],
+    "bestTime": "morning",
+    "duration": 30,
+    "priority": 2,
+    "description": "Small peaceful temple dedicated to Lord Ganesha.",
+    "image": "maruthadi2.jfif"
+  }
+]

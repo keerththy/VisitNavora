@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>VisitNavora - Day Plan</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="DayPlan.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <nav>
+        <div class="nav-left">
+            <img src="VisitNavora logo.jfif" class="nav-logo">
+            <h1>VisitNavora</h1>
+        </div>
+
+        <ul>
+            <li><a href="HomePage.html">Home</a></li>
+            <li><a href="places.html">Places</a></li>
+            <li>Map</li>
+            <li>About</li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ================= INTRO ================= -->
+<section class="introduction_section">
+    <h2>Plan Your Day</h2>
+    <p>Create a personalized itinerary based on your preferences</p>
+</section>
+
+<!-- ================= CONFIGURATION ================= -->
+<section class="configuration_panel">
+
+    <div class="input_group">
+     <label>Time Slot</label>
+     <select id="timeSlot">
+       <option disabled selected>Select Time</option>
+       <option value="morning">Morning</option>
+       <option value="afternoon">Afternoon</option>
+       <option value="evening">Evening</option>
+       <option value="full">Full Day</option>
+     </select>
+    </div>
+
+   
+
+   <div class="input_group">
+       <label>Place Category</label>
+       <select id="categorySelect">
+        <option value="all">All</option>
+        <option value="religious">Religious</option>
+        <option value="natural">Natural</option>
+        <option value="historical">Historical</option>
+        <option value="park">Park</option>
+        <option value="landmark">Landmark</option>
+       </select>
+    </div>
+
+    <div class="action_group">
+        <button id="suggestBtn">
+          Get Suggestions
+       </button>
+    </div>
+
+</section>
+
+<!-- ================= RECOMMENDATION ================= -->
+<section class="recommendation_section">
+
+    <h3 class="section_title">Recommended Places</h3>
+
+    <!-- Suggested -->
+    <div class="places_block">
+        <h4 class="sub_title" id="suggestedSection">
+         ⭐ Suggested For You
+        </h4>
+        <div id="suggestedContainer" class="places_grid">
+
+            <!-- Example Card -->
+            
+
+        </div>
+    </div>
+
+    <!-- Others -->
+    <div class="places_block" id="otherSection">
+        <h4 class="sub_title">📍 Other Places</h4>
+        <div id="otherContainer" class="places_grid"></div>
+    </div>
+
+    <div style="text-align:center; margin-top:20px;">
+      <button id="finalPlanBtn"> <i class="fas fa-magic"></i> Generate Smart Plan</button>
+    </div>
+
+</section>
+
+<!-- ================= ITINERARY ================= -->
+<section class="itinerary_output" id="planSection">
+
+    <h3 class="section_title">Your Day Plan</h3>
+
+    <div class="timeline_container" >
+
+        <div class="timeline_card morning_slot">
+            <h4>🌅 Morning (8AM - 12PM)</h4>
+            <p>Select places to generate plan</p>
+        </div>
+
+        <div class="timeline_card afternoon_slot">
+            <h4>☀️ Afternoon (12PM - 4PM)</h4>
+            <p>Select places to generate plan</p>
+        </div>
+
+        <div class="timeline_card evening_slot">
+            <h4>🌙 Evening (4PM - 8PM)</h4>
+            <p>Select places to generate plan</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    <div class="footer-center">
+
+        <h3>About Us</h3>
+        <p>
+            VisitNavora helps you explore the best places in Navaly with ease.
+        </p>
+
+        <div class="footer-icons">
+            <div>
+                <span>ⓕ</span>
+                <p>VisitNavora</p>
+            </div>
+
+            <div>
+                <span>📧</span>
+                <p>info@visitnavora.com</p>
+            </div>
+
+            <div>
+                <span>✆</span>
+                <p>+94 77 123 4567</p>
+            </div>
+        </div>
+
+        <div class="footer-line"></div>
+
+        <p class="footer-rights">
+            © 2026 VisitNavora
+        </p>
+
+    </div>
+</footer>
+
+<script src="DayPlan.js"></script>
+</body>
+</html>

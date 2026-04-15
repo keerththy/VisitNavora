@@ -1,3 +1,7 @@
+body {
+    background: #F7F3EF;
+}
+
 .places-page {
     
     padding: 20px 20px 20px;  /*reduce top gap */
@@ -96,10 +100,10 @@
     text-align: center;
     
 }
-.place-box:hover{
+.place-box:hover {
     transform: translateY(-6px);
-    background: linear-gradient(135deg, #5c4b4b, #3a2e2e);
-    color: white;
+    background: linear-gradient(135deg, #2D1E13, #6F4E37);
+    color: #fff;
     box-shadow: 0 12px 30px rgba(0,0,0,0.25);
 }
 
@@ -182,24 +186,50 @@
     margin: 10px 0;
 }
 
+
+.plan-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+
+    background: linear-gradient(135deg, #2D1E13, #6F4E37);
+    color: #fff;
+
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.plan-btn:hover {
+    background: linear-gradient(135deg, #1B120C, #2D1E13);
+    transform: translateY(-2px);
+}
+
+
 /* Map button */
 .map-btn {
     margin-top: 12px;
     padding: 10px 16px;
 
-    border: none;
     border-radius: 25px;
+    border: 1px solid #C8A27C;
 
-    background: linear-gradient(135deg, #8b6f47, #b89b6a);
-    color: white;
+    background: #F7F3EF;
+    color: #2D1E13;
 
+    font-weight: 500;
     cursor: pointer;
+
     transition: all 0.3s ease;
 }
 
 .map-btn:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 0 12px rgba(255,255,255,0.4);
+    background: #C8A27C;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
 
 /* 📱 Responsive */
