@@ -1,0 +1,446 @@
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+    transition: all 0.2s ease-in-out;
+}
+
+/* பக்கம் திறக்கும்போது வரும் அனிமேஷன் */
+@keyframes entrance {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.introduction_section, .configuration_panel, .recommendation_section {
+    animation: entrance 0.8s ease-out backwards;
+}
+
+.configuration_panel { animation-delay: 0.2s; }
+.recommendation_section { animation-delay: 0.4s; }
+
+body {
+    background: #F7F3EF;
+    color: #2B1B12;
+    font-family: Arial, sans-serif;
+}
+
+/* ================= INTRO ================= */
+
+.introduction_section {
+    text-align: center;
+    padding: 70px 20px 20px 20px;
+     
+}
+
+.introduction_section h2 {
+    font-size: 34px;
+    color: #2D1E13;
+    margin-bottom: 10px;
+}
+
+.introduction_section p {
+    color: #6F4E37;
+}
+
+/* ================= CONFIG PANEL ================= */
+
+.configuration_panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 25px;
+    background: white;
+    margin: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.input_group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input_group label {
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: #6F4E37;
+  margin-bottom: 6px;
+}
+
+.input_group select {
+    width: 280px;              /* 🔥 increased width */
+    padding: 12px 40px 12px 14px;
+    border-radius: 12px;
+    border: 1px solid #63564e;
+    background: linear-gradient(145deg, #ffffff, #f7f3ef);
+    color: #2D1E13;
+    font-size: 14px;
+    font-weight: 500;
+    outline: none;
+    cursor: pointer;
+
+     /* 🔥 modern shadow */
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+
+    /* remove default arrow */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    /* custom arrow */
+   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%236F4E37' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+   background-repeat: no-repeat;
+   background-position: right 14px center;
+   background-size: 14px;
+   transition: all 0.3s ease;
+    
+
+}
+
+.input_group select:hover {
+  border-color: #6F4E37;
+  box-shadow: 0 8px 22px rgba(111, 78, 55, 0.25);
+  transform: translateY(-1px);
+}
+
+.input_group input,
+.input_group select {
+    padding: 12px;
+    width: 220px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+    transition: 0.3s;
+    height: 44px;
+}
+
+button:active, .input_group select:active {
+    transform: scale(0.95);
+    transition: 0.1s;
+}
+
+.input_group input:focus,
+.input_group select:focus {
+    
+    border-color: #6F4E37;
+    box-shadow: 0 0 0 4px rgba(111, 78, 55, 0.15);
+}
+
+.action_group {
+    display: flex;
+    align-items: end;
+}
+
+.section_title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background: #C8A27C;
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+button {
+    background: linear-gradient(135deg, #2D1E13, #6F4E37);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: linear-gradient(135deg, #1B120C, #2D1E13);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* ================= RECOMMENDATION ================= */
+
+.section_title {
+    text-align: center;
+    font-size: 28px;
+    color: #2D1E13;
+    margin-bottom: 10px;
+}
+
+.sub_title {
+    margin: 20px 0;
+    color: #6F4E37;
+    margin: 25px 0 10px;
+}
+
+.recommendation_section {
+    padding: 30px;
+}
+
+
+
+.places_grid {  
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.place_card label {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #6F4E37;
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+}
+
+.place_card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 12px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.place_card:hover {
+    transform: translateY(-8px) scale(1.02);
+    
+    box-shadow: 0 15px 35px rgba(45, 30, 19, 0.15);
+}
+
+.place_card.selected {
+  border: 2px solid #6F4E37;
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.place_card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    
+    filter: brightness(0.95);
+    transition: 0.4s;
+}
+
+.place_card:hover img {
+    filter: brightness(1.1);
+    transform: scale(1.08);
+}
+
+.place_card h4 {
+    margin: 10px 0;
+    color: #2D1E13;
+}
+
+.places_block {
+    margin-bottom: 30px;
+}
+#suggestedContainer .place_card {
+    border: 2px solid #C8A27C;
+}
+
+#otherContainer .place_card {
+    opacity: 0.9;
+}
+
+#otherSection {
+    display: none;
+    opacity: 0.95;
+    margin-top: 20px;
+}
+
+/* ================= TIMELINE ================= */
+.plan_item{
+  display:flex;
+  justify-content:space-between;
+  padding:10px 12px;
+  margin:6px 0;
+  background:#fff;
+  border-radius:10px;
+  border-left: 5px solid #C8A27C;
+  animation: fadeIn 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.plan_item:hover {
+    background: #fdfaf7;
+    transform: translateX(5px); /* இடது புறம் இருந்து நகரும் உணர்வு */
+    border-left-width: 8px;
+}
+.plan_time{
+  font-size:12px;
+  color:#6F4E37;
+  font-weight:700;
+}
+
+.plan_name{
+  font-size:14px;
+  color:#2D1E13;
+  font-weight:600;
+}
+
+@keyframes fadeIn{
+  from {opacity:0; transform:translateY(5px);}
+  to {opacity:1; transform:translateY(0);}
+}
+
+.timeline_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 30px;
+}
+
+.timeline_card {
+    flex: 1;
+    min-width: 250px;
+    padding: 20px;
+    border-radius: 15px;
+    background: white;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    transition: 0.3s;
+}
+
+.section_title{
+  text-align:center;
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:20px;
+  color:#2D1E13;
+}
+
+.timeline_card h4{
+  text-align:center;
+}
+
+.timeline_card:hover {
+    transform: translateY(-4px);
+}
+
+.morning_slot {
+    border-left: 5px solid #C8A27C;
+}
+
+.afternoon_slot {
+    border-left: 5px solid #6F4E37;
+}
+
+.evening_slot {
+    border-left: 5px solid #2D1E13;
+}
+
+.timeline_card h4 {
+    color: #2D1E13;
+}
+
+@media screen and (max-width: 768px) {
+
+    /* 🔹 INTRO */
+    .introduction_section {
+        
+        padding-top: 90px;
+    }
+
+    .introduction_section h2 {
+        font-size: 24px;
+    }
+
+    .introduction_section p {
+        font-size: 13px;
+    }
+
+    /* 🔹 CONFIG PANEL */
+    .configuration_panel {
+        flex-direction: column;   /* stack */
+        align-items: center;
+        padding: 20px 15px;
+        margin: 15px;
+        gap: 15px;
+    }
+
+    .input_group {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .input_group input,
+    .input_group select {
+        width: 100% !important;   /* full width */
+        font-size: 13px;
+        height: 42px;
+    }
+
+    /* 🔹 BUTTON */
+    .action_group {
+        width: 100%;
+        justify-content: center;
+    }
+
+    button {
+        width: 100%;
+        max-width: 200px;
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    /* 🔹 SECTION TITLES */
+    .section_title {
+        font-size: 22px;
+    }
+
+    /* 🔹 GRID */
+    .places_grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row */
+        gap: 15px;
+    }
+
+    /* 🔹 CARD */
+    .place_card {
+        padding: 10px;
+    }
+
+    .place_card img {
+        height: 120px;
+    }
+
+    .place_card h4 {
+        font-size: 14px;
+    }
+
+    /* 🔹 TIMELINE */
+    .timeline_container {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .timeline_card {
+        width: 100%;
+        min-width: unset;
+        padding: 15px;
+    }
+
+    .plan_item {
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .plan_time {
+        font-size: 11px;
+    }
+
+    .plan_name {
+        font-size: 13px;
+    }
+}
+

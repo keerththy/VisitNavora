@@ -1,0 +1,446 @@
+/* ================= GENERAL STYLES ================= */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #F7F3EF;
+    overflow-x: hidden; /* Horizontal scroll-ai thadukka */
+}
+
+/* ================= LAYOUT ================= */
+.layout {
+    display: flex;
+}
+
+/* ================= SIDEBAR (DESKTOP) ================= */
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    position: fixed; 
+    left: 0;
+    top: 0;
+    box-shadow: 4px 0 15px rgba(0,0,0,0.2);
+    background: linear-gradient(180deg, #2D1E13, #6F4E37);
+    color: white;
+    padding: 20px 15px;
+    box-sizing: border-box;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.sidebar nav a {
+    display: flex;
+    align-items: center; 
+    padding: 12px 15px;
+    gap: 15px;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.sidebar nav a:hover, .sidebar nav a.active {
+    background: rgba(255,255,255,0.15);
+    color: white;
+}
+
+.sidebar nav a.active {
+    border-left: 5px solid #E3C580;
+}
+
+/* ================= MODAL CONTENT (Modern Popup Box) ================= */
+.modal {
+    display: flex; /* Always flex for center */
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+
+.modal-content {
+    background: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    width: 400px;
+    max-width: 90%;
+
+    height: auto;             
+    max-height: 85vh;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 
+        0 10px 30px rgba(0,0,0,0.25),
+        0 0 15px rgba(227, 197, 128, 0.3),
+        0 0 40px rgba(227, 197, 128, 0.15);
+
+    transform: scale(0.9);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal-content:hover {
+    box-shadow: 
+        0 10px 30px rgba(0,0,0,0.25),
+        0 0 25px rgba(227, 197, 128, 0.5),
+        0 0 60px rgba(227, 197, 128, 0.25);
+}
+
+/* SHOW STATE */
+.modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal.show .modal-content {
+    transform: scale(1);
+}
+
+#modalTitle {
+    
+    top: 0;
+    background: white;
+    padding: 10px 0;
+    margin-top: 0;
+    font-size: 18px;
+    z-index: 10;
+    border-bottom: 1px solid #eee;
+}
+
+/* Modal open scale reset uniform look Thickum */
+.modal.open .modal-content {
+    transform: scale(1);
+}
+
+/* Close Button (X) */
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #aaa;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close:hover {
+    color: #ff4d4d;
+    transform: rotate(90deg);
+}
+
+/* Form Styles */
+#placeForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#placeForm input, 
+#placeForm textarea {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 14px;
+    background: #fdfdfd;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+#placeForm input:focus, 
+#placeForm textarea:focus {
+    border-color: #6F4E37;
+    background: #fff;
+    box-shadow: 0 0 8px rgba(111, 78, 55, 0.2);
+}
+
+.save-btn {
+    background: linear-gradient(45deg, #6F4E37, #2D1E13);
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 10px;
+}
+
+/* ================= MAIN CONTENT ================= */
+.content {
+    flex: 1;
+    padding: 25px;
+    margin-left: 255px; /* Sidebar gap */
+    animation: fadeInContent 0.8s ease-out;
+}
+
+/* ================= TOPBAR ================= */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.topbar h1 {
+    font-size: 24px;
+    color: #2D1E13;
+}
+
+.top-btns {
+    display: flex;
+    gap: 10px;
+}
+
+.add-btn { background: #392D2D; color: white; border: none; padding: 10px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; }
+.logout-btn { background: #8B0000; color: white; border: none; padding: 10px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; }
+
+/* ================= TABLE BOX ================= */
+.table-box {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 14px 10px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+thead { background: #f9f7f5; }
+
+/* Actions Column */
+.action-cell {
+    display: flex;
+    gap: 8px;
+}
+
+.edit-btn { background: #112f5e; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+.delete-btn { background: #5f1414; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+
+/* ================= RESPONSIVE SECTION (MOBILE & TABLET) ================= */
+@media screen and (max-width: 992px) {
+    /* 1. Sidebar to Bottom Nav */
+    .sidebar {
+        width: 100%;
+        height: 65px;
+        top: auto;
+        bottom: 0;
+        flex-direction: row;
+        padding: 0;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .logo { display: none; }
+
+    .sidebar nav {
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        gap: 0;
+    }
+
+    .sidebar nav a {
+        flex-direction: column;
+        gap: 4px;
+        font-size: 10px;
+        padding: 10px;
+        border-left: none !important;
+    }
+
+    .sidebar nav a.active {
+        border-bottom: 3px solid #E3C580;
+    }
+
+    .material-symbols-outlined {
+     font-size: 20px !important;
+     font-weight: normal !important;
+    }
+
+   .sidebar nav a i {
+     font-size: 18px;
+    }
+
+    /* 2. Content Adjustment */
+    .content {
+        margin-left: 0 !important;
+        padding: 15px;
+        padding-bottom: 80px; /* Space for bottom nav */
+    }
+
+    /* 3. Table UI Improvements */
+    .table-box {
+        padding: 10px;
+        overflow-x: hidden; /* Fixed table naala scroll thevai illai */
+    }
+
+    .table-box h2, .content h2 {
+        text-align: center !important;
+        margin-bottom: 20px;
+        width: 100%;
+        font-size: 1.2rem; /* Mobile-ku thagundha size */
+    }
+
+    table {
+        table-layout: fixed; /* Column width-ai fix pannum */
+        font-size: 11px;
+    }
+
+    /* Column Widths */
+    th:nth-child(1), td:nth-child(1) { width: 16%; } /* ID */
+    th:nth-child(2), td:nth-child(2) { width: 36%; word-break: break-word; } /* Name */
+    th:nth-child(3), td:nth-child(3) { width: 15%; } /* Category */
+    th:nth-child(4), td:nth-child(4) { width: 33%; } /* Actions */
+
+    th, td {
+        padding: 10px 5px !important;
+    }
+
+    /* 4. Horizontal Buttons (Side-by-Side) */
+    .action-cell {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 6px !important;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .edit-btn, .delete-btn {
+        width: 36px !important;
+        height: 18px !important;
+        padding: 0 !important;
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        font-size: 8px !important;
+    }
+
+    /* 5. Topbar Stack */
+    .topbar {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .top-btns {
+        display: flex;
+        flex-direction: column; /* Mobile-la onnu keela onnu center-ah vara */
+        align-items: center;
+        width: 100%;
+        gap: 12px;
+        margin-top: 10px;
+    }
+
+    /* Rendu button-um orey size-la irukka */
+    .add-btn, .logout-btn {
+        width: 180px !important; /* Rendu button-kum fixed-ah orey width */
+        height: 45px !important; /* Orey height */
+        padding: 0 !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px !important;
+        font-weight: 600;
+        border-radius: 12px;
+        margin: 0 auto !important;
+    }
+
+    /* Modal Form Visibility Fix */
+    
+    .modal {
+      display: flex; /* IMPORTANT */
+      align-items: center;
+      justify-content: center;
+      padding: 10px; /* little spacing mobile-ku */
+    }
+
+    .modal-content {
+        width: 85% !important;      /* 🔽 smaller width */
+        max-width: 320px;           /* 🔒 limit size */
+        padding: 18px;              /* 🔽 less padding */
+        border-radius: 12px;
+
+        max-height: 75vh;           /* 🔽 height control */
+        overflow-y: auto;
+
+        transform: scale(0.9);      /* 🔽 slightly small feel */
+    }
+
+    /* when open */
+    .modal.show .modal-content {
+        transform: scale(1);
+    }
+
+    /* input fields small */
+    #placeForm input,
+    #placeForm textarea {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    /* button small */
+    .save-btn {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    /* close icon adjust */
+    .close {
+        font-size: 24px;
+        right: 15px;
+        top: 10px;
+    }
+
+}
+
+/* Animations */
+@keyframes fadeInContent {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}

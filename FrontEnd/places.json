@@ -1,0 +1,122 @@
+[
+  {
+    "id": "church",
+    "name": "Navaly St. Peter’s Church",
+    "category": "religious",
+    "suitable": ["family", "adults"],
+    "bestTime": "morning",
+    "duration": 30,
+    "priority": 1,
+    "lat": 9.6680,
+    "lng": 80.0150,
+    "image": "images/st-peters.jfif"
+  },
+  {
+    "id": "nallur",
+    "name": "Nallur Temple",
+    "category": "religious",
+    "suitable": ["family"],
+    "bestTime": "morning",
+    "duration": 50,
+    "priority": 1,
+    "lat": 9.6685,
+    "lng": 80.0270,
+    "image": "images/nallur.jfif"
+  },
+  {
+    "id": "keerimalai",
+    "name": "Naguleswaram Temple",
+    "category": "religious",
+    "suitable": ["family", "adults"],
+    "bestTime": "morning",
+    "duration": 45,
+    "priority": 1,
+    "lat": 9.8160,
+    "lng": 80.0130,
+    "image": "images/naguleswaram.jfif"
+  },
+  {
+    "id": "beach",
+    "name": "Pannai Beach",
+    "category": "natural",
+    "suitable": ["family", "children"],
+    "bestTime": "afternoon",
+    "duration": 60,
+    "priority": 1,
+    "lat": 9.6600,
+    "lng": 80.0300,
+    "image": "images/pannai beach.jpg"
+  },
+  {
+    "id": "casuarina",
+    "name": "Casuarina Beach",
+    "category": "natural",
+    "suitable": ["family", "children"],
+    "bestTime": "afternoon",
+    "duration": 70,
+    "priority": 1,
+    "lat": 9.7490,
+    "lng": 79.8850,
+    "image": "images/casurna.jfif"
+  },
+  {
+    "id": "library",
+    "name": "Jaffna Library",
+    "category": "historical",
+    "suitable": ["adults", "family"],
+    "bestTime": "afternoon",
+    "duration": 40,
+    "priority": 2,
+    "lat": 9.6645,
+    "lng": 80.0200,
+    "image": "images/public-library.jfif"
+  },
+  {
+    "id": "fort",
+    "name": "Jaffna Fort",
+    "category": "historical",
+    "suitable": ["adults"],
+    "bestTime": "evening",
+    "duration": 45,
+    "priority": 2,
+    "lat": 9.6615,
+    "lng": 80.0255,
+    "image": "images/jaffna-fort.jpg"
+  },
+  {
+    "id": "park",
+    "name": "Subramaniya Park",
+    "category": "park",
+    "suitable": ["family", "children"],
+    "bestTime": "evening",
+    "duration": 40,
+    "priority": 2,
+    "lat": 9.6630,
+    "lng": 80.0215,
+    "image": "images/subramaniyam.jfif"
+  },
+  {
+    "id": "clock",
+    "name": "Clock Tower",
+    "category": "landmark",
+    "suitable": ["adults"],
+    "bestTime": "evening",
+    "duration": 20,
+    "priority": 3,
+    "lat": 9.6650,
+    "lng": 80.0230,
+    "image": "images/clock-tower.jfif"
+  },
+  {
+    "id": "pillayar",
+    "name": "Maruthadi Pillayar Temple",
+    "category": "religious",
+    "suitable": ["family"],
+    "bestTime": "morning",
+    "duration": 30,
+    "priority": 2,
+    "lat": 9.6705,
+    "lng": 80.0180,
+    "image": "images/maruthadi2.jfif"
+  }
+]

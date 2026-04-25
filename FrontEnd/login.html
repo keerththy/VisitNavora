@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - VisitNavora</title>
+
+<link rel="stylesheet" href="login.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+
+<a href="#" class="back-btn" onclick="goBack()">
+    <i class="fas fa-arrow-left"></i>
+</a>
+
+<div class="login-container">
+
+    <div class="login-box">
+
+        <!-- LOGO -->
+        <img src="images/VisitNavora logo.jfif" class="logo">
+
+        <h2>Access Dashboard!</h2>
+        <p>Login to manage your admin account</p>
+
+
+        <form id="loginForm">
+            <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" placeholder="Username" required>
+            </div>
+
+            <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Password" required>
+            </div>
+
+            <button type="submit" class="login-btn">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </button>
+        </form>
+
+        <p class="error" id="errorMsg"></p>
+
+        <p class="signup-link">Don't have an account? <a href="signup.html">Sign Up</a></p>
+
+    </div>
+
+</div>
+
+<script src="login.js"></script>
+
+</body>
+</html>

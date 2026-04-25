@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+    <title>Admin Dashboard - VisitNavora</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            <img src="images/VisitNavora logo.jfif">
+            <h2>VisitNavora</h2>
+        </div>
+
+        <nav>
+            <a href="#" class="active">
+             <span class="material-symbols-outlined">dashboard</span>
+             <span>Dashboard</span>
+            </a>
+
+            <a href="HomePage.html">
+             <i class="fas fa-home"></i> Home
+            </a>
+
+            <a href="places.html">
+              <i class="fas fa-map-marker-alt"></i> Places
+            </a>
+
+            <a href="DayPlan.html">
+             <i class="fas fa-calendar-day"></i> Plan Your day
+            </a>
+
+           <a href="map.html">
+             <span class="material-symbols-outlined">map </span>
+             <span>Map</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <!-- TOP BAR -->
+        <div class="topbar">
+            <h1 id="welcomeText">Welcome back, Admin 👋</h1>
+            <button class="add-btn">+ Add Place</button>
+            <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-box">
+            <h2>Manage Places</h2>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Place Name</th>
+                        <th>Category</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody id="adminList">
+                    <!-- JS will load -->
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+</div>
+
+
+
+<div id="placeModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle">Add New Place</h2>
+        <form id="placeForm">
+            <input type="hidden" id="editId">
+            <input type="text" id="pName" placeholder="Place Name" required>
+            <input type="text" id="pCategory" placeholder="Category (e.g. Temple, Beach)" required>
+            <input type="text" id="pImage" placeholder="Main Image Path (e.g. images/temple.jpg)" required>
+            <textarea id="pDesc" placeholder="Description Paragraph" rows="4" required></textarea>
+            <input type="text" id="pSuitable" placeholder="Suitable For (Family, Friends)">
+           <input type="text" id="pBestTime" placeholder="Best Time To Visit">
+           <input type="number" id="pDuration" placeholder="Duration (hours)">
+           <input type="number" id="pPriority" placeholder="Priority (1-10)">
+            <div class="coords">
+                <input type="number" step="any" id="pLat" placeholder="Latitude" required>
+                <input type="number" step="any" id="pLng" placeholder="Longitude" required>
+            </div>
+            <button type="submit" class="save-btn">Save Place</button>
+        </form>
+    </div>
+</div>
+
+<script src="admin.js"></script>
+
+</body>
+</html>

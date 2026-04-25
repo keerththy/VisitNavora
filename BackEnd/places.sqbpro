@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="places.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="1037"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><table title="places" custom_title="0" dock_id="1" table="4,6:mainplaces"/><dock_state state="000000ff00000000fd00000001000000020000000000000000fc0100000001fb000000160064006f0063006b00420072006f00770073006500310100000000ffffffff0000011800ffffff000000000000000000000004000000040000000800000008fc00000000"/><default_encoding codec=""/><browse_table_settings/></tab_browse><tab_sql><sql name="SQL 1*">CREATE TABLE place_images (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  place_id TEXT,
+  image TEXT,
+  FOREIGN KEY(place_id) REFERENCES places(id)
+);
+
+INSERT INTO place_images (place_id, image) VALUES
+
+-- church
+('church','images/st-peters.jfif'),
+('church','images/st-peters2.png'),
+('church','images/st-peters3.png'),
+
+-- beach
+('beach','images/pannai beach.jpg'),
+('beach','images/pannai beach2.jfif'),
+('beach','images/pannai beach3.png'),
+
+-- fort
+('fort','images/jaffna-fort.jpg'),
+('fort','images/jaffna-fort2.jfif'),
+('fort','images/jaffna-fort3.jfif'),
+('fort','images/jaffna-fort4.jfif'),
+
+-- library
+('library','images/public-library.jfif'),
+('library','images/public-library2.jfif'),
+('library','images/public-library3.jfif'),
+
+-- nallur
+('nallur','images/nallur.jfif'),
+('nallur','images/nallur2.jfif'),
+('nallur','images/nallur3.jfif'),
+('nallur','images/nallur4.jfif'),
+
+-- park
+('park','images/subramaniyam.jfif'),
+('park','images/subramaniyam2.jfif'),
+('park','images/subramaniyam3.jfif'),
+('park','images/subramaniyam4.jfif'),
+
+-- clock
+('clock','images/clock-tower.jfif'),
+('clock','images/clock-tower2.jfif'),
+('clock','images/clock tower3.jfif'),
+('clock','images/clock tower4.jfif'),
+
+-- keerimalai
+('keerimalai','images/naguleswaram.jfif'),
+('keerimalai','images/naguleswaram2.jfif'),
+('keerimalai','images/naguleswaram3.jfif'),
+
+-- casuarina
+('casuarina','images/casurna.jfif'),
+('casuarina','images/casurna2.jfif'),
+('casuarina','images/casurna3.jfif'),
+('casuarina','images/casurna4.jfif'),
+
+-- pillayar
+('pillayar','images/maruthadi2.jfif'),
+('pillayar','images/maruthadi3.jfif'),
+('pillayar','images/maruthadi4.jpg');</sql><current_tab id="0"/></tab_sql></sqlb_project>

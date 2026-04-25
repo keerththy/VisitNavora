@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map - VisitNavora</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="map.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <div class="nav-left">
+            <img src="images/VisitNavora logo.jfif" alt="VisitNavora Logo" class="nav-logo">
+            <h1>VisitNavora</h1>
+        </div>
+        <ul>
+             <li><a href="HomePage.html">Home</a></li>
+            <li><a href="places.html">Places</a></li>
+            <li><a href="admin.html" onclick="localStorage.setItem('lastPage', window.location.href)">Dashboard</a></li>
+            <li><a href="DayPlan.html">Plan Your Day</a></li>
+            <li class="active">Map</li>
+        </ul>
+    </nav>
+</header>
+
+<main class="map-wrapper">
+    <aside class="map-sidebar">
+        <div class="sidebar-toggle">
+          <button onclick="showSearchOnly()" class="v-btn">
+           <i class="fas fa-chevron-down"></i>
+          </button>
+
+          <button onclick="showFullList()" class="up-btn">
+            <i class="fas fa-chevron-up"></i>
+          </button>
+        </div>
+        
+        <div class="search-container">
+            <input type="text" id="mapSearch" placeholder="Search places...">
+            <i class="fas fa-search"></i>
+        </div>
+        <div id="sidePlacesList" class="side-list">
+            </div>
+    </aside>
+
+    <div id="map"></div>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="map.js"></script>
+</body>
+</html>

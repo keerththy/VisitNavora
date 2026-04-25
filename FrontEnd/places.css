@@ -1,0 +1,285 @@
+@keyframes pageEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* 30px கீழிருந்து மெதுவாக மேலே வரும் */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    background: #F7F3EF;
+}
+
+/* ================= PAGE CONTAINER ================= */
+.places-page {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+    animation: pageEntrance 0.8s ease-out;
+}
+
+/* ================= FILTER BOX ================= */
+.filter-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 900px;
+    margin: 80px auto 20px auto;
+    padding: 20px;
+
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: slideDown 0.7s ease;
+
+    backdrop-filter: blur(10px);
+    background: rgba(255,255,255,0.8);
+}
+
+.filter-box h2 {
+    margin: 0;
+    color: #2d1e13;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px); /* மேலிருந்து மெதுவாகக் கீழே வரும் */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= SELECT ================= */
+.styled-select {
+    padding: 8px;
+    font-size: 15px;
+    border-radius: 20px;
+    border: 2px solid #ddd;
+    outline: none;
+    cursor: pointer;
+
+    background: linear-gradient(135deg, #43332184, #f6f7f8);
+    color: rgb(57,45,45);
+
+    transition: all 0.3s ease;
+    width: 200px;
+
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='darkbrown' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 18px;
+    padding-right: 35px;
+}
+
+.styled-select:hover {
+    border-color: #62382c60;
+}
+
+.styled-select:focus {
+    border-color: #2d1e13;
+    box-shadow: 0 0 8px rgba(79, 40, 12, 0.4);
+}
+
+/* ================= PLACE BOX ================= */
+.place-box {
+    margin-bottom: 40px;
+    padding: 18px;
+    border-radius: 25px;
+
+    background: #ffffff;
+    color: #3a2e2e;
+
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transition: all 0.35s ease;
+    animation: fadeInBox 0.6s ease-out backwards;
+
+    text-align: center;
+}
+
+@keyframes fadeInBox {
+    from {
+        opacity: 0;
+        transform: scale(0.95); /* லேசாகச் சின்னதாக இருந்து இயல்பு நிலைக்கு வரும் */
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.place-box:hover {
+    transform: translateY(-6px);
+    background: linear-gradient(135deg, #2D1E13, #6F4E37);
+    color: #fff;
+}
+
+/* ================= HIGHLIGHT ================= */
+.highlight {
+    background-color: rgba(195, 193, 193, 0.872);
+    border: 3px solid rgb(57,45,45);
+    color: rgb(57,45,45);
+}
+
+/* ================= SLIDER ================= */
+.slider {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    height: 250px;
+
+    margin: 15px auto;
+    overflow: hidden;
+
+    border-radius: 20px;
+}
+
+.slides {
+    width: 100%;
+    height: 100%;
+
+    display: flex;        /* IMPORTANT for JS dynamic images */
+}
+
+/* every image */
+.slides img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    display: none;
+    border-radius: 20px;
+
+    transition: opacity 0.4s ease;
+}
+
+
+
+/* active image */
+.slides img.active {
+    display: block;
+}
+
+/* ================= ARROWS ================= */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0,0,0,0.5);
+    color: white;
+
+    border: none;
+    border-radius: 50%;
+
+    cursor: pointer;
+    z-index: 2;
+
+    transition: all 0.3s ease;
+}
+
+.prev { left: 5px; }
+.next { right: 5px; }
+
+.prev:hover,
+.next:hover {
+    background: #2D1E13;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* ================= DESCRIPTION ================= */
+.desc {
+    margin: 15px auto;
+    padding: 14px 16px;
+
+    max-width: 90%;
+    font-size: 14.5px;
+    line-height: 1.6;
+
+    color: #5a4a42;
+    background: rgba(247, 243, 239, 0.9);
+
+    border-left: 4px solid #6F4E37;
+    border-radius: 12px;
+
+    text-align: left;
+}
+
+/* ================= BUTTONS ================= */
+.plan-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+
+    background: linear-gradient(135deg, #2D1E13, #6F4E37);
+    color: #fff;
+
+    border-radius: 20px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.map-btn {
+    margin-top: 12px;
+    padding: 10px 16px;
+
+    border-radius: 25px;
+    border: 1px solid #C8A27C;
+
+    background: #F7F3EF;
+    color: #2D1E13;
+
+    cursor: pointer;
+}
+
+.plan-btn:active, .map-btn:active, .styled-select:active {
+    transform: scale(0.92);
+    transition: 0.1s;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+    .filter-box {
+        
+        flex-direction: column;
+        gap: 15px;
+
+        margin: 100px 12px 20px 12px; /* 🔥 left-right space added */
+        padding: 16px;               /* 🔽 little reduced */
+        border-radius: 16px;  
+    }
+    .filter-box h2 {
+      font-size: 19px;
+      color: #2d1e13;
+    }
+
+    .slider {
+        height: 200px;
+    }
+
+    .place-box {
+        padding: 12px;
+    }
+
+    .desc {
+        font-size: 13px;
+    }
+
+    .map-btn {
+        width: 100%;
+    }
+}

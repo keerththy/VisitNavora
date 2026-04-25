@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Places - VisitNavora</title>
+
+    <!-- Existing styles -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- New page style -->
+    <link rel="stylesheet" href="places.css">
+</head>
+<body>
+
+<!-- SAME NAVBAR -->
+<header>
+    <nav>
+      <div class="nav-left">
+        <img src="images/VisitNavora logo.jfif" alt="VisitNavora Logo" class="nav-logo">
+        <h1>VisitNavora</h1>
+       </div>
+        
+        <ul>
+            <li><a href="HomePage.html">Home</a></li>
+             <li><a href="admin.html">Dashboard</a></li>
+            <li><a href="DayPlan.html">Plan Your Day</a></li>
+            <li><a href="map.html">Map</a></li> 
+           
+            
+        </ul>
+    </nav>
+</header>
+<div class="filter-box">
+    <h2>🧭 Explore Places</h2>
+    
+    <select id="categoryFilter" class="styled-select" required>
+      <option value="" disabled selected hidden>Filter By Category</option>
+        <option value="all">All</option>
+        <option value="religious">Religious Site</option>
+        <option value="natural">Natural Attraction</option>
+        <option value="park">Park / Garden</option>
+        <option value="historical">Historical / Cultural</option>
+        <option value="landmark">Landmark</option>
+    </select>
+</div>
+
+<section class="places-page">
+
+
+
+
+    <!-- PLACE 1 -->
+    <div class="place-box" id="church" data-category="religious">
+        <h3>Navaly St. Peter’s Church</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+            
+            
+          </div>
+          
+
+          <button class="next">❯</button>
+        </div>
+
+        <p class="desc">
+         Navaly St. Peter’s Church is a peaceful and spiritually significant Catholic site located close to the village. It offers a calm atmosphere ideal for quiet reflection and prayer. The simple yet elegant structure, along with its serene surroundings, makes it a comforting place for both locals and visitors seeking relaxation and inner peace.
+        </p>
+
+        <p>Distance: 0.14 km</p>
+
+        <a href="DayPlan.html?place=church" class="plan-btn">Plan Your Day</a>
+
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Navaly+St+Peter+Church">📍 View Map</button>
+    </div>
+
+    <!-- PLACE 2 -->
+    <div class="place-box" id="beach" data-category="natural">
+        <h3>Pannai Beach</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+           
+            
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+         Pannai Beach is a quiet coastal destination known for its natural beauty and relaxing environment. Visitors can enjoy gentle sea breezes, scenic views, and stunning sunsets. It is an ideal spot for unwinding, short walks, and spending quality time away from busy city life.
+        </p>
+
+        <p>Distance: 6.6 km</p>
+
+        <a href="DayPlan.html?place=beach" class="plan-btn">Plan Your Day</a>
+
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Pannai+Beach+Jaffna">📍 View Map</button>
+    </div>
+
+    <!-- ADD MORE SAME LIKE THIS (10 places total) -->
+     <div class="place-box" id="fort" data-category="historical">
+        <h3>Jaffna Fort</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+            
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+         Jaffna Fort is a historically important landmark built during the colonial period. It reflects a blend of Portuguese and Dutch architectural styles. The fort offers visitors a chance to explore ancient structures while enjoying panoramic views of the surrounding lagoon and town.
+        </p>
+
+        <p>Distance: 6.6 km</p>
+
+        <a href="DayPlan.html?place=fort" class="plan-btn">Plan Your Day</a>
+
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Jaffna+Fort">📍 View Map</button>
+    </div>
+
+    <div class="place-box" id="library" data-category="historical">
+        <h3>Jaffna Library</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+           
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+          Jaffna Public Library is one of the most iconic cultural institutions in Sri Lanka. Known for its rich collection of books and historical importance, it represents knowledge and resilience. The building’s elegant architecture and peaceful reading environment attract students, researchers, and tourists alike.
+        </p>
+
+        <p>Distance: 7 km</p>
+
+        <a href="DayPlan.html?place=library" class="plan-btn">Plan Your Day</a>
+
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Jaffna+Public+Library">📍 View Map</button>
+    </div>
+
+    <div class="place-box" id="nallur" data-category="religious">
+        <h3>Nallur Temple </h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+         
+            
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+         Nallur Kandaswamy Temple is a renowned Hindu religious site famous for its vibrant festivals and traditional Dravidian architecture. The temple holds deep cultural and spiritual value, attracting thousands of devotees. Its golden structures and detailed designs make it visually impressive.
+        </p>
+
+        <p>Distance: 7 km</p>
+
+        <a href="DayPlan.html?place=nallur" class="plan-btn">Plan Your Day</a>
+
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Nallur+Kandaswamy+Temple">📍 View Map</button>
+    </div>
+
+    <div class="place-box" id="park" data-category="park">
+        <h3>Subramaniya Park</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+           
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+         Subramaniya Park is a family-friendly public space designed for relaxation and recreation. With greenery, walking paths, and play areas, it provides a refreshing environment for visitors of all ages. It is a popular location for casual outings and enjoying nature within the town.
+        </p>
+
+        <p>Distance: 7 km</p>
+
+        <a href="DayPlan.html?place=park" class="plan-btn">Plan Your Day</a>
+
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Subramaniyam+Park+Jaffna">📍 View Map</button>
+    </div>
+
+    <div class="place-box" id="clock" data-category="landmark">
+        <h3>Clock Tower</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+            
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+       <p class="desc">
+         The Jaffna Clock Tower is a symbolic landmark representing the heritage and identity of the city. Located in the town center, it stands as a reminder of historical events and local culture. It is a common meeting point and a notable attraction for visitors.
+       </p>
+
+        <p>Distance: 7.2 km</p>
+
+        <a href="DayPlan.html?place=clock" class="plan-btn">Plan Your Day</a>
+
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Jaffna+Clock+Tower">📍 View Map</button>
+    </div>
+
+    <div class="place-box" id="keerimalai" data-category="religious">
+        <h3>Naguleswaram Temple</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+            
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+         Naguleswaram Temple is an ancient Hindu temple located near the coastal area of Keerimalai. It is closely associated with sacred water springs believed to have healing properties. The temple combines religious importance with scenic coastal surroundings.
+        </p>
+
+        <p>Distance: 15 km</p>
+
+        <a href="DayPlan.html?place=keerimalai" class="plan-btn">Plan Your Day</a>
+
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Naguleswaram+Temple+Keerimalai">📍 View Map</button>
+    </div>
+
+    <div class="place-box" id="casuarina" data-category="natural">
+        <h3>Casurina</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+           
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+         Casuarina Beach is one of the cleanest and calmest beaches in the Jaffna region. Known for its shallow waters and casuarina trees, it provides a safe and relaxing environment. It is ideal for swimming, picnics, and enjoying the peaceful coastal atmosphere.
+        </p>
+
+        <p>Distance: 17 km</p>
+
+        <a href="DayPlan.html?place=casuarina" class="plan-btn">Plan Your Day</a>
+
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Casuarina+Beach+Jaffna">📍 View Map</button>
+    </div>
+
+    <div class="place-box" id="pillayar" data-category="religious">
+        <h3>Maruthadi Pillayar Temple</h3>
+
+        <div class="slider">
+          <button class="prev">❮</button>
+
+          <div class="slides">
+            
+          </div>
+
+          <button class="next">❯</button>
+        </div>
+
+
+        <p class="desc">
+         Maruthadi Pillayar Temple is a well-known Hindu shrine dedicated to Lord Ganesha. It is frequently visited by devotees seeking blessings for success and prosperity. The temple is known for its spiritual ambiance and traditional rituals.
+       </p>
+        <p>Distance: 3.3 km </p>
+
+        <a href="DayPlan.html?place=pillayar" class="plan-btn">Plan Your Day</a>
+
+        <button class="map-btn" data-map="https://www.google.com/maps?q=Maruthadi+Pillayar+Kovil+Jaffna">📍 View Map</button>
+    </div>
+
+</section>
+
+<footer>
+    <div class="footer-center">
+
+        
+        <h3>About Us</h3>
+        <p>
+            VisitNavora helps you explore the best places in Navaly with ease. 
+            Discover locations, view maps, and plan your journey smoothly.
+        </p>
+
+        
+        
+
+        <!-- Line -->
+        <div class="footer-line"></div>
+
+        <!-- Rights -->
+        <p class="footer-rights">
+            © 2026 VisitNavora | Navigate. Explore. Enjoy Navaly
+        </p>
+
+    </div>
+</footer>
+
+<script src="places.js"></script>
+
+</body>
+</html>

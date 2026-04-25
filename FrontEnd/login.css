@@ -1,0 +1,298 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+
+    /* 🔥 YOUR BACKGROUND IMAGE */
+    background: url("images/background.png") no-repeat center/cover;
+    
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* DARK OVERLAY */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(45, 30, 19, 0.6);
+}
+
+.back-btn {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+
+    /* Semi-transparent background */
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px); /* Glass effect */
+    
+    color: white;
+    width: 45px;
+    height: 45px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Thin elegant border */
+    
+    font-size: 20px;
+    text-decoration: none;
+    
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    z-index: 10;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.back-btn:hover {
+    background: rgba(255, 255, 255, 0.9); /* Hover pannum pothu white-ah maarum */
+    color: #2D1E13; /* Icon color dark-ah maarum */
+    transform: translateX(-5px); /* Light-ah left side move aagum */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+/* CENTER BOX */
+.login-box {
+   position: relative;
+    z-index: 1;
+    width: 320px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    
+    /* Box-ah suthi oru soft white glow */
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+    
+    text-align: center;
+
+    animation: slideUpFade 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideUpFade {
+    from {
+        opacity: 0;
+        transform: translateY(30px); /* 30px keela irunthu aarambikkum */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Correct idathuku varum */
+    }
+}
+
+/* LOGO */
+.logo {
+    width: 90px;
+    height: 90px; /* Round shape confirm panna */
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+    
+    /* Intha box-shadow thaan antha bright white glow-ah tharum */
+    box-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.8), 
+        0 0 40px rgba(255, 255, 255, 0.6),
+        0 0 60px rgba(227, 197, 128, 0.4); 
+
+    animation: glowPulse 2.5s infinite alternate;
+    transition: 0.3s ease-in-out;
+}
+
+@keyframes glowPulse {
+    from {
+        box-shadow: 
+            0 0 15px rgba(255, 255, 255, 0.7),
+            0 0 30px rgba(255, 255, 255, 0.4),
+            0 0 45px rgba(227, 197, 128, 0.3);
+        transform: scale(1);
+    }
+    to {
+        box-shadow: 
+            0 0 30px rgba(255, 255, 255, 1),   /* Pure White */
+            0 0 50px rgba(255, 255, 255, 0.8), /* Soft White spread */
+            0 0 80px rgba(227, 197, 128, 0.6); /* Golden touch */
+        transform: scale(1.02); /* Slight pulse effect */
+    }
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+/* TEXT */
+.login-box h2 {
+    margin: 10px 0;
+    color: #2D1E13;
+}
+
+/* INPUT */
+.input-box {
+    display: flex;
+    align-items: center;
+    background: #f1f1f1;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+
+    transition: all 0.3s ease; /* Smooth transition */
+    border: 1px solid transparent;
+}
+
+.input-box:focus-within {
+    background: #ffffff;
+    box-shadow: 0 0 15px rgba(111, 78, 55, 0.2); /* Soft brown glow */
+    border: 1px solid #6F4E37;
+    transform: scale(1.02); /* Light-ah zoom aahum */
+}
+
+.input-box i {
+    margin-right: 10px;
+    color: #6F4E37;
+}
+
+.input-box input {
+    border: none;
+    outline: none;
+    background: transparent;
+    width: 100%;
+}
+
+/* BUTTON */
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+
+    background: linear-gradient(45deg, #6F4E37, #2D1E13);
+    color: white;
+
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.login-btn:hover {
+    transform: translateY(-2px); /* Mela thookura maari feel */
+    box-shadow: 0 6px 20px rgba(45, 30, 19, 0.4);
+    opacity: 1;
+}
+
+.login-btn:active {
+    transform: translateY(0); /* Click pannum pothu thazhum */
+}
+
+/* ERROR */
+.error {
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+    min-height: 18px; 
+    position: relative; 
+    z-index: 5;
+   
+}
+
+/* Sign Up Link Styling */
+.signup-link {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #2D1E13;
+}
+
+.signup-link a {
+    color: #6F4E37;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+    color: #2D1E13;
+}
+
+/* Background fixed for full height */
+.login-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 600px) {
+
+    body {
+        padding: 15px;
+        overflow: hidden;
+    }
+
+    /* login box */
+    .login-box {
+        width: 90%;
+        max-width: 320px;
+        padding: 22px;
+        border-radius: 16px;
+        box-shadow: 0 0 20px rgba(255,255,255,0.35);
+    }
+
+    /* logo */
+    .logo {
+        width: 75px;
+        height: 75px;
+    }
+
+    /* input spacing */
+    .input-box {
+        padding: 9px;
+        margin: 8px 0;
+    }
+
+    /* button */
+    .login-btn {
+        padding: 12px;
+        font-size: 14px;
+        border-radius: 12px;
+    }
+
+    /* text size */
+    .login-box h2 {
+        font-size: 18px;
+    }
+
+    .signup-link {
+        font-size: 13px;
+    }
+
+    /* back button */
+    .back-btn {
+        width: 40px;
+        height: 40px;
+        top: 15px;
+        left: 15px;
+        font-size: 16px;
+    }
+
+    /* background fix */
+    body {
+        background-size: cover;
+        background-position: center;
+    }
+}
