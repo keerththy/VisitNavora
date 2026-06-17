@@ -33,7 +33,7 @@ function goToStep(stepTarget) {
     const dot2 = document.getElementById('dot2');
     const stepLine = document.getElementById('stepLine');
 
-    // 🛑 Step 1-il required fields fill pannaamal Step 2-vukku sella thadaikkum interceptor
+    //  Step 1-il required fields fill pannaamal Step 2-vukku sella thadaikkum interceptor
     if (stepTarget === 2) {
         const pName = document.getElementById('pName');
         const pCategory = document.getElementById('pCategory');
