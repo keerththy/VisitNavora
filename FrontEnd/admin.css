@@ -1,244 +1,214 @@
-/* ================= GENERAL STYLES ================= */
+/* ==========================================================================
+   1. GLOBAL & FONTS (Consistent Premium Typography System)
+   ========================================================================== */
 html {
     scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: #F7F3EF;
-    overflow-x: hidden; /* Horizontal scroll-ai thadukka */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #FDFBF7; 
+    color: #1A110B;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* ================= LAYOUT ================= */
+/* ==========================================================================
+   2. PAGE BASE GRID LAYOUT
+   ========================================================================== */
 .layout {
     display: flex;
 }
 
-/* ================= SIDEBAR (DESKTOP) ================= */
+/* ==========================================================================
+   3. SIDEBAR NAVIGATION (Consistent Luxury System)
+   ========================================================================== */
 .sidebar {
-    width: 240px;
+    width: 260px;
     height: 100vh;
     position: fixed; 
     left: 0;
     top: 0;
-    box-shadow: 4px 0 15px rgba(0,0,0,0.2);
-    background: linear-gradient(180deg, #2D1E13, #6F4E37);
-    color: white;
-    padding: 20px 15px;
+    box-shadow: 4px 0 30px rgba(45, 30, 19, 0.06);
+    background: linear-gradient(180deg, #2D1E13 0%, #1A110B 100%);
+    padding: 35px 20px;
     box-sizing: border-box;
     z-index: 1000;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .logo {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 45px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
 }
 
 .logo img {
-    width: 80px;
-    height: 80px;
+    width: 85px;
+    height: 85px;
     border-radius: 50%;
     object-fit: cover;
+    border: 2px solid #E3C580;
+    box-shadow: 0 4px 15px rgba(227, 197, 128, 0.2);
+}
+
+.logo h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #E3C580;
+    letter-spacing: -0.5px;
 }
 
 .sidebar nav {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
 
 .sidebar nav a {
     display: flex;
     align-items: center; 
-    padding: 12px 15px;
-    gap: 15px;
+    padding: 14px 16px;
+    gap: 14px;
     color: rgba(255, 255, 255, 0.8);
+    font-size: 14.5px;
+    font-weight: 500;
     text-decoration: none;
     border-radius: 12px;
-    transition: 0.3s;
+    position: relative;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-.sidebar nav a:hover, .sidebar nav a.active {
-    background: rgba(255,255,255,0.15);
-    color: white;
+.sidebar nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 48px; 
+    width: 0;
+    height: 2px;
+    background-color: #E3C580;
+    transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.sidebar nav a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #E3C580; 
+}
+
+.sidebar nav a:hover::after {
+    width: calc(100% - 64px); 
 }
 
 .sidebar nav a.active {
-    border-left: 5px solid #E3C580;
+    background: rgba(227, 197, 128, 0.08);
+    color: #E3C580; 
+    font-weight: 600;
 }
 
-/* ================= MODAL CONTENT (Modern Popup Box) ================= */
-.modal {
-    display: flex; /* Always flex for center */
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-
-    background: rgba(0,0,0,0.6);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-
-    align-items: center;
-    justify-content: center;
-
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
+.sidebar nav a.active::after {
+    width: calc(100% - 64px); 
 }
 
-
-.modal-content {
-    background: #fff;
-    padding: 25px;
-    border-radius: 15px;
-    width: 400px;
-    max-width: 90%;
-
-    height: auto;             
-    max-height: 85vh;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-
-    border: 1px solid rgba(255,255,255,0.2);
-    box-shadow: 
-        0 10px 30px rgba(0,0,0,0.25),
-        0 0 15px rgba(227, 197, 128, 0.3),
-        0 0 40px rgba(227, 197, 128, 0.15);
-
-    transform: scale(0.9);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow-y: auto;
-    position: relative;
-}
-
-.modal-content:hover {
-    box-shadow: 
-        0 10px 30px rgba(0,0,0,0.25),
-        0 0 25px rgba(227, 197, 128, 0.5),
-        0 0 60px rgba(227, 197, 128, 0.25);
-}
-
-/* SHOW STATE */
-.modal.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.modal.show .modal-content {
-    transform: scale(1);
-}
-
-#modalTitle {
-    
-    top: 0;
-    background: white;
-    padding: 10px 0;
-    margin-top: 0;
-    font-size: 18px;
-    z-index: 10;
-    border-bottom: 1px solid #eee;
-}
-
-/* Modal open scale reset uniform look Thickum */
-.modal.open .modal-content {
-    transform: scale(1);
-}
-
-/* Close Button (X) */
-.close {
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    font-size: 28px;
-    font-weight: bold;
-    color: #aaa;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.close:hover {
-    color: #ff4d4d;
-    transform: rotate(90deg);
-}
-
-/* Form Styles */
-#placeForm {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-#placeForm input, 
-#placeForm textarea {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    font-family: inherit;
-    font-size: 14px;
-    background: #fdfdfd;
-    transition: all 0.3s ease;
-    outline: none;
-}
-
-#placeForm input:focus, 
-#placeForm textarea:focus {
-    border-color: #6F4E37;
-    background: #fff;
-    box-shadow: 0 0 8px rgba(111, 78, 55, 0.2);
-}
-
-.save-btn {
-    background: linear-gradient(45deg, #6F4E37, #2D1E13);
-    color: white;
-    padding: 14px;
-    border: none;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    margin-top: 10px;
-}
-
-/* ================= MAIN CONTENT ================= */
+/* ==========================================================================
+   4. MAIN CONTENT CONTAINER
+   ========================================================================== */
 .content {
     flex: 1;
-    padding: 25px;
-    margin-left: 255px; /* Sidebar gap */
-    animation: fadeInContent 0.8s ease-out;
+    padding: 40px;
+    margin-left: 260px; 
+    animation: fadeInContent 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ================= TOPBAR ================= */
+/* ==========================================================================
+   5. TOPBAR DASHBOARD HEADER
+   ========================================================================== */
 .topbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 36px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(230, 225, 218, 0.7);
+}
+
+.mobile-brand-banner {
+    display: none;
 }
 
 .topbar h1 {
-    font-size: 24px;
-    color: #2D1E13;
+    font-size: 26px;
+    font-weight: 700;
+    color: #1A110B;
+    letter-spacing: -0.4px;
+    margin: 0;
 }
 
 .top-btns {
     display: flex;
-    gap: 10px;
+    gap: 12px;
 }
 
-.add-btn { background: #392D2D; color: white; border: none; padding: 10px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; }
-.logout-btn { background: #8B0000; color: white; border: none; padding: 10px 18px; border-radius: 10px; cursor: pointer; font-weight: 600; }
+.add-btn {
+    background: #2D1E13;
+    color: #FFFFFF;
+    border: 1px solid #2D1E13;
+    padding: 12px 24px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
 
-/* ================= TABLE BOX ================= */
+.add-btn:hover {
+    transform: translateY(-2px);
+    background-color: #1A110B;
+    box-shadow: 0 4px 12px rgba(45, 30, 19, 0.15);
+}
+
+.logout-btn {
+    background: transparent;
+    color: #C0392B;
+    border: 1px solid #EADFD5;
+    padding: 12px 24px;
+    border-radius: 14px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logout-btn:hover {
+    transform: translateY(-2px);
+    background: #FFF5F5;
+    border-color: #E6B8B8;
+}
+
+/* ==========================================================================
+   6. DATA STORAGE TABLES
+   ========================================================================== */
 .table-box {
-    background: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    background: #FFFFFF;
+    padding: 28px;
+    border-radius: 24px;
+    border: 1px solid rgba(230, 225, 218, 0.6);
+    box-shadow: 0 10px 30px rgba(45, 30, 19, 0.02);
+}
+
+.table-box h2 {
+    margin: 0 0 24px 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #1A110B;
+    letter-spacing: -0.3px;
 }
 
 table {
@@ -246,34 +216,292 @@ table {
     border-collapse: collapse;
 }
 
-th, td {
-    padding: 14px 10px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
+thead {
+    background: #FAF8F5;
 }
 
-thead { background: #f9f7f5; }
+th {
+    padding: 16px;
+    text-align: left;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #6E5E55;
+    border-bottom: 1px solid #EAE3DA;
+}
 
-/* Actions Column */
+td {
+    padding: 16px;
+    font-size: 14.5px;
+    color: #4A3B32;
+    border-bottom: 1px solid #F5EFEB;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
 .action-cell {
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
 
-.edit-btn { background: #112f5e; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
-.delete-btn { background: #5f1414; color: white; border: none; padding: 6px 10px; border-radius: 6px; cursor: pointer; }
+.edit-btn, .delete-btn {
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
 
-/* ================= RESPONSIVE SECTION (MOBILE & TABLET) ================= */
+.edit-btn {
+    background: #EDF4F9;
+    color: #2B5B84;
+}
+
+.edit-btn:hover {
+    background: #2B5B84;
+    color: #FFFFFF;
+}
+
+.delete-btn {
+    background: #FDF3EB;
+    color: #A36A3B;
+}
+
+.delete-btn:hover {
+    background: #A36A3B;
+    color: #FFFFFF;
+}
+
+/* ==========================================================================
+   7. INTERACTIVE ENTRY MODAL POPUP MODES (UNIVERSAL STEPPER COMPONENT)
+   ========================================================================== */
+.modal {
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 17, 11, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+/* Global Cute Fixed Width Interface Rules */
+.modal-content {
+    background: #FFFFFF;
+    padding: 30px;
+    border-radius: 24px;
+    width: 380px; /* Kept narrow and elegant on all screens */
+    max-width: 90%;
+    box-shadow: 0 20px 50px rgba(45, 30, 19, 0.15);
+    border: 1px solid rgba(230, 225, 218, 0.8);
+    position: relative;
+    overflow: hidden; 
+    transform: scale(0.95) translateY(10px);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal.show .modal-content {
+    transform: scale(1) translateY(0);
+}
+
+#modalTitle {
+    margin: 0 0 16px 0;
+    font-size: 21px;
+    font-weight: 700;
+    color: #1A110B;
+    letter-spacing: -0.4px;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 22px;
+    color: #6E5E55;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 30px;
+    height: 30px;
+    background: #F5EFEB;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.close:hover {
+    background: #EADFD5;
+    color: #1A110B;
+    transform: rotate(90deg);
+}
+
+/* --- STEPPER PROGRESS COMPONENT STYLING --- */
+.step-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    position: relative;
+    width: 140px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.step-dot {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: #F5EFEB;
+    border: 2px solid #E5DCD3;
+    color: #6E5E55;
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.step-dot.active {
+    background: #2D1E13;
+    border-color: #2D1E13;
+    color: #E3C580;
+}
+
+.step-line {
+    position: absolute;
+    height: 2px;
+    background: #E5DCD3;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.step-line.active {
+    background: #2D1E13;
+}
+
+/* --- STEP SYSTEM ENGINE VISIBILITY LAYER --- */
+.form-step {
+    display: none;
+    flex-direction: column;
+    gap: 14px;
+    animation: stepFade 0.35s ease;
+}
+
+.form-step.active {
+    display: flex;
+}
+
+@keyframes stepFade {
+    from { opacity: 0; transform: translateX(8px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+#placeForm input, 
+#placeForm textarea {
+    padding: 12px 14px;
+    border: 1px solid #E5DCD3;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    color: #2D1E13;
+    background: #FFFFFF;
+    transition: all 0.25s ease;
+    outline: none;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+#placeForm input:focus, 
+#placeForm textarea:focus {
+    border-color: #8B6F47;
+    box-shadow: 0 0 0 3px rgba(139, 111, 71, 0.12);
+}
+
+.coords {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+/* --- ACTIONS CONTROLS LAYOUT --- */
+.next-btn, .save-btn, .back-btn {
+    padding: 13px;
+    border: none;
+    border-radius: 12px;
+    font-size: 14.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.next-btn, .save-btn {
+    background: #2D1E13;
+    color: #FFFFFF;
+}
+
+.next-btn:hover, .save-btn:hover {
+    background-color: #1A110B;
+}
+
+.step-actions {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 12px;
+    width: 100%;
+}
+
+.back-btn {
+    background: #F5EFEB;
+    color: #4A3B32;
+    border: 1px solid #E5DCD3;
+}
+
+.back-btn:hover {
+    background: #EADFD5;
+}
+
+/* ==========================================================================
+   8. RESPONSIVE LAYER BOUNDARIES (MOBILE BREAKPOINTS)
+   ========================================================================== */
 @media screen and (max-width: 992px) {
-    /* 1. Sidebar to Bottom Nav */
     .sidebar {
         width: 100%;
-        height: 65px;
+        height: 70px;
         top: auto;
         bottom: 0;
-        flex-direction: row;
         padding: 0;
-        border-radius: 20px 20px 0 0;
+        border-radius: 24px 24px 0 0;
+        background: #1A110B;
+        box-shadow: 0 -4px 25px rgba(45, 30, 19, 0.1);
     }
 
     .logo { display: none; }
@@ -282,164 +510,212 @@ thead { background: #f9f7f5; }
         flex-direction: row;
         justify-content: space-around;
         width: 100%;
+        height: 100%;
         gap: 0;
+        align-items: center;
     }
 
     .sidebar nav a {
         flex-direction: column;
         gap: 4px;
-        font-size: 10px;
-        padding: 10px;
-        border-left: none !important;
+        font-size: 11px;
+        padding: 8px 12px;
+        border-radius: 0;
+        background: transparent !important;
+    }
+
+    .sidebar nav a::after {
+        display: none !important;
     }
 
     .sidebar nav a.active {
+        color: #E3C580;
         border-bottom: 3px solid #E3C580;
+        font-weight: 600;
     }
 
-    .material-symbols-outlined {
-     font-size: 20px !important;
-     font-weight: normal !important;
+    .sidebar nav a i {
+        font-size: 18px;
     }
 
-   .sidebar nav a i {
-     font-size: 18px;
-    }
-
-    /* 2. Content Adjustment */
     .content {
         margin-left: 0 !important;
-        padding: 15px;
-        padding-bottom: 80px; /* Space for bottom nav */
+        padding: 0; 
+        padding-bottom: 100px; 
     }
 
-    /* 3. Table UI Improvements */
-    .table-box {
-        padding: 10px;
-        overflow-x: hidden; /* Fixed table naala scroll thevai illai */
-    }
-
-    .table-box h2, .content h2 {
-        text-align: center !important;
-        margin-bottom: 20px;
+    /* MOBILE BRAND BANNER ACCENTS */
+    .mobile-brand-banner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
         width: 100%;
-        font-size: 1.2rem; /* Mobile-ku thagundha size */
+        padding: 16px 0;
+        background: linear-gradient(135deg, #2D1E13 0%, #1A110B 100%);
+        border-bottom: 2px solid #E3C580; 
+        box-shadow: 0 4px 15px rgba(45, 30, 19, 0.15);
     }
 
-    table {
-        table-layout: fixed; /* Column width-ai fix pannum */
-        font-size: 11px;
+    .mobile-brand-banner img {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #E3C580; 
+        box-shadow: 0 2px 8px rgba(227, 197, 128, 0.3);
     }
 
-    /* Column Widths */
-    th:nth-child(1), td:nth-child(1) { width: 16%; } /* ID */
-    th:nth-child(2), td:nth-child(2) { width: 36%; word-break: break-word; } /* Name */
-    th:nth-child(3), td:nth-child(3) { width: 15%; } /* Category */
-    th:nth-child(4), td:nth-child(4) { width: 33%; } /* Actions */
-
-    th, td {
-        padding: 10px 5px !important;
+    .mobile-brand-banner h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+        color: #E3C580; 
+        letter-spacing: 0.5px;
     }
 
-    /* 4. Horizontal Buttons (Side-by-Side) */
+    #welcomeText {
+        margin: 20px auto 5px auto !important;
+        font-size: 22px;
+    }
+
+    .table-box {
+        padding: 16px;
+        margin: 0 12px;
+        background: transparent;
+        box-shadow: none;
+        border: none;
+    }
+
+    .table-box h2 {
+        text-align: center !important;
+        font-size: 18px;
+        margin-bottom: 16px;
+        color: #1A110B;
+    }
+
+    /* CARD GRID RECONSTRUCTION */
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    thead {
+        display: none;
+    }
+
+    #adminList tr {
+        background: #FFFFFF;
+        margin-bottom: 14px;
+        padding: 16px;
+        border-radius: 16px;
+        border: 1px solid rgba(230, 225, 218, 0.7);
+        box-shadow: 0 4px 12px rgba(45, 30, 19, 0.02);
+    }
+
+    #adminList td {
+        padding: 6px 0 !important;
+        border-bottom: none;
+        font-size: 13.5px;
+        color: #4A3B32;
+        display: flex;
+        align-items: center;
+    }
+
+    #adminList td:nth-of-type(1)::before {
+        content: "ID:";
+        font-weight: 700;
+        width: 100px;
+        color: #6E5E55;
+    }
+
+    #adminList td:nth-of-type(2)::before {
+        content: "Place Name:";
+        font-weight: 700;
+        width: 100px;
+        color: #6E5E55;
+    }
+
+    #adminList td:nth-of-type(3)::before {
+        content: "Category:";
+        font-weight: 700;
+        width: 100px;
+        color: #6E5E55;
+    }
+
+    #adminList td:nth-of-type(2) {
+        font-weight: 600;
+        color: #1A110B;
+        word-break: break-word;
+    }
+
+    #adminList td:nth-of-type(4) {
+        margin-top: 10px;
+        padding-top: 12px !important;
+        border-top: 1px dashed #EADFD5;
+        justify-content: flex-end;
+    }
+
+    #adminList td:nth-of-type(4)::before {
+        content: "Actions";
+        font-weight: 700;
+        color: #6E5E55;
+        margin-right: auto;
+    }
+
     .action-cell {
         display: flex !important;
-        flex-direction: row !important;
-        gap: 6px !important;
-        justify-content: center;
-        align-items: center;
+        gap: 8px !important;
     }
 
     .edit-btn, .delete-btn {
-        width: 36px !important;
-        height: 18px !important;
-        padding: 0 !important;
+        width: auto !important;
+        height: auto !important;
+        padding: 8px 16px !important;
+        font-size: 12px !important;
+        border-radius: 8px !important;
         display: inline-flex !important;
-        align-items: center;
-        justify-content: center;
-        font-size: 8px !important;
     }
 
-    /* 5. Topbar Stack */
     .topbar {
         flex-direction: column !important;
-        align-items: center !important;
+        gap: 12px;
         text-align: center;
-        gap: 15px;
+        border-bottom: none;
+        margin-bottom: 10px;
+        width: 100%;
     }
 
     .top-btns {
-        display: flex;
-        flex-direction: column; /* Mobile-la onnu keela onnu center-ah vara */
-        align-items: center;
+        flex-direction: column;
         width: 100%;
         gap: 12px;
-        margin-top: 10px;
+        padding: 0 16px;
+        box-sizing: border-box;
     }
 
-    /* Rendu button-um orey size-la irukka */
     .add-btn, .logout-btn {
-        width: 180px !important; /* Rendu button-kum fixed-ah orey width */
-        height: 45px !important; /* Orey height */
+        width: 100% !important;
+        max-width: 240px;
+        height: 44px !important;
         padding: 0 !important;
         display: flex !important;
         align-items: center;
         justify-content: center;
         font-size: 14px !important;
-        font-weight: 600;
         border-radius: 12px;
         margin: 0 auto !important;
     }
 
-    /* Modal Form Visibility Fix */
-    
-    .modal {
-      display: flex; /* IMPORTANT */
-      align-items: center;
-      justify-content: center;
-      padding: 10px; /* little spacing mobile-ku */
-    }
-
     .modal-content {
-        width: 85% !important;      /* 🔽 smaller width */
-        max-width: 320px;           /* 🔒 limit size */
-        padding: 18px;              /* 🔽 less padding */
-        border-radius: 12px;
-
-        max-height: 75vh;           /* 🔽 height control */
-        overflow-y: auto;
-
-        transform: scale(0.9);      /* 🔽 slightly small feel */
+        width: 86% !important;
+        max-width: 330px;
+        padding: 22px 20px;
     }
-
-    /* when open */
-    .modal.show .modal-content {
-        transform: scale(1);
-    }
-
-    /* input fields small */
-    #placeForm input,
-    #placeForm textarea {
-        padding: 10px 12px;
-        font-size: 13px;
-    }
-
-    /* button small */
-    .save-btn {
-        padding: 12px;
-        font-size: 14px;
-    }
-
-    /* close icon adjust */
-    .close {
-        font-size: 24px;
-        right: 15px;
-        top: 10px;
-    }
-
 }
 
-/* Animations */
+/* Entry Animation */
 @keyframes fadeInContent {
     from { opacity: 0; transform: translateY(15px); }
     to { opacity: 1; transform: translateY(0); }

@@ -1,285 +1,671 @@
+/* ==========================================================================
+   1. GLOBAL & ENTRANCE ANIMATIONS (Consistent Luxury System)
+   ========================================================================== */
+/* Animation to smoothly fade in and lift the page content when it loads */
 @keyframes pageEntrance {
     from {
         opacity: 0;
-        transform: translateY(30px); /* 30px கீழிருந்து மெதுவாக மேலே வரும் */
+        transform: translateY(20px); /* Starts slightly lower */
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0);    /* Moves up to its natural position */
     }
 }
 
 body {
-    background: #F7F3EF;
+    background-color: #FDFBF7; /* Premium warm bone-white background color */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased; /* Makes fonts look sharper and smoother */
 }
 
-/* ================= PAGE CONTAINER ================= */
+/* ==========================================================================
+   2. PAGE GRID LAYOUT
+   ========================================================================== */
+/* Main container layout holding all the place cards */
 .places-page {
-    max-width: 1100px;
-    margin: auto;
-    padding: 20px;
-    animation: pageEntrance 0.8s ease-out;
+    max-width: 1300px; /* Standard elegant content width across the website */
+    margin: auto;      /* Centers the container horizontally on the screen */
+    padding: 30px 24px;
+    display: flex;
+    flex-direction: column; /* Stacks the elements vertically */
+    gap: 36px; /* Generous breathing space between layout blocks/cards */
+    animation: pageEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1); /* Triggers the smooth page entrance animation */
 }
 
-/* ================= FILTER BOX ================= */
+/* ==========================================================================
+   3. FILTER BOX STYLE
+   ========================================================================== */
+/* The header container housing the search title and dropdown selector */
 .filter-box {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    max-width: 900px;
-    margin: 80px auto 20px auto;
-    padding: 20px;
-
-    border-radius: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    animation: slideDown 0.7s ease;
-
-    backdrop-filter: blur(10px);
-    background: rgba(255,255,255,0.8);
+    justify-content: space-between; /* Pushes title to the left and select dropdown to the right */
+    align-items: center; /* Vertically centers the elements inside */
+    max-width: 100%;
+    margin: 40px auto 10px auto;
+    padding: 24px 32px;
+    border-radius: 24px;
+    border: 1px solid rgba(230, 225, 218, 0.7);
+    box-shadow: 0 10px 30px rgba(45, 30, 19, 0.03); /* Soft, subtle luxury drop shadow */
+    backdrop-filter: blur(16px) saturate(120%); /* Modern glassy/blur effect on background */
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent white to work with the blur */
 }
 
 .filter-box h2 {
     margin: 0;
-    color: #2d1e13;
+    color: #1A110B; /* Primary brand dark brown color */
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.4px;
 }
 
-@keyframes slideDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px); /* மேலிருந்து மெதுவாகக் கீழே வரும் */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ================= SELECT ================= */
+/* ==========================================================================
+   4. CUSTOM STYLED DROPDOWN
+   ========================================================================== */
+/* The select dropdown box for choosing categories */
 .styled-select {
-    padding: 8px;
-    font-size: 15px;
-    border-radius: 20px;
-    border: 2px solid #ddd;
+    padding: 12px 20px;
+    font-size: 14.5px;
+    font-weight: 500;
+    border-radius: 14px;
+    border: 1px solid #E5DCD3;
     outline: none;
     cursor: pointer;
-
-    background: linear-gradient(135deg, #43332184, #f6f7f8);
-    color: rgb(57,45,45);
-
-    transition: all 0.3s ease;
-    width: 200px;
-
-    appearance: none;
-    background-image: url("data:image/svg+xml;utf8,<svg fill='darkbrown' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+    background: #FFFFFF;
+    color: #4A3B32;
+    width: 230px;
+    transition: all 0.25s ease; /* Smooth transition for hover effects */
+    appearance: none; /* Removes default browser dropdown arrow icon */
+    
+    /* Injects a custom elegant gold-tinted chevron arrow icon */
+    background-image: url("data:image/svg+xml;utf8,<svg fill='%238B6F47' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6z'/></svg>");
     background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 18px;
-    padding-right: 35px;
+    background-position: right 16px center; /* Positions arrow nicely on the right side */
+    background-size: 16px;
+    padding-right: 42px; /* Leaves space so text doesn't overlap the arrow */
+    box-shadow: 0 2px 6px rgba(45, 30, 19, 0.02);
 }
 
+/* Hover style for dropdown menu */
 .styled-select:hover {
-    border-color: #62382c60;
+    border-color: #A38A75;
+    background-color: #FAF8F5;
 }
 
+/* Highlighted outline style when user clicks the dropdown */
 .styled-select:focus {
-    border-color: #2d1e13;
-    box-shadow: 0 0 8px rgba(79, 40, 12, 0.4);
+    border-color: #2D1E13;
+    box-shadow: 0 0 0 3px rgba(45, 30, 19, 0.08); /* Elegant soft structural focus ring */
 }
 
-/* ================= PLACE BOX ================= */
+/* ==========================================================================
+   5. PLACE ROW CARDS (HORIZONTAL LAYOUT)
+   ========================================================================== */
+/* Main box holding individual place image and text info */
 .place-box {
-    margin-bottom: 40px;
-    padding: 18px;
-    border-radius: 25px;
-
-    background: #ffffff;
-    color: #3a2e2e;
-
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-    transition: all 0.35s ease;
-    animation: fadeInBox 0.6s ease-out backwards;
-
-    text-align: center;
-}
-
-@keyframes fadeInBox {
-    from {
-        opacity: 0;
-        transform: scale(0.95); /* லேசாகச் சின்னதாக இருந்து இயல்பு நிலைக்கு வரும் */
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
-
-.place-box:hover {
-    transform: translateY(-6px);
-    background: linear-gradient(135deg, #2D1E13, #6F4E37);
-    color: #fff;
-}
-
-/* ================= HIGHLIGHT ================= */
-.highlight {
-    background-color: rgba(195, 193, 193, 0.872);
-    border: 3px solid rgb(57,45,45);
-    color: rgb(57,45,45);
-}
-
-/* ================= SLIDER ================= */
-.slider {
-    position: relative;
+    display: flex;
+    flex-direction: row; /* Aligns image slider on left and content text on right */
+    gap: 32px;
+    background: #FFFFFF;
+    border-radius: 24px;
+    padding: 24px;
+    
+    /* High-fidelity premium layered drop shadows */
+    box-shadow: 0 4px 6px rgba(45, 30, 19, 0.01), 
+                0 15px 35px rgba(45, 30, 19, 0.04);
+    border: 1px solid rgba(230, 225, 218, 0.5);
     width: 100%;
-    max-width: 420px;
-    height: 250px;
+    box-sizing: border-box; /* Ensures padding doesn't affect overall set width */
+    align-items: center;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.3s ease;
+}
 
-    margin: 15px auto;
-    overflow: hidden;
+/* HIDDEN STATE MANAGEMENT (Used by JavaScript category filtering) */
+.hide {
+    opacity: 0;
+    transform: scale(0.96);
+    height: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    overflow: hidden; /* Completely hides the element from layout space */
+    pointer-events: none; /* Disables clicking actions on hidden boxes */
+}
 
+/* Interactive lift and shadow effect when mouse floats over a card */
+.place-box:hover {
+    transform: translateY(-5px); /* Micro-interaction lifts card up slightly */
+    box-shadow: 0 20px 40px rgba(45, 30, 19, 0.08); /* Deepens shadow for depth look */
+}
+
+/* ==========================================================================
+   6. FEATURED / HIGHLIGHT COMPONENT CARD EFFECTS
+   ========================================================================== */
+/* Premium design layout style applied to specially featured tourism spots */
+.highlight {
+    background-color: #FFFDF9;
+    border: 1px solid #E3C580; /* Elegant subtle gold border line accent */
+    position: relative;
+    box-shadow: 0 10px 30px rgba(227, 197, 128, 0.12); /* Soft permanent golden brand background glow */
+}
+
+/* Attaches a 'Featured' ribbon tag badge inside the highlighted cards */
+.highlight::after {
+    content: 'Featured';
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: linear-gradient(135deg, #8B6F47, #2D1E13); /* Elegant brand gradient split */
+    color: #FFFDF7;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 5px 12px;
     border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    box-shadow: 0 4px 10px rgba(45, 30, 19, 0.15);
+}
+
+/* ==========================================================================
+   7. SLIDER / COMPONENT MEDIA IMAGE STATIONS
+   ========================================================================== */
+/* The layout frame wrapping the location images */
+.slider {
+    flex: 0 0 340px; /* Rigidly maintains an optimal wide media dimension */
+    height: 225px;
+    border-radius: 18px;
+    overflow: hidden; /* Prevents raw image corners extending outside rounded border */
+    position: relative;
+    box-shadow: 0 8px 24px rgba(45, 30, 19, 0.06);
 }
 
 .slides {
     width: 100%;
     height: 100%;
-
-    display: flex;        /* IMPORTANT for JS dynamic images */
+    background: #EFECE6; /* Light gray fall-back canvas color while images load */
 }
 
-/* every image */
 .slides img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-
-    display: none;
-    border-radius: 20px;
-
-    transition: opacity 0.4s ease;
+    object-fit: cover; /* Crops image correctly without squeezing its dimensions */
+    display: none;     /* Hidden by default, activated via active class in JS */
+    border-radius: 18px;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* Zoom effect on the photo when hovering over the card parent container */
+.place-box:hover .slides img.active {
+    transform: scale(1.05); /* Smooth modern cinematic zooming profile */
+}
 
-
-/* active image */
+/* Displays only the currently selected slide image frame */
 .slides img.active {
     display: block;
 }
 
-/* ================= ARROWS ================= */
+/* SLIDER CONTROLS NAVIGATION SYSTEM */
+/* Previous and Next toggle circle button anchors */
 .prev, .next {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-
-    width: 42px;
-    height: 42px;
-
+    transform: translateY(-50%); /* Centers buttons perfectly vertically */
+    width: 38px;
+    height: 38px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    background: rgba(0,0,0,0.5);
-    color: white;
-
+    background: rgba(255, 255, 255, 0.92);
+    color: #2D1E13;
     border: none;
-    border-radius: 50%;
-
+    border-radius: 50%; /* Perfect round shapes */
+    box-shadow: 0 4px 12px rgba(45, 30, 19, 0.1);
     cursor: pointer;
     z-index: 2;
-
-    transition: all 0.3s ease;
+    opacity: 0; /* Hidden by default, reveals dynamically on hover */
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.prev { left: 5px; }
-.next { right: 5px; }
+.prev { left: 12px; }
+.next { right: 12px; }
 
+/* Shows arrow toggle selectors smoothly only when pointing at image block area */
+.slider:hover .prev,
+.slider:hover .next {
+    opacity: 1;
+}
+
+/* Interactive updates when highlighting individual navigation arrows */
 .prev:hover,
 .next:hover {
     background: #2D1E13;
-    transform: translateY(-50%) scale(1.1);
+    color: #E3C580; /* Signature gold brand color scheme accentuation */
+    transform: translateY(-50%) scale(1.08); /* Grows arrow slightly bigger */
 }
 
-/* ================= DESCRIPTION ================= */
-.desc {
-    margin: 15px auto;
-    padding: 14px 16px;
+/* ==========================================================================
+   8. PLACE CARD INNER DATA DETAILS
+   ========================================================================== */
+/* Text info layout wrapping component box block */
+.place-content {
+    flex: 1; /* Automatically expands text block to fill remaining space beside image */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    padding-right: 10px;
+}
 
-    max-width: 90%;
+.place-content h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: #1A110B;
+    letter-spacing: -0.3px;
+}
+
+.place-content p {
+    margin: 5px 0;
     font-size: 14.5px;
-    line-height: 1.6;
+    color: #6E5E55;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
 
-    color: #5a4a42;
-    background: rgba(247, 243, 239, 0.9);
+.place-content p strong {
+    color: #2D1E13;
+    font-weight: 600;
+}
 
-    border-left: 4px solid #6F4E37;
-    border-radius: 12px;
-
+/* PREMIUM QUOTE / HIGHLIGHT DESCRIPTION PATTERN */
+/* Elegant stylized text layout box for the place description summaries */
+.desc {
+    margin: 16px 0;
+    padding: 14px 20px;
+    max-width: 96%;
+    font-size: 14px;
+    line-height: 1.65;
+    color: #55453B;
+    background: #FDFBF7; /* Seamless match with layout background */
+    border-left: 4px solid #8B6F47; /* Organic Earthy Brown colored left-accent bar line */
+    border-radius: 0 16px 16px 0;
     text-align: left;
 }
 
-/* ================= BUTTONS ================= */
-.plan-btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 16px;
-
-    background: linear-gradient(135deg, #2D1E13, #6F4E37);
-    color: #fff;
-
-    border-radius: 20px;
-    text-decoration: none;
-    font-size: 14px;
+/* ==========================================================================
+   9. INTERACTIVE ACTION SYSTEM (UPGRADED WITH GLOW EFFECTS)
+   ========================================================================== */
+/* Row container managing interactive buttons alignment mapping */
+.button-group {
+    display: flex;
+    gap: 14px;
+    margin-top: 16px;
 }
 
+/* Shared properties layout system applied across standard action modules */
+.plan-btn,
 .map-btn {
-    margin-top: 12px;
-    padding: 10px 16px;
-
-    border-radius: 25px;
-    border: 1px solid #C8A27C;
-
-    background: #F7F3EF;
-    color: #2D1E13;
-
+    padding: 12px 26px;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     cursor: pointer;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.2s ease, 
+                border-color 0.2s ease;
+    text-decoration: none; /* Strips underline effects from HTML link tags */
 }
 
-.plan-btn:active, .map-btn:active, .styled-select:active {
-    transform: scale(0.92);
-    transition: 0.1s;
+/* PRIMARY GLOW BUTTON: Plan Visit */
+.plan-btn {
+    flex: 0 0 auto;
+    min-width: 150px;
+    background: #2D1E13; /* Solid dark brand brown layout fill */
+    color: #FFFFFF;
+    border: 1px solid #2D1E13;
 }
 
-/* ================= RESPONSIVE ================= */
-@media (max-width: 768px) {
+/* Hover effects for primary plan button */
+.plan-btn:hover {
+    transform: translateY(-4px) scale(1.03); /* Pops upward gracefully */
+    background-color: #1A110B;
+    border-color: #1A110B;
+    /* Soft chocolate brand layout glow layer shadow */
+    box-shadow: 0 0 12px rgba(45, 30, 19, 0.35), 
+                0 0 24px rgba(45, 30, 19, 0.15);
+}
 
-    .filter-box {
-        
-        flex-direction: column;
-        gap: 15px;
+/* SECONDARY GLOW BUTTON: View Map */
+.map-btn {
+    flex: 0 0 auto;
+    min-width: 140px;
+    border: 1px solid #D9CFC4;
+    background: transparent;
+    color: #4A3B32;
+}
 
-        margin: 100px 12px 20px 12px; /* 🔥 left-right space added */
-        padding: 16px;               /* 🔽 little reduced */
-        border-radius: 16px;  
-    }
-    .filter-box h2 {
-      font-size: 19px;
-      color: #2d1e13;
+/* Hover actions for secondary map button */
+.map-btn:hover {
+    transform: translateY(-4px) scale(1.03);
+    background: #8B6F47; /* Swaps background to organic gold-brown color scheme */
+    border-color: #8B6F47;
+    color: #FFFFFF;
+    /* Signature dynamic premium soft golden radiation bloom glow */
+    box-shadow: 0 0 12px rgba(139, 111, 71, 0.5), 
+                0 0 24px rgba(139, 111, 71, 0.25);
+}
+
+/* Physical tactile feel responsive trigger actions when button is clicked */
+.plan-btn:active,
+.map-btn:active {
+    transform: scale(0.96) translateY(0); /* Clean physical click compression effect */
+}
+
+/* ==========================================================================
+   ADDED: NEW PREMIUM TRAVEL STRIP & MODAL POPUP STYLES
+   ========================================================================== */
+
+/* Outer clickable container row managing individual travel distance items */
+.travel-modes-strip {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap; /* Allows wrapping on smaller rows seamlessly */
+    gap: 8px;
+    background: transparent;
+    margin: 8px 0 16px 0;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    width: fit-content;
+}
+
+/* Base style setup applied to individual small color tags badges */
+.travel-modes-strip .mode-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: -0.1px;
+    box-shadow: 0 2px 6px rgba(45, 30, 19, 0.02);
+    border: 1px solid rgba(111, 78, 55, 0.08);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Dynamic custom color definitions based on mode tags category identifiers */
+.travel-modes-strip .mode-tag.distance-base {
+    background: #2D1E13;
+    color: #E3C580;
+    border-color: #2D1E13;
+}
+
+.travel-modes-strip .mode-tag.drive-mode {
+    background: #F1F7ED; /* Soft premium green tone for cars/driving */
+    color: #4B6E40;
+}
+
+.travel-modes-strip .mode-tag.bus-mode {
+    background: #EDF4F9; /* Calm corporate blue tone for public buses */
+    color: #2B5B84;
+}
+
+.travel-modes-strip .mode-tag.walk-mode {
+    background: #FDF3EB; /* Warm orange tint for walking routes mapping */
+    color: #A36A3B;
+}
+
+/* Lift on hover action applied over child elements simultaneously */
+.travel-modes-strip:hover .mode-tag {
+    transform: translateY(-2px); /* Lifts all badges up nicely on row focus */
+    box-shadow: 0 6px 14px rgba(45, 30, 19, 0.06);
+}
+
+.travel-modes-strip:hover .mode-tag.distance-base {
+    background: #8B6F47;
+    border-color: #8B6F47;
+}
+
+/* Premium Modal Glassmorphism Background Blackout Overlay Screen */
+.cute-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(26, 17, 11, 0.45); /* Dark dimming overlay back-panel drop */
+    backdrop-filter: blur(8px); /* Modern high-fidelity desktop screen blur effect */
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 2500; /* Stays safely sitting on top of header navigations elements */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Invisible by default configuration */
+    pointer-events: none; /* Blocks clicks from passing into inactive forms mapping */
+    transition: opacity 0.3s ease;
+}
+
+/* Target class injected by JS to trigger popup visibility overlay module */
+.cute-modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto; /* Activates interactive cursor operations */
+}
+
+/* Card panel layout container content wrapper block */
+.cute-modal-card {
+    background: #FFFFFF;
+    width: 90%;
+    max-width: 380px;
+    border-radius: 24px;
+    padding: 28px;
+    box-shadow: 0 20px 50px rgba(45, 30, 19, 0.15);
+    text-align: center;
+    position: relative;
+    transform: scale(0.95) translateY(10px); /* Bounces slightly down while closed */
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Springy bounce easing animation */
+    border: 1px solid rgba(230, 225, 218, 0.8);
+    box-sizing: border-box;
+}
+
+/* Scale pop-up animation execution rule when class target activates */
+.cute-modal-overlay.active .cute-modal-card {
+    transform: scale(1) translateY(0); /* Scales up into full view smoothly */
+}
+
+/* Close round anchor cancel cross button */
+.close-modal-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #F5EFEB;
+    border: none;
+    font-size: 14px;
+    color: #4A3B32;
+    cursor: pointer;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.close-modal-btn:hover {
+    background: #EADFD5;
+    color: #2D1E13;
+}
+
+/* Large decorative card top icon wrapper shape frame */
+.modal-header-icon {
+    font-size: 28px;
+    color: #8B6F47;
+    background: #FDFBF7;
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+    border: 1px solid #EAE3DA;
+}
+
+.cute-modal-card h4 {
+    margin: 0 0 6px 0;
+    font-size: 20px;
+    color: #1A110B;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.modal-subtitle {
+    margin: 0 0 20px 0;
+    font-size: 13px;
+    color: #6E5E55;
+    font-weight: 500;
+}
+
+/* Structured internal statistical timing row frame grids layout box */
+.modal-grid-stats {
+    background: #FDFBF7;
+    border-radius: 18px;
+    padding: 6px 16px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(230, 225, 218, 0.7);
+}
+
+/* Split content text items across matching rows lines formatting */
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #F1ECE6;
+}
+
+/* Strips border rules on end node lines to avoid extra layout padding dividers */
+.stat-row:last-child {
+    border-bottom: none;
+}
+
+.stat-label-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13.5px;
+    color: #4A3B32;
+    font-weight: 600;
+}
+
+.stat-label-box i {
+    font-size: 14px;
+    width: 20px;
+    text-align: center;
+}
+
+.stat-row strong {
+    font-size: 14px;
+    color: #2D1E13;
+    font-weight: 700;
+}
+
+/* Informative bottom premium highlight travel alert notification box layout */
+.modal-tip-box {
+    background: #FFFBF2;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(227, 197, 128, 0.3);
+    text-align: left;
+    display: flex;
+    gap: 10px;
+}
+
+.modal-tip-box i {
+    color: #8B6F47;
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+.modal-tip-box span {
+    font-size: 12.5px;
+    color: #55453B;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   10. MEDIA QUERIES / RESPONSIVE VIEWPORT BOUNDARIES
+   ========================================================================== */
+/* Tablet & Medium Screen Optimization Configurations mapping values */
+@media (max-width: 950px) {
+    .place-box {
+        flex-direction: column; /* Switches row configuration layout to stacked list columns */
+        align-items: stretch;
+        padding: 20px;
+        gap: 24px;
     }
 
     .slider {
-        height: 200px;
+        width: 100%;
+        max-width: 100%;
+        height: 250px; /* Adjusts height beautifully to span full row containers width */
     }
-
-    .place-box {
-        padding: 12px;
+    
+    .prev, .next {
+        opacity: 1; /* Forces selector visibility permanently live on finger swipe viewports */
     }
 
     .desc {
-        font-size: 13px;
+        max-width: 100%;
     }
 
+    .button-group {
+        flex-direction: row;
+    }
+}
+
+/* Ultra Small Smart Screen Viewport Boundaries Optimization (Mobile phones) */
+@media (max-width: 600px) {
+    .filter-box {
+        flex-direction: column; /* Vertically stack filter title and filter dropdown menus */
+        align-items: stretch;
+        gap: 18px;
+        padding: 24px 20px;
+    }
+
+    .filter-box h2 {
+        font-size: 22px;
+        text-align: center; /* Centers exploration titles nicely on portable device views */
+    }
+
+    .styled-select {
+        width: 100%; /* Dropdown stretches gracefully to fit small displays fully */
+    }
+
+    .button-group {
+        flex-direction: column; /* Stacks button actions vertically sequentially */
+        gap: 12px;
+    }
+
+    .plan-btn,
     .map-btn {
+        width: 100%; /* Stretches buttons across display block surfaces */
+        box-sizing: border-box;
+    }
+    
+    .travel-modes-strip {
+        justify-content: flex-start;
         width: 100%;
     }
 }

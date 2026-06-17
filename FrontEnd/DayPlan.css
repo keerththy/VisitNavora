@@ -1,60 +1,90 @@
+/* ==========================================================================
+   1. GLOBAL RESET & STYLE INITIALIZATION (Consistency Baseline)
+   ========================================================================== */
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 * {
-    transition: all 0.2s ease-in-out;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Soft performance micro transitions */
+    transition: background-color 0.25s ease, 
+                border-color 0.25s ease, 
+                box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-/* பக்கம் திறக்கும்போது வரும் அனிமேஷன் */
-@keyframes entrance {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.introduction_section, .configuration_panel, .recommendation_section {
-    animation: entrance 0.8s ease-out backwards;
-}
-
-.configuration_panel { animation-delay: 0.2s; }
-.recommendation_section { animation-delay: 0.4s; }
 
 body {
-    background: #F7F3EF;
-    color: #2B1B12;
-    font-family: Arial, sans-serif;
+    background: #FDFBF7; /* Matched with global premium layout palette */
+    color: #2D1E13;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* ================= INTRO ================= */
+/* --- MOTION PATH TRANSITIONS --- */
+@keyframes entrance {
+    from { 
+        opacity: 0; 
+        transform: translateY(24px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
 
+.introduction_section, 
+.configuration_panel, 
+.recommendation_section,
+.timeline_container {
+    animation: entrance 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+.configuration_panel { animation-delay: 0.15s; }
+.recommendation_section { animation-delay: 0.3s; }
+
+
+/* ==========================================================================
+   2. INTRODUCTION SECTION (Clean Spacing Alignment)
+   ========================================================================== */
 .introduction_section {
     text-align: center;
-    padding: 70px 20px 20px 20px;
-     
+    padding: 60px 24px 10px 24px;
 }
 
 .introduction_section h2 {
     font-size: 34px;
-    color: #2D1E13;
-    margin-bottom: 10px;
+    font-weight: 800;
+    color: #1A110B;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
 }
 
 .introduction_section p {
-    color: #6F4E37;
+    font-size: 15px;
+    color: #6E5E55;
+    font-weight: 400;
 }
 
-/* ================= CONFIG PANEL ================= */
 
+/* ==========================================================================
+   3. CONFIGURATION PANEL (Modern Input & Select Curvatures)
+   ========================================================================== */
 .configuration_panel {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 25px;
-    padding: 25px;
-    background: white;
-    margin: 20px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    align-items: flex-end;
+    gap: 24px;
+    padding: 30px;
+    background: #FFFFFF;
+    margin: 24px auto;
+    max-width: 1250px;
+    border-radius: 24px;
+    border: 1px solid rgba(230, 225, 218, 0.5);
+    box-shadow: 0 10px 30px rgba(45, 30, 19, 0.04);
 }
 
 .input_group {
@@ -63,325 +93,439 @@ body {
 }
 
 .input_group label {
-  font-size: 13px;
-  letter-spacing: 0.5px;
-  color: #6F4E37;
-  margin-bottom: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    color: #8B6F47;
+    margin-bottom: 8px;
+    text-transform: uppercase;
 }
 
+/* STYLING ALL CONTROLS (Unified Framework Architecture) */
+.input_group input,
 .input_group select {
-    width: 280px;              /* 🔥 increased width */
-    padding: 12px 40px 12px 14px;
-    border-radius: 12px;
-    border: 1px solid #63564e;
-    background: linear-gradient(145deg, #ffffff, #f7f3ef);
+    width: 280px; 
+    height: 48px;
+    padding: 12px 16px;
+    border-radius: 14px;
+    border: 1px solid #E5DCD3;
+    background: #FFFFFF;
     color: #2D1E13;
     font-size: 14px;
     font-weight: 500;
     outline: none;
     cursor: pointer;
+    box-shadow: 0 4px 12px rgba(45, 30, 19, 0.02);
+}
 
-     /* 🔥 modern shadow */
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-
-    /* remove default arrow */
+/* SELECT BOX EXTRA PROPERTIES */
+.input_group select {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
-
-    /* custom arrow */
-   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%236F4E37' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-   background-repeat: no-repeat;
-   background-position: right 14px center;
-   background-size: 14px;
-   transition: all 0.3s ease;
-    
-
+    padding-right: 44px;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%238B6F47' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 14px;
 }
 
+/* HOVER LAYER METRIC WITH BRAND SOFT GLOW */
+.input_group input:hover,
 .input_group select:hover {
-  border-color: #6F4E37;
-  box-shadow: 0 8px 22px rgba(111, 78, 55, 0.25);
-  transform: translateY(-1px);
+    border-color: #A38A75;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(139, 111, 71, 0.08);
 }
 
-.input_group input,
-.input_group select {
-    padding: 12px;
-    width: 220px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    outline: none;
-    transition: 0.3s;
-    height: 44px;
-}
-
-button:active, .input_group select:active {
-    transform: scale(0.95);
-    transition: 0.1s;
-}
-
+/* FOCUS STATE LOGIC WITH EXPANDED RADIUS RING */
 .input_group input:focus,
 .input_group select:focus {
-    
-    border-color: #6F4E37;
-    box-shadow: 0 0 0 4px rgba(111, 78, 55, 0.15);
+    border-color: #2D1E13;
+    box-shadow: 0 0 0 4px rgba(45, 30, 19, 0.08);
+    background-color: #FFFFFF;
 }
 
 .action_group {
     display: flex;
-    align-items: end;
+    align-items: flex-end;
+}
+
+
+/* ==========================================================================
+   4. PREMIUM BUTTON SYSTEM (With Organic Golden Glow Matrix)
+   ========================================================================== */
+button {
+    background: linear-gradient(135deg, #4A3B32, #2D1E13);
+    color: #FFFFFF;
+    padding: 0 28px;
+    height: 48px;
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(45, 30, 19, 0.15);
+}
+
+/* 🌟 EXTENDED MODERN GLOW MATRIX EFFECT 🌟 */
+button:hover {
+    background: linear-gradient(135deg, #2D1E13, #1A110B);
+    transform: translateY(-3px);
+    /* Dual Layer high contrast glow structure mapping */
+    box-shadow: 0 8px 20px rgba(45, 30, 19, 0.25), 
+                0 0 15px rgba(139, 111, 71, 0.4); 
+}
+
+button:active, 
+.input_group select:active,
+.input_group input:active {
+    transform: scale(0.96);
+}
+
+
+/* ==========================================================================
+   5. RECOMMENDATION ARCHITECTURE (Clean Structural Cards Grid)
+   ========================================================================== */
+.recommendation_section {
+    padding: 30px 24px;
+    max-width: 1300px;
+    margin: auto;
+}
+
+.section_title {
+    text-align: center;
+    font-size: 28px;
+    font-weight: 800;
+    color: #1A110B;
+    letter-spacing: -0.4px;
+    margin-bottom: 8px;
 }
 
 .section_title::after {
     content: '';
     display: block;
-    width: 50px;
+    width: 44px;
     height: 3px;
-    background: #C8A27C;
-    margin: 10px auto;
+    background: #8B6F47;
+    margin: 12px auto 0 auto;
     border-radius: 2px;
 }
 
-button {
-    background: linear-gradient(135deg, #2D1E13, #6F4E37);
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    transition: 0.3s;
-}
-
-button:hover {
-    background: linear-gradient(135deg, #1B120C, #2D1E13);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-}
-
-/* ================= RECOMMENDATION ================= */
-
-.section_title {
-    text-align: center;
-    font-size: 28px;
-    color: #2D1E13;
-    margin-bottom: 10px;
-}
-
 .sub_title {
-    margin: 20px 0;
-    color: #6F4E37;
-    margin: 25px 0 10px;
-}
-
-.recommendation_section {
-    padding: 30px;
-}
-
-
-
-.places_grid {  
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.place_card label {
-    margin-top: 8px;
-    font-size: 14px;
-    color: #6F4E37;
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-}
-
-.place_card {
-    background: #fff;
-    border-radius: 16px;
-    padding: 12px;
-    text-align: center;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-}
-
-.place_card:hover {
-    transform: translateY(-8px) scale(1.02);
-    
-    box-shadow: 0 15px 35px rgba(45, 30, 19, 0.15);
-}
-
-.place_card.selected {
-  border: 2px solid #6F4E37;
-  transform: scale(1.02);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-.place_card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 12px;
-    
-    filter: brightness(0.95);
-    transition: 0.4s;
-}
-
-.place_card:hover img {
-    filter: brightness(1.1);
-    transform: scale(1.08);
-}
-
-.place_card h4 {
-    margin: 10px 0;
+    font-size: 18px;
+    font-weight: 700;
     color: #2D1E13;
+    margin: 32px 0 16px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .places_block {
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
+
+.places_grid {  
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+/* PLACE CARD DESIGN REFINE BLOCK */
+.place_card {
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 14px;
+    text-align: center;
+    border: 1px solid rgba(230, 225, 218, 0.6);
+    box-shadow: 0 6px 20px rgba(45, 30, 19, 0.03);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 270px;
+}
+
+.place_card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(45, 30, 19, 0.08);
+}
+
+/* SPECIFIC CARD MUTATIONS LAYER */
 #suggestedContainer .place_card {
-    border: 2px solid #C8A27C;
+    border: 1.5px solid #8B6F47; /* Refined from harsh color codes to premium earth gold */
 }
 
 #otherContainer .place_card {
-    opacity: 0.9;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.place_card.selected {
+    border: 2px solid #2D1E13;
+    box-shadow: 0 8px 24px rgba(45, 30, 19, 0.12);
+}
+
+/* IMAGES FILTER BALANCING */
+.place_card img {
+    width: 100%;
+    height: 145px;
+    object-fit: cover;
+    border-radius: 14px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                filter 0.3s ease;
+}
+
+.place_card:hover img {
+    transform: scale(1.03);
+}
+
+.place_card h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 14px 0 8px 0;
+    color: #1A110B;
+}
+
+.place_card label {
+    margin-top: auto;
+    font-size: 13.5px;
+    color: #6E5E55;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding-top: 6px;
 }
 
 #otherSection {
     display: none;
-    opacity: 0.95;
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
-/* ================= TIMELINE ================= */
-.plan_item{
-  display:flex;
-  justify-content:space-between;
-  padding:10px 12px;
-  margin:6px 0;
-  background:#fff;
-  border-radius:10px;
-  border-left: 5px solid #C8A27C;
-  animation: fadeIn 0.3s ease;
-  transition: 0.3s ease;
-}
 
-.plan_item:hover {
-    background: #fdfaf7;
-    transform: translateX(5px); /* இடது புறம் இருந்து நகரும் உணர்வு */
-    border-left-width: 8px;
-}
-.plan_time{
-  font-size:12px;
-  color:#6F4E37;
-  font-weight:700;
-}
-
-.plan_name{
-  font-size:14px;
-  color:#2D1E13;
-  font-weight:600;
-}
-
-@keyframes fadeIn{
-  from {opacity:0; transform:translateY(5px);}
-  to {opacity:1; transform:translateY(0);}
-}
-
+/* ==========================================================================
+   6. TIMELINE LAYOUT ARCHITECTURE (Premium Horizontal Row Formatting)
+   ========================================================================== */
 .timeline_container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 30px;
+    flex-direction: row; /* Structural horizontal layout row matrix intact */
+    flex-wrap: nowrap;
+    gap: 24px;
+    padding: 20px 24px 60px 24px;
+    max-width: 1300px;
+    margin: auto;
+    align-items: flex-start;
 }
 
 .timeline_card {
     flex: 1;
-    min-width: 250px;
-    padding: 20px;
-    border-radius: 15px;
-    background: white;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    transition: 0.3s;
-}
-
-.section_title{
-  text-align:center;
-  font-size:28px;
-  font-weight:700;
-  margin-bottom:20px;
-  color:#2D1E13;
-}
-
-.timeline_card h4{
-  text-align:center;
-}
-
-.timeline_card:hover {
-    transform: translateY(-4px);
-}
-
-.morning_slot {
-    border-left: 5px solid #C8A27C;
-}
-
-.afternoon_slot {
-    border-left: 5px solid #6F4E37;
-}
-
-.evening_slot {
-    border-left: 5px solid #2D1E13;
+    min-width: 300px;
+    padding: 28px 24px;
+    border-radius: 24px;
+    background: #FFFFFF;
+    border: 1px solid rgba(230, 225, 218, 0.6);
+    box-shadow: 0 10px 30px rgba(45, 30, 19, 0.025);
 }
 
 .timeline_card h4 {
-    color: #2D1E13;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+}
+
+/* SPECIFIC SLOTS MUTATION LAYERS */
+.morning_slot { border-top: 4px solid #8B6F47; }
+.afternoon_slot { border-top: 4px solid #4A3B32; }
+.evening_slot { border-top: 4px solid #2D1E13; }
+
+.morning_slot h4 { color: #8B6F47; }
+.afternoon_slot h4 { color: #4A3B32; }
+.evening_slot h4 { color: #2D1E13; }
+
+/* --------------------------------------------------------------------------
+   🎯 THE 50/50 TRUE BROKEN TIMELINE SYSTEM (No Lines Inside Node Ring)
+   -------------------------------------------------------------------------- */
+.inner_vertical_backbone {
+    position: relative;
+    padding-left: 42px; /* Perfect uniform padding container allocation */
+}
+
+/* Base Tracking Spinal Axis Layer Removed completely to prevent internal overlaps! */
+.inner_vertical_backbone::before {
+    display: none;
+}
+
+/* PREMIUM CONTAINER ITEMS FOR PLAN ENTRIES */
+.plan_item {
+    position: relative;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: 6px;
+    padding: 16px 20px;
+    margin: 32px 0; /* Expanded structural margin giving pipeline elements room to breathe */
+    background: #FDFBF9;
+    border-radius: 16px;
+    border: 1px solid #EAE5DF;
+    box-shadow: 0 4px 14px rgba(45, 30, 19, 0.01);
+    animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* 🌟 TRUE INTERCONNECTED NODE RING (The Centerpiece Dot) 🌟 */
+.plan_item::before {
+    content: '';
+    position: absolute;
+    
+    /* Mathematical 50/50 Vector Locking Point:
+       Container padding-left is 42px. 
+       -28px places the element center point exactly over the 14px timeline coordinate track axis line.
+    */
+    left: -28px;       
+    top: 50%;          
+    transform: translateY(-50%);
+    
+    width: 14px;       
+    height: 14px;
+    border-radius: 50%;
+    background-color: #FFFFFF; /* Clean open white hollow canvas */
+    z-index: 5;        
+    box-sizing: border-box;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Custom premium colored core boundaries representing individual slot markers */
+.morning_slot .plan_item::before { border: 4px solid #8B6F47; box-shadow: 0 0 0 4px rgba(139, 111, 71, 0.1); }
+.afternoon_slot .plan_item::before { border: 4px solid #4A3B32; box-shadow: 0 0 0 4px rgba(74, 59, 50, 0.1); }
+.evening_slot .plan_item::before { border: 4px solid #2D1E13; box-shadow: 0 0 0 4px rgba(45, 30, 19, 0.1); }
+
+/* ⬆️ PIPELINE EXTENSION TO THE TOP (Breaks perfectly at Node boundaries) */
+.plan_item::after {
+    content: '';
+    position: absolute;
+    left: -22px; /* Mathematically locked to the exact horizontal center alignment matching the node (50/50 split) */
+    bottom: 50%; /* Starts precisely from the exact mid-point of the node */
+    top: -34px;  /* Reaches upwards matching structural margins cleanly */
+    width: 2px;
+    background: #EAF0F6;
+    z-index: 1;
+}
+
+/* ⬇️ PIPELINE EXTENSION TO THE BOTTOM (Starts below the node boundary) */
+.plan_item:not(:last-child).plan_item::after {
+    box-shadow: 0 34px 0 #EAF0F6; /* Dual stacking vertical structural line bridge connector logic */
+}
+
+/* Premium micro color routing flows maps directly into structural pipe networks */
+.morning_slot .plan_item::after { background: #8B6F47; }
+.afternoon_slot .plan_item::after { background: #4A3B32; }
+.evening_slot .plan_item::after { background: #2D1E13; }
+
+/* Cancel line extensions for the very first item's top tracker pipeline segment */
+.plan_item:first-child::after {
+    top: 50%; /* Truncates top pipe tracking so line doesn't bleed awkwardly into header areas */
+}
+
+/* Premium Elevates and Shifts */
+.plan_item:hover {
+    background: #FFFFFF;
+    border-color: #CBBDA4;
+    transform: translateX(4px);
+    box-shadow: 0 6px 18px rgba(45, 30, 19, 0.04);
+}
+
+/* Scaled up interaction changes without messing up baseline structural alignments */
+.plan_item:hover::before {
+    transform: translateY(-50%) scale(1.15);
+}
+
+/* Pill Typography for Timelines */
+.plan_time {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 2px;
+}
+
+.morning_slot .plan_time { color: #8B6F47; background: rgba(139, 111, 71, 0.06); }
+.afternoon_slot .plan_time { color: #4A3B32; background: rgba(74, 59, 50, 0.06); }
+.evening_slot .plan_time { color: #2D1E13; background: rgba(45, 30, 19, 0.06); }
+
+/* Card Title Typography Rules */
+.plan_name {
+    font-size: 14.5px;
+    color: #1A110B;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.1px;
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(12px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+/* ==========================================================================
+   7. MEDIA QUERIES / RESPONSIVE VIEWPORT CODES (Perfect Sizing Breakdowns)
+   ========================================================================== */
+@media screen and (max-width: 992px) {
+    .timeline_container {
+        flex-direction: column; /* Shifts automatically to column view smoothly ONLY on small screens */
+        padding: 16px;
+        align-items: stretch;
+    }
+    .timeline_card {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 768px) {
-
-    /* 🔹 INTRO */
     .introduction_section {
-        
-        padding-top: 90px;
+        padding-top: 105px; /* Clean padding shift ensuring compatibility with structural navbar */
     }
 
     .introduction_section h2 {
-        font-size: 24px;
+        font-size: 26px;
     }
 
-    .introduction_section p {
-        font-size: 13px;
-    }
-
-    /* 🔹 CONFIG PANEL */
     .configuration_panel {
-        flex-direction: column;   /* stack */
+        flex-direction: column;   
         align-items: center;
-        padding: 20px 15px;
-        margin: 15px;
-        gap: 15px;
+        padding: 24px 16px;
+        margin: 16px;
+        gap: 16px;
     }
 
     .input_group {
         width: 100%;
-        max-width: 280px;
+        max-width: 300px;
     }
 
     .input_group input,
     .input_group select {
-        width: 100% !important;   /* full width */
-        font-size: 13px;
-        height: 42px;
+        width: 100% !important;   
+        font-size: 14px;
+        height: 46px;
     }
 
-    /* 🔹 BUTTON */
     .action_group {
         width: 100%;
         justify-content: center;
@@ -389,58 +533,43 @@ button:hover {
 
     button {
         width: 100%;
-        max-width: 200px;
-        padding: 12px;
-        font-size: 14px;
+        max-width: 240px;
+        height: 46px;
     }
 
-    /* 🔹 SECTION TITLES */
     .section_title {
-        font-size: 22px;
+        font-size: 24px;
     }
 
-    /* 🔹 GRID */
     .places_grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 per row */
-        gap: 15px;
+        grid-template-columns: repeat(2, 1fr); /* Neat 2 card split view grid setup */
+        gap: 16px;
     }
 
-    /* 🔹 CARD */
     .place_card {
-        padding: 10px;
+        padding: 12px;
+        min-height: 240px;
     }
 
     .place_card img {
-        height: 120px;
+        height: 115px;
     }
 
     .place_card h4 {
         font-size: 14px;
     }
 
-    /* 🔹 TIMELINE */
-    .timeline_container {
-        flex-direction: column;
-        padding: 15px;
-    }
-
-    .timeline_card {
-        width: 100%;
-        min-width: unset;
-        padding: 15px;
-    }
-
     .plan_item {
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    .plan_time {
-        font-size: 11px;
-    }
-
-    .plan_name {
-        font-size: 13px;
+        padding: 12px;
     }
 }
 
+/* Micro compact layer grid safety check up to 400px devices */
+@media screen and (max-width: 440px) {
+    .places_grid {
+        grid-template-columns: repeat(1, 1fr); /* 1 Card layout structure map to prevent crowding issues */
+    }
+    .place_card img {
+        height: 145px;
+    }
+}

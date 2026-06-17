@@ -12,11 +12,10 @@
 
 <body>
 
-<!-- ================= HEADER ================= -->
 <header>
   <nav>
     <div class="nav-left">
-      <img src="images/VisitNavora logo.jfif" class="nav-logo">
+      <img src="images/VisitNavora logo.jfif" class="nav-logo" alt="VisitNavora Logo">
       <h1>VisitNavora</h1>
     </div>
 
@@ -25,24 +24,19 @@
       <li><a href="admin.html">Dashboard</a></li>
       <li><a href="places.html">Places</a></li>
       <li><a href="map.html">Map</a></li>
-      
-      
+      <li class="active">Plan Your Day</li>
     </ul>
   </nav>
 </header>
 
-<!-- ================= INTRO ================= -->
 <section class="introduction_section">
   <h2>Smart Day Planner</h2>
   <p>Plan your day effortlessly with personalized place picks</p>
 </section>
 
-<!-- ================= CONTROLS ================= -->
 <section class="configuration_panel">
-
-  <!-- Category (optional filter only for view) -->
   <div class="input_group">
-    <label>User Type</label>
+    <label for="userType">User Type</label>
     <select id="userType">
       <option value="family">Family</option>
       <option value="children">Children</option>
@@ -55,62 +49,61 @@
       <i class="fas fa-lightbulb"></i> Get Smart Suggestions
     </button>
   </div>
-
 </section>
 
-<!-- ================= PLACES ================= -->
 <section class="recommendation_section">
-
   <h3 class="section_title">Suggested Places</h3>
-
   <div class="places_block">
     <div id="suggestedContainer" class="places_grid"></div>
   </div>
-
 </section>
 
-<!-- ================= GENERATE BUTTON ================= -->
 <div style="text-align:center; margin: 20px;">
   <button id="finalPlanBtn">
     <i class="fas fa-magic"></i> Generate Smart Day Plan
   </button>
 </div>
 
-<!-- ================= ITINERARY ================= -->
 <section class="itinerary_output" id="planSection">
-
   <h3 class="section_title">Your Travel Plan</h3>
 
   <div class="timeline_container">
 
     <div class="timeline_card morning_slot">
       <h4>🌅 Morning (8AM - 12PM)</h4>
-      <p>Select places to generate plan</p>
+      <div class="inner_vertical_backbone">
+        <div class="slot_items_container">
+          <p>Select places to generate plan</p>
+        </div>
+      </div>
     </div>
 
     <div class="timeline_card afternoon_slot">
       <h4>☀️ Afternoon (12PM - 4PM)</h4>
-      <p>Select places to generate plan</p>
+      <div class="inner_vertical_backbone">
+        <div class="slot_items_container">
+          <p>Select places to generate plan</p>
+        </div>
+      </div>
     </div>
 
     <div class="timeline_card evening_slot">
       <h4>🌙 Evening (4PM - 8PM)</h4>
-      <p>Select places to generate plan</p>
+      <div class="inner_vertical_backbone">
+        <div class="slot_items_container">
+          <p>Select places to generate plan</p>
+        </div>
+      </div>
     </div>
 
   </div>
-
 </section>
 
-<!-- ================= FOOTER ================= -->
 <footer>
   <div class="footer-center">
-
     <h3>About VisitNavora</h3>
     <p>Smart travel planning system for exploring beautiful places easily.</p>
-
     <p>© 2026 VisitNavora</p>
-
   </div>
 </footer>
 

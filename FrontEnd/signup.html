@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - VisitNavora</title>
-    <link rel="stylesheet" href="login.css"> <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="login.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -19,25 +20,41 @@
         <p>Join VisitNavora today!</p>
 
         <form id="signupForm" novalidate>
-           <div class="input-box">
-             <i class="fas fa-user"></i>
-             <input type="text" id="new-username" placeholder="Username" required>
+            <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" id="new-username" placeholder="Username" required>
             </div>
 
             <div class="input-box">
-             <i class="fas fa-envelope"></i>
-             <input type="email" id="email" placeholder="Email Address" required>
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Email Address" required>
+            </div>
+
+            <div class="input-box" style="position: relative;">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="new-password" placeholder="Password" required>
+                <i class="fas fa-eye-slash toggle-password" onclick="togglePasswordVisibility('new-password', this)" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #8B6F47;"></i>
             </div>
 
             <div class="input-box">
-             <i class="fas fa-lock"></i>
-             <input type="password" id="new-password" placeholder="Password" required>
+                <i class="fas fa-user-shield"></i>
+                <select id="securityQuestion" required style="border: none; outline: none; background: transparent; width: 100%; font-family: inherit; font-size: 14px; color: #1A110B; cursor: pointer;">
+                    <option value="" disabled selected hidden>Select Security Question</option>
+                    <option value="pet">What is your pet's name?</option>
+                    <option value="hometown">What is your hometown?</option>
+                    <option value="school">What is your primary school name?</option>
+                </select>
             </div>
 
-           <button type="submit" class="login-btn">
-             <i class="fas fa-user-plus"></i> Sign Up
-           </button>
-       </form>
+            <div class="input-box">
+                <i class="fas fa-key"></i>
+                <input type="text" id="securityAnswer" placeholder="Your Secret Answer" required>
+            </div>
+
+            <button type="submit" class="login-btn">
+                <i class="fas fa-user-plus"></i> Sign Up
+            </button>
+        </form>
 
         <p class="signup-link">Already have an account? <a href="login.html">Login</a></p>
         <p class="error" id="signupErrorMsg"></p>
@@ -45,5 +62,21 @@
 </div>
 
 <script src="signup.js"></script>
+
+<script>
+function togglePasswordVisibility(inputId, eyeIcon) {
+    const passwordInput = document.getElementById(inputId);
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeIcon.classList.remove("fa-eye-slash");
+        eyeIcon.classList.add("fa-eye");
+    } else {
+        passwordInput.type = "password";
+        eyeIcon.classList.remove("fa-eye");
+        eyeIcon.classList.add("fa-eye-slash");
+    }
+}
+</script>
+
 </body>
 </html>

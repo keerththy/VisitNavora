@@ -4,6 +4,11 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
     const username = document.getElementById("new-username").value.trim();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("new-password").value.trim();
+    
+    // 🔐 Security Elements Tracking Targets Injection
+    const questionSelect = document.getElementById("securityQuestion");
+    const securityAnswer = document.getElementById("securityAnswer").value.trim();
+    
     const errorBox = document.getElementById("signupErrorMsg");
 
     // Clear old messages
@@ -23,6 +28,18 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
         errorBox.innerText = "Please fill in the Password!";
         return;
     }
+    
+    // 🔐 Check if Security Question Dropdown is selected or omitted
+    if (!questionSelect.value) {
+        errorBox.innerText = "Please select a Security Question for password recovery!";
+        return;
+    }
+    
+    // 🔐 Check if Secret Recovery Answer field validation tracker is blank
+    if (!securityAnswer) {
+        errorBox.innerText = "Please fill in your Secret Recovery Answer!";
+        return;
+    }
 
     // 2. EMAIL VALIDATION (Email format sariya nu check panna)
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -38,12 +55,13 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
     }
 
     try {
+        // Fetch engine now delivers the securityAnswer payload dynamically to server.js
         const res = await fetch("http://localhost:3000/signup", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ username, email, password })
+            body: JSON.stringify({ username, email, password, securityAnswer })
         });
 
         const data = await res.json();
@@ -53,10 +71,10 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
             errorBox.style.color = "#28a745"; // Green color
             errorBox.innerText = "✅ Signup successful! Redirecting...";
             
-           
-            window.location.replace("login.html");
-           
-
+            // Delays redirection sequence slightly to display greeting success animation state natively
+            setTimeout(() => {
+                window.location.replace("login.html");
+            }, 1200);
 
         } else {
             // Server side errors (User already exists, etc.)
@@ -65,7 +83,7 @@ document.getElementById("signupForm").addEventListener("submit", async (e) => {
 
     } catch (err) {
         console.error(err);
-        if (err.message.includes("Failed to fetch")) {
+        if (err.message && err.message.includes("Failed to fetch")) {
             errorBox.innerText = "⚠️ Server is not running!";
         } else {
             errorBox.innerText = "⚠️ Something went wrong!";

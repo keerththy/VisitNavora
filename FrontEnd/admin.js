@@ -1,18 +1,69 @@
 let editMode = false;
 let editId = null;
+let currentFormStep = 1; // 💡 Dynamic Stepper State Manager
 
-// 🔐 BLOCK UNAUTHORIZED ACCESS
+// 🔐 BLOCK UNAUTHORIZED ACCESS (ACCURATE REFERRER TRACKING)
 if (localStorage.getItem("isLoggedIn") !== "true") {
-    localStorage.setItem("lastPage", "admin.html");
+    // Dashboard access panna muyarsikkum munnadi user entha page-il irundhaaro athai track seiyum engine
+    let referrerPage = document.referrer; 
+    
+    if (!referrerPage || referrerPage.includes("admin.html") || referrerPage.includes("login.html")) {
+        referrerPage = "HomePage.html"; // Default fallback boundary
+    } else {
+        // Absolute URL-il irundhu file name-ai mattum pirithu yedukkum split logic
+        referrerPage = referrerPage.substring(referrerPage.lastIndexOf("/") + 1);
+    }
+
+    localStorage.setItem("lastPage", referrerPage);
     window.location.href = "login.html";
 }
 
-// Variables
+// Global DOM Selectors
 const list = document.getElementById("adminList");
 const modal = document.getElementById("placeModal");
 const placeForm = document.getElementById("placeForm");
 
-// 1. Load Places
+// ==========================================================================
+// 1. MULTI-STEP CUTE VISUAL ENGINE WIZARD
+// ==========================================================================
+function goToStep(stepTarget) {
+    const step1 = document.getElementById('step1');
+    const step2 = document.getElementById('step2');
+    const dot1 = document.getElementById('dot1');
+    const dot2 = document.getElementById('dot2');
+    const stepLine = document.getElementById('stepLine');
+
+    // 🛑 Step 1-il required fields fill pannaamal Step 2-vukku sella thadaikkum interceptor
+    if (stepTarget === 2) {
+        const pName = document.getElementById('pName');
+        const pCategory = document.getElementById('pCategory');
+        const pImage = document.getElementById('pImage');
+        const pDesc = document.getElementById('pDesc');
+
+        if (!pName.checkValidity() || !pCategory.checkValidity() || !pImage.checkValidity() || !pDesc.checkValidity()) {
+            pName.reportValidity() || pCategory.reportValidity() || pImage.reportValidity() || pDesc.reportValidity();
+            return;
+        }
+    }
+
+    currentFormStep = stepTarget;
+
+    if (currentFormStep === 1) {
+        step1.classList.add('active');
+        step2.classList.remove('active');
+        dot2.classList.remove('active');
+        stepLine.classList.remove('active');
+    } else {
+        step1.classList.remove('active');
+        step2.classList.add('active');
+        dot2.classList.add('active');
+        stepLine.classList.add('active');
+    }
+}
+
+// ==========================================================================
+// 2. LOAD PLACES SYSTEM FROM DATABASE
+// ==========================================================================
 async function loadPlaces() {
     try {
         const res = await fetch("http://localhost:3000/places");
@@ -21,35 +72,36 @@ async function loadPlaces() {
         list.innerHTML = "";
 
         data.forEach(p => {
-         list.innerHTML += `
-         <tr>
-            <td>${p.id}</td>
-            <td>${p.name}</td>
-            <td>${p.category}</td>
-            <td class="action-cell">
-                <button onclick='editPlace(${JSON.stringify(p)})' class="edit-btn">
-                    <i class="fa fa-edit"></i>
-                </button>
+            list.innerHTML += `
+            <tr>
+                <td>${p.id}</td>
+                <td>${p.name}</td>
+                <td>${p.category}</td>
+                <td class="action-cell">
+                    <button onclick='editPlace(${JSON.stringify(p)})' class="edit-btn">
+                        <i class="fa fa-edit"></i>
+                    </button>
 
-                <button onclick="deletePlace('${p.id}')" class="delete-btn">
-                    <i class="fa fa-trash"></i>
-                </button>
-            </td>
-         </tr>
-       `;
-    });
+                    <button onclick="deletePlace('${p.id}')" class="delete-btn">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </td>
+            </tr>
+            `;
+        });
     } catch (err) {
         console.error("Data load error:", err);
     }
 }
 
-// DOM Ready
+// ==========================================================================
+// 3. INITIALIZATION ON DOM LOADED
+// ==========================================================================
 document.addEventListener("DOMContentLoaded", () => {
     const loggedInUser = localStorage.getItem("adminUsername"); 
     const welcomeHeading = document.getElementById("welcomeText");
 
     if (welcomeHeading) {
-        // பெயர் இருந்தால் அதைக் காட்டு, இல்லையென்றால் வெறும் 'Admin' எனக் காட்டு
         if (loggedInUser && loggedInUser !== "undefined") {
             welcomeHeading.innerText = `Welcome back, ${loggedInUser} 👋`;
         } else {
@@ -59,16 +111,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
     loadPlaces();
 
+    // Add button handler configuration
     const addBtn = document.querySelector(".add-btn");
-
     if (addBtn) {
         addBtn.onclick = function() {
-            modal.classList.add("show"); // ✅ FIX
+            editMode = false;
+            editId = null;
+            document.getElementById("modalTitle").innerText = "Add New Place";
+            
+            const submitBtn = document.getElementById("submitFormBtn");
+            if (submitBtn) submitBtn.innerText = "Save Place";
+            
+            goToStep(1); // Enforce Step 1 sequence initially
+            modal.classList.add("show"); 
         };
     }
 });
 
-// CLOSE MODAL
+// ==========================================================================
+// 4. SANITIZE & CLOSE MODAL INTERFACE Completely
+// ==========================================================================
 function closeModal() {
     modal.classList.remove("show");
     placeForm.reset();
@@ -76,25 +138,32 @@ function closeModal() {
 
     editMode = false;
     editId = null;
+
+    // Reset components seamlessly back to base state
+    currentFormStep = 1;
+    document.getElementById('step1').classList.add('active');
+    document.getElementById('step2').classList.remove('active');
+    document.getElementById('dot2').classList.remove('active');
+    document.getElementById('stepLine').classList.remove('active');
 }
-// Outside click close
+
+// Close via screen boundaries backdrop triggers
 window.onclick = function(event) {
     if (event.target === modal) {
         closeModal();
     }
 };
 
-
-// SAVE PLACE - Updated with Event Listener
+// ==========================================================================
+// 5. ASYNC DATABASE CONTROLLER ENGINE (SAVE / UPDATE HANDLER)
+// ==========================================================================
 placeForm.onsubmit = async function(e) {
     e.preventDefault();
     console.log("Form Submission Started...");
 
-    // 1. தரவுகளைச் சேகரித்தல்
     const pNameValue = document.getElementById("pName").value;
-    
+    // collect all field values build a place object. ID is auto generated from name
     const newPlace = {
-        // Edit mode-ல் இருந்தால் editId-யை அப்படியே பயன்படுத்த வேண்டும்
         id: editMode ? editId : pNameValue.toLowerCase().replace(/\s+/g, '-'),
         name: pNameValue,
         category: document.getElementById("pCategory").value,
@@ -108,7 +177,6 @@ placeForm.onsubmit = async function(e) {
         image: document.getElementById("pImage").value
     };
 
-    // 2. URL மற்றும் Method தீர்மானித்தல்
     let url = "http://localhost:3000/places";
     let method = "POST";
 
@@ -117,7 +185,7 @@ placeForm.onsubmit = async function(e) {
         method = "PUT";
     }
 
-    console.log("Sending Request:", method, url); // இது Console-ல் சரியாக வருகிறதா எனப் பாருங்கள்
+    console.log("Sending Request:", method, url); 
     console.log("Payload:", newPlace);
 
     try {
@@ -127,31 +195,34 @@ placeForm.onsubmit = async function(e) {
             body: JSON.stringify(newPlace)
         });
 
-        // 3. Response-ஐக் கையாளுதல்
         if (res.ok) {
-            const result = await res.json();
             alert(editMode ? "Updated Successfully! ✅" : "Added Successfully! ✅");
             closeModal();
             loadPlaces(); 
         } else {
-            // Server Error மெசேஜைப் பிடித்தல்
             const errorText = await res.text();
             console.error("Server Response Error:", errorText);
             alert(`Error: ${res.status} - ${res.statusText}`);
         }
     } catch (err) {
         console.error("Network/Fetch Error:", err);
-        alert("Server உடன் இணைக்க முடியவில்லை! (Check Console)");
+        alert("Server couldn't connect! (Check Console)");
     }
 };
 
+// ==========================================================================
+// 6. EDIT PLACE METRICS INITIALIZER
+// ==========================================================================
 function editPlace(p) {
     editMode = true;
     editId = p.id;
 
     document.getElementById("modalTitle").innerText = "Edit Place";
     
-    // தரவுகளை input fields-ல் நிரப்புதல்
+    const submitBtn = document.getElementById("submitFormBtn");
+    if (submitBtn) submitBtn.innerText = "Update Place"; // Dynamic injection handler
+    
+    // Auto populate existing metrics trace arrays
     document.getElementById("pName").value = p.name || "";
     document.getElementById("pCategory").value = p.category || "";
     document.getElementById("pImage").value = p.image || "";
@@ -163,23 +234,33 @@ function editPlace(p) {
     document.getElementById("pLat").value = p.lat || 0;
     document.getElementById("pLng").value = p.lng || 0;
 
+    goToStep(1); // Enforce Step 1 sequence inside edit sequence safely initially
     modal.classList.add("show");
 }
 
+// ==========================================================================
+// 7. RECORD DELETION PIPELINES
+// ==========================================================================
 async function deletePlace(id) {
     if (!confirm("Delete this place?")) return;
 
-    const res = await fetch(`http://localhost:3000/places/${id}`, {
-        method: "DELETE"
-    });
+    try {
+        const res = await fetch(`http://localhost:3000/places/${id}`, {
+            method: "DELETE"
+        });
 
-    if (res.ok) {
-        alert("Deleted!");
-        loadPlaces();
+        if (res.ok) {
+            alert("Deleted! 🗑️");
+            loadPlaces();
+        }
+    } catch (err) {
+        console.error("Delete sequence breakdown error:", err);
     }
 }
 
-// LOGOUT
+// ==========================================================================
+// 8. SESSION TERMINATOR (LOGOUT)
+// ==========================================================================
 function logout() {
     localStorage.removeItem("isLoggedIn");
     localStorage.removeItem("adminUsername");

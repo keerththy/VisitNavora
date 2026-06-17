@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Login - VisitNavora</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - VisitNavora</title>
 
-<link rel="stylesheet" href="login.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
@@ -19,12 +18,10 @@
 
     <div class="login-box">
 
-        <!-- LOGO -->
         <img src="images/VisitNavora logo.jfif" class="logo">
 
         <h2>Access Dashboard!</h2>
         <p>Login to manage your admin account</p>
-
 
         <form id="loginForm">
             <div class="input-box">
@@ -32,9 +29,14 @@
                 <input type="text" id="username" placeholder="Username" required>
             </div>
 
-            <div class="input-box">
+            <div class="input-box" style="position: relative;">
                 <i class="fas fa-lock"></i>
                 <input type="password" id="password" placeholder="Password" required>
+                <i class="fas fa-eye-slash toggle-password" onclick="togglePasswordVisibility('password', this)" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #8B6F47;"></i>
+            </div>
+
+            <div class="forgot-link" style="text-align: right; margin-top: -5px; margin-bottom: 15px;">
+                <a href="#" onclick="openRecoveryModal()" style="color: #8B6F47; font-size: 13px; text-decoration: none; font-weight: 500;">Forgot Password?</a>
             </div>
 
             <button type="submit" class="login-btn">
@@ -48,6 +50,52 @@
 
     </div>
 
+</div>
+
+<div id="recoveryModal" class="recovery-modal" onclick="closeRecoveryViaOverlay(event)">
+    <div class="recovery-box">
+        <span class="close-recovery" onclick="closeRecovery()">&times;</span>
+        
+        <h3 id="modalTitle">Recover Password</h3>
+        <p id="modalDesc" style="font-size: 13px; color: #6E5E55; margin-bottom: 20px;">Enter details to verify admin account</p>
+        
+        <form id="recoveryForm" onsubmit="handleRecovery(event)">
+            <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" id="recUsername" placeholder="Username" >
+            </div>
+            
+            <div class="input-box">
+                <i class="fas fa-question-circle"></i>
+                <input type="text" id="recAnswer" placeholder="Your Secret Answer" >
+            </div>
+            
+            <button type="submit" class="login-btn">
+                <i class="fas fa-shield-alt"></i> Verify Answer
+            </button>
+        </form>
+
+        <form id="resetForm" onsubmit="handlePasswordReset(event)" style="display: none;">
+            
+            <div class="input-box" style="position: relative;">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="newPassword" placeholder="Enter New Password" required>
+                <i class="fas fa-eye-slash toggle-password" onclick="togglePasswordVisibility('newPassword', this)" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #8B6F47;"></i>
+            </div>
+            
+            <div class="input-box" style="position: relative;">
+                <i class="fas fa-check-double"></i>
+                <input type="password" id="confirmPassword" placeholder="Confirm New Password" required>
+                <i class="fas fa-eye-slash toggle-password" onclick="togglePasswordVisibility('confirmPassword', this)" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #8B6F47;"></i>
+            </div>
+            
+            <button type="submit" class="login-btn">
+                <i class="fas fa-save"></i> Update Password
+            </button>
+        </form>
+        
+        <p id="recoveryResult" style="font-size: 14px; font-weight: 600; margin-top: 15px; min-height: 20px;"></p>
+    </div>
 </div>
 
 <script src="login.js"></script>

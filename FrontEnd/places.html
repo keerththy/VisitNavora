@@ -1,41 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Places - VisitNavora</title>
 
-    <!-- Existing styles -->
+    <!-- External Style Sheets -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- New page style -->
     <link rel="stylesheet" href="places.css">
+    
+    <!-- FontAwesome Library used for icons like route, car, walking etc. -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
 
-<!-- SAME NAVBAR -->
+<!-- Navigation Header Section -->
 <header>
     <nav>
-      <div class="nav-left">
-        <img src="images/VisitNavora logo.jfif" alt="VisitNavora Logo" class="nav-logo">
-        <h1>VisitNavora</h1>
-       </div>
+        <div class="nav-left">
+            <img src="images/VisitNavora logo.jfif" alt="VisitNavora Logo" class="nav-logo">
+            <h1>VisitNavora</h1>
+        </div>
         
+        <!-- Navigation Menu Links -->
         <ul>
             <li><a href="HomePage.html">Home</a></li>
-             <li><a href="admin.html">Dashboard</a></li>
+            <li><a href="admin.html">Dashboard</a></li>
             <li><a href="DayPlan.html">Plan Your Day</a></li>
             <li><a href="map.html">Map</a></li> 
-           
-            
+            <li class="active">Places</li> <!-- Current Active Page Indication -->
         </ul>
     </nav>
 </header>
+
+<!-- Filter Component: Category Selection Dropdown -->
 <div class="filter-box">
     <h2>🧭 Explore Places</h2>
     
+    <!-- HTML Dropdown element linked to JS filtering logic using unique ID -->
     <select id="categoryFilter" class="styled-select" required>
-      <option value="" disabled selected hidden>Filter By Category</option>
+        <option value="" disabled selected hidden>Filter By Category</option>
         <option value="all">All</option>
         <option value="religious">Religious Site</option>
         <option value="natural">Natural Attraction</option>
@@ -45,291 +49,343 @@
     </select>
 </div>
 
+<!-- Main Section displaying all listed tourist cards -->
 <section class="places-page">
 
+<!-- 1. PLACE CARD: St. Peter’s Church -->
+<!-- Custom data-attributes (data-category, data-distance) used by JS to filter results -->
+<div class="place-box" id="church" data-category="religious" data-distance="0.14">
 
+    <!-- Container block for holding dynamic image sliders -->
+    <div class="slider">
+        <button class="prev">❮</button>
+        <div class="slides"></div> <!-- Dynamic slide target populated by JavaScript -->
+        <button class="next">❯</button>
+    </div>
 
-
-    <!-- PLACE 1 -->
-    <div class="place-box" id="church" data-category="religious">
+    <div class="place-content">
         <h3>Navaly St. Peter’s Church</h3>
-
-        <div class="slider">
-          <button class="prev">❮</button>
-
-          <div class="slides">
-            
-            
-          </div>
-          
-
-          <button class="next">❯</button>
-        </div>
-
         <p class="desc">
-         Navaly St. Peter’s Church is a peaceful and spiritually significant Catholic site located close to the village. It offers a calm atmosphere ideal for quiet reflection and prayer. The simple yet elegant structure, along with its serene surroundings, makes it a comforting place for both locals and visitors seeking relaxation and inner peace.
+            Navaly St. Peter’s Church is a peaceful and spiritually significant Catholic site located close to the village. It offers a calm atmosphere ideal for quiet reflection and prayer.
         </p>
 
-        <p>Distance: 0.14 km</p>
+        <!-- Dynamic trigger row launching modal popup context with trip matrix calculations -->
+        <div class="travel-modes-strip" onclick="openTravelEstimate('church')">
+            <span class="mode-tag distance-base"><i class="fa-solid fa-route"></i> 0.14 km</span>
+            <span class="mode-tag drive-mode"><i class="fa-solid fa-car"></i> 1 min</span>
+            <span class="mode-tag walk-mode"><i class="fa-solid fa-person-walking"></i> 2 mins</span>
+        </div>
 
-        <a href="DayPlan.html?place=church" class="plan-btn">Plan Your Day</a>
+        <div class="button-group">
+            <!-- URL query string passes specific target reference into planning calendars -->
+            <a href="DayPlan.html?place=church" class="plan-btn">Plan Your Day</a>
+            <!-- Custom data-map stores specific maps target addresses for fast standard external bindings -->
+            <button class="map-btn" data-map="https://www.google.com/maps?q=Navaly+St+Peter+Church">📍 View Map</button>
+        </div>
+    </div>
+</div>
 
-        <button class="map-btn" data-map="https://www.google.com/maps?q=Navaly+St+Peter+Church">📍 View Map</button>
+<!-- 2. PLACE CARD: Pannai Beach -->
+<div class="place-box" id="beach" data-category="natural" data-distance="6.6">
+    <div class="slider">
+        <button class="prev">❮</button>
+        <div class="slides"></div>
+        <button class="next">❯</button>
     </div>
 
-    <!-- PLACE 2 -->
-    <div class="place-box" id="beach" data-category="natural">
+    <div class="place-content">
         <h3>Pannai Beach</h3>
-
-        <div class="slider">
-          <button class="prev">❮</button>
-
-          <div class="slides">
-           
-            
-          </div>
-
-          <button class="next">❯</button>
-        </div>
-
-
         <p class="desc">
-         Pannai Beach is a quiet coastal destination known for its natural beauty and relaxing environment. Visitors can enjoy gentle sea breezes, scenic views, and stunning sunsets. It is an ideal spot for unwinding, short walks, and spending quality time away from busy city life.
+            Pannai Beach is a quiet coastal destination known for its natural beauty and relaxing environment. Visitors can enjoy scenic views and peaceful sunsets.
         </p>
 
-        <p>Distance: 6.6 km</p>
+        <div class="travel-modes-strip" onclick="openTravelEstimate('beach')">
+            <span class="mode-tag distance-base"><i class="fa-solid fa-route"></i> 6.6 km</span>
+            <span class="mode-tag drive-mode"><i class="fa-solid fa-car"></i> 12 mins</span>
+            <span class="mode-tag bus-mode"><i class="fa-solid fa-bus"></i> 18 mins</span>
+            <span class="mode-tag walk-mode"><i class="fa-solid fa-person-walking"></i> 1.3 hrs</span>
+        </div>
 
-        <a href="DayPlan.html?place=beach" class="plan-btn">Plan Your Day</a>
+        <div class="button-group">
+            <a href="DayPlan.html?place=beach" class="plan-btn">Plan Your Day</a>
+            <button class="map-btn" data-map="https://www.google.com/maps?q=Pannai+Beach+Jaffna">📍 View Map</button>
+        </div>
+    </div>
+</div>
 
-        <button class="map-btn" data-map="https://www.google.com/maps?q=Pannai+Beach+Jaffna">📍 View Map</button>
+<!-- 3. PLACE CARD: Jaffna Fort -->
+<div class="place-box" id="fort" data-category="historical" data-distance="6.6">
+    <div class="slider">
+        <button class="prev">❮</button>
+        <div class="slides"></div>
+        <button class="next">❯</button>
     </div>
 
-    <!-- ADD MORE SAME LIKE THIS (10 places total) -->
-     <div class="place-box" id="fort" data-category="historical">
+    <div class="place-content">
         <h3>Jaffna Fort</h3>
-
-        <div class="slider">
-          <button class="prev">❮</button>
-
-          <div class="slides">
-            
-          </div>
-
-          <button class="next">❯</button>
-        </div>
-
-
         <p class="desc">
-         Jaffna Fort is a historically important landmark built during the colonial period. It reflects a blend of Portuguese and Dutch architectural styles. The fort offers visitors a chance to explore ancient structures while enjoying panoramic views of the surrounding lagoon and town.
+            Jaffna Fort is a historically important landmark built during the colonial period with beautiful architectural influence and scenic surroundings.
         </p>
 
-        <p>Distance: 6.6 km</p>
+        <div class="travel-modes-strip" onclick="openTravelEstimate('fort')">
+            <span class="mode-tag distance-base"><i class="fa-solid fa-route"></i> 6.6 km</span>
+            <span class="mode-tag drive-mode"><i class="fa-solid fa-car"></i> 12 mins</span>
+            <span class="mode-tag bus-mode"><i class="fa-solid fa-bus"></i> 18 mins</span>
+            <span class="mode-tag walk-mode"><i class="fa-solid fa-person-walking"></i> 1.3 hrs</span>
+        </div>
 
-        <a href="DayPlan.html?place=fort" class="plan-btn">Plan Your Day</a>
+        <div class="button-group">
+            <a href="DayPlan.html?place=fort" class="plan-btn">Plan Your Day</a>
+            <button class="map-btn" data-map="https://www.google.com/maps?q=Jaffna+Fort">📍 View Map</button>
+        </div>
+    </div>
+</div>
 
-        <button class="map-btn" data-map="https://www.google.com/maps?q=Jaffna+Fort">📍 View Map</button>
+<!-- 4. PLACE CARD: Jaffna Library -->
+<div class="place-box" id="library" data-category="historical" data-distance="7.0">
+    <div class="slider">
+        <button class="prev">❮</button>
+        <div class="slides"></div>
+        <button class="next">❯</button>
     </div>
 
-    <div class="place-box" id="library" data-category="historical">
+    <div class="place-content">
         <h3>Jaffna Library</h3>
-
-        <div class="slider">
-          <button class="prev">❮</button>
-
-          <div class="slides">
-           
-          </div>
-
-          <button class="next">❯</button>
-        </div>
-
-
         <p class="desc">
-          Jaffna Public Library is one of the most iconic cultural institutions in Sri Lanka. Known for its rich collection of books and historical importance, it represents knowledge and resilience. The building’s elegant architecture and peaceful reading environment attract students, researchers, and tourists alike.
+            Jaffna Public Library is one of the most iconic cultural institutions in Sri Lanka, representing knowledge and historical importance.
         </p>
 
-        <p>Distance: 7 km</p>
-
-        <a href="DayPlan.html?place=library" class="plan-btn">Plan Your Day</a>
-
-        <button class="map-btn" data-map="https://www.google.com/maps?q=Jaffna+Public+Library">📍 View Map</button>
-    </div>
-
-    <div class="place-box" id="nallur" data-category="religious">
-        <h3>Nallur Temple </h3>
-
-        <div class="slider">
-          <button class="prev">❮</button>
-
-          <div class="slides">
-         
-            
-          </div>
-
-          <button class="next">❯</button>
+        <div class="travel-modes-strip" onclick="openTravelEstimate('library')">
+            <span class="mode-tag distance-base"><i class="fa-solid fa-route"></i> 7 km</span>
+            <span class="mode-tag drive-mode"><i class="fa-solid fa-car"></i> 14 mins</span>
+            <span class="mode-tag bus-mode"><i class="fa-solid fa-bus"></i> 20 mins</span>
+            <span class="mode-tag walk-mode"><i class="fa-solid fa-person-walking"></i> 1.4 hrs</span>
         </div>
 
+        <div class="button-group">
+            <a href="DayPlan.html?place=library" class="plan-btn">Plan Your Day</a>
+            <button class="map-btn" data-map="https://www.google.com/maps?q=Jaffna+Public+Library">📍 View Map</button>
+        </div>
+    </div>
+</div>
 
-        <p class="desc">
-         Nallur Kandaswamy Temple is a renowned Hindu religious site famous for its vibrant festivals and traditional Dravidian architecture. The temple holds deep cultural and spiritual value, attracting thousands of devotees. Its golden structures and detailed designs make it visually impressive.
-        </p>
-
-        <p>Distance: 7 km</p>
-
-        <a href="DayPlan.html?place=nallur" class="plan-btn">Plan Your Day</a>
-
-        <button class="map-btn" data-map="https://www.google.com/maps?q=Nallur+Kandaswamy+Temple">📍 View Map</button>
+<!-- 5. PLACE CARD: Nallur Temple -->
+<div class="place-box" id="nallur" data-category="religious" data-distance="7.0">
+    <div class="slider">
+        <button class="prev">❮</button>
+        <div class="slides"></div>
+        <button class="next">❯</button>
     </div>
 
-    <div class="place-box" id="park" data-category="park">
+    <div class="place-content">
+        <h3>Nallur Temple</h3>
+        <p class="desc">
+            Nallur Kandaswamy Temple is a famous Hindu religious site known for vibrant festivals and traditional Dravidian architecture.
+        </p>
+
+        <div class="travel-modes-strip" onclick="openTravelEstimate('nallur')">
+            <span class="mode-tag distance-base"><i class="fa-solid fa-route"></i> 7 km</span>
+            <span class="mode-tag drive-mode"><i class="fa-solid fa-car"></i> 14 mins</span>
+            <span class="mode-tag bus-mode"><i class="fa-solid fa-bus"></i> 20 mins</span>
+            <span class="mode-tag walk-mode"><i class="fa-solid fa-person-walking"></i> 1.4 hrs</span>
+        </div>
+
+        <div class="button-group">
+            <a href="DayPlan.html?place=nallur" class="plan-btn">Plan Your Day</a>
+            <button class="map-btn" data-map="https://www.google.com/maps?q=Nallur+Kandaswamy+Temple">📍 View Map</button>
+        </div>
+    </div>
+</div>
+
+<!-- 6. PLACE CARD: Subramaniya Park -->
+<div class="place-box" id="park" data-category="park" data-distance="7.0">
+    <div class="slider">
+        <button class="prev">❮</button>
+        <div class="slides"></div>
+        <button class="next">❯</button>
+    </div>
+
+    <div class="place-content">
         <h3>Subramaniya Park</h3>
-
-        <div class="slider">
-          <button class="prev">❮</button>
-
-          <div class="slides">
-           
-          </div>
-
-          <button class="next">❯</button>
-        </div>
-
-
         <p class="desc">
-         Subramaniya Park is a family-friendly public space designed for relaxation and recreation. With greenery, walking paths, and play areas, it provides a refreshing environment for visitors of all ages. It is a popular location for casual outings and enjoying nature within the town.
+            Subramaniya Park is a family-friendly public space designed for relaxation with greenery, walking areas, and peaceful surroundings.
         </p>
 
-        <p>Distance: 7 km</p>
+        <div class="travel-modes-strip" onclick="openTravelEstimate('park')">
+            <span class="mode-tag distance-base"><i class="fa-solid fa-route"></i> 7 km</span>
+            <span class="mode-tag drive-mode"><i class="fa-solid fa-car"></i> 14 mins</span>
+            <span class="mode-tag bus-mode"><i class="fa-solid fa-bus"></i> 20 mins</span>
+            <span class="mode-tag walk-mode"><i class="fa-solid fa-person-walking"></i> 1.4 hrs</span>
+        </div>
 
-        <a href="DayPlan.html?place=park" class="plan-btn">Plan Your Day</a>
+        <div class="button-group">
+            <a href="DayPlan.html?place=park" class="plan-btn">Plan Your Day</a>
+            <button class="map-btn" data-map="https://www.google.com/maps?q=Subramaniyam+Park+Jaffna">📍 View Map</button>
+        </div>
+    </div>
+</div>
 
-        <button class="map-btn" data-map="https://www.google.com/maps?q=Subramaniyam+Park+Jaffna">📍 View Map</button>
+<!-- 7. PLACE CARD: Clock Tower -->
+<div class="place-box" id="clock" data-category="landmark" data-distance="7.2">
+    <div class="slider">
+        <button class="prev">❮</button>
+        <div class="slides"></div>
+        <button class="next">❯</button>
     </div>
 
-    <div class="place-box" id="clock" data-category="landmark">
+    <div class="place-content">
         <h3>Clock Tower</h3>
+        <p class="desc">
+            The Jaffna Clock Tower is a symbolic landmark representing the heritage and identity of the city.
+        </p>
 
-        <div class="slider">
-          <button class="prev">❮</button>
-
-          <div class="slides">
-            
-          </div>
-
-          <button class="next">❯</button>
+        <div class="travel-modes-strip" onclick="openTravelEstimate('clock')">
+            <span class="mode-tag distance-base"><i class="fa-solid fa-route"></i> 7.2 km</span>
+            <span class="mode-tag drive-mode"><i class="fa-solid fa-car"></i> 15 mins</span>
+            <span class="mode-tag bus-mode"><i class="fa-solid fa-bus"></i> 22 mins</span>
+            <span class="mode-tag walk-mode"><i class="fa-solid fa-person-walking"></i> 1.4 hrs</span>
         </div>
 
-       <p class="desc">
-         The Jaffna Clock Tower is a symbolic landmark representing the heritage and identity of the city. Located in the town center, it stands as a reminder of historical events and local culture. It is a common meeting point and a notable attraction for visitors.
-       </p>
+        <div class="button-group">
+            <a href="DayPlan.html?place=clock" class="plan-btn">Plan Your Day</a>
+            <button class="map-btn" data-map="https://www.google.com/maps?q=Jaffna+Clock+Tower">📍 View Map</button>
+        </div>
+    </div>
+</div>
 
-        <p>Distance: 7.2 km</p>
-
-        <a href="DayPlan.html?place=clock" class="plan-btn">Plan Your Day</a>
-
-        <button class="map-btn" data-map="https://www.google.com/maps?q=Jaffna+Clock+Tower">📍 View Map</button>
+<!-- 8. PLACE CARD: Naguleswaram Temple -->
+<div class="place-box" id="keerimalai" data-category="religious" data-distance="15.0">
+    <div class="slider">
+        <button class="prev">❮</button>
+        <div class="slides"></div>
+        <button class="next">❯</button>
     </div>
 
-    <div class="place-box" id="keerimalai" data-category="religious">
+    <div class="place-content">
         <h3>Naguleswaram Temple</h3>
-
-        <div class="slider">
-          <button class="prev">❮</button>
-
-          <div class="slides">
-            
-          </div>
-
-          <button class="next">❯</button>
-        </div>
-
-
         <p class="desc">
-         Naguleswaram Temple is an ancient Hindu temple located near the coastal area of Keerimalai. It is closely associated with sacred water springs believed to have healing properties. The temple combines religious importance with scenic coastal surroundings.
+            Naguleswaram Temple is an ancient Hindu temple located near the coastal area of Keerimalai with sacred water springs.
         </p>
 
-        <p>Distance: 15 km</p>
-
-        <a href="DayPlan.html?place=keerimalai" class="plan-btn">Plan Your Day</a>
-
-        <button class="map-btn" data-map="https://www.google.com/maps?q=Naguleswaram+Temple+Keerimalai">📍 View Map</button>
-    </div>
-
-    <div class="place-box" id="casuarina" data-category="natural">
-        <h3>Casurina</h3>
-
-        <div class="slider">
-          <button class="prev">❮</button>
-
-          <div class="slides">
-           
-          </div>
-
-          <button class="next">❯</button>
+        <div class="travel-modes-strip" onclick="openTravelEstimate('keerimalai')">
+            <span class="mode-tag distance-base"><i class="fa-solid fa-route"></i> 15 km</span>
+            <span class="mode-tag drive-mode"><i class="fa-solid fa-car"></i> 28 mins</span>
+            <span class="mode-tag bus-mode"><i class="fa-solid fa-bus"></i> 40 mins</span>
+            <span class="mode-tag walk-mode"><i class="fa-solid fa-person-walking"></i> 3 hrs</span>
         </div>
 
+        <div class="button-group">
+            <a href="DayPlan.html?place=keerimalai" class="plan-btn">Plan Your Day</a>
+            <button class="map-btn" data-map="https://www.google.com/maps?q=Naguleswaram+Temple+Keerimalai">📍 View Map</button>
+        </div>
+    </div>
+</div>
 
-        <p class="desc">
-         Casuarina Beach is one of the cleanest and calmest beaches in the Jaffna region. Known for its shallow waters and casuarina trees, it provides a safe and relaxing environment. It is ideal for swimming, picnics, and enjoying the peaceful coastal atmosphere.
-        </p>
-
-        <p>Distance: 17 km</p>
-
-        <a href="DayPlan.html?place=casuarina" class="plan-btn">Plan Your Day</a>
-
-        <button class="map-btn" data-map="https://www.google.com/maps?q=Casuarina+Beach+Jaffna">📍 View Map</button>
+<!-- 9. PLACE CARD: Casuarina Beach -->
+<div class="place-box" id="casuarina" data-category="natural" data-distance="17.0">
+    <div class="slider">
+        <button class="prev">❮</button>
+        <div class="slides"></div>
+        <button class="next">❯</button>
     </div>
 
-    <div class="place-box" id="pillayar" data-category="religious">
+    <div class="place-content">
+        <h3>Casuarina Beach</h3>
+        <p class="desc">
+            Casuarina Beach is one of the cleanest and calmest beaches in the Jaffna region, ideal for swimming and relaxation.
+        </p>
+
+        <div class="travel-modes-strip" onclick="openTravelEstimate('casuarina')">
+            <span class="mode-tag distance-base"><i class="fa-solid fa-route"></i> 17 km</span>
+            <span class="mode-tag drive-mode"><i class="fa-solid fa-car"></i> 32 mins</span>
+            <span class="mode-tag bus-mode"><i class="fa-solid fa-bus"></i> 45 mins</span>
+            <span class="mode-tag walk-mode"><i class="fa-solid fa-person-walking"></i> 3.4 hrs</span>
+        </div>
+
+        <div class="button-group">
+            <a href="DayPlan.html?place=casuarina" class="plan-btn">Plan Your Day</a>
+            <button class="map-btn" data-map="https://www.google.com/maps?q=Casuarina+Beach+Jaffna">📍 View Map</button>
+        </div>
+    </div>
+</div>
+
+<!-- 10. PLACE CARD: Maruthadi Pillayar Temple -->
+<div class="place-box" id="pillayar" data-category="religious" data-distance="3.3">
+    <div class="slider">
+        <button class="prev">❮</button>
+        <div class="slides"></div>
+        <button class="next">❯</button>
+    </div>
+
+    <div class="place-content">
         <h3>Maruthadi Pillayar Temple</h3>
+        <p class="desc">
+            Maruthadi Pillayar Temple is a well-known Hindu shrine dedicated to Lord Ganesha with peaceful spiritual surroundings.
+        </p>
 
-        <div class="slider">
-          <button class="prev">❮</button>
-
-          <div class="slides">
-            
-          </div>
-
-          <button class="next">❯</button>
+        <div class="travel-modes-strip" onclick="openTravelEstimate('pillayar')">
+            <span class="mode-tag distance-base"><i class="fa-solid fa-route"></i> 3.3 km</span>
+            <span class="mode-tag drive-mode"><i class="fa-solid fa-car"></i> 7 mins</span>
+            <span class="mode-tag bus-mode"><i class="fa-solid fa-bus"></i> 12 mins</span>
+            <span class="mode-tag walk-mode"><i class="fa-solid fa-person-walking"></i> 40 mins</span>
         </div>
 
-
-        <p class="desc">
-         Maruthadi Pillayar Temple is a well-known Hindu shrine dedicated to Lord Ganesha. It is frequently visited by devotees seeking blessings for success and prosperity. The temple is known for its spiritual ambiance and traditional rituals.
-       </p>
-        <p>Distance: 3.3 km </p>
-
-        <a href="DayPlan.html?place=pillayar" class="plan-btn">Plan Your Day</a>
-
-        <button class="map-btn" data-map="https://www.google.com/maps?q=Maruthadi+Pillayar+Kovil+Jaffna">📍 View Map</button>
+        <div class="button-group">
+            <a href="DayPlan.html?place=pillayar" class="plan-btn">Plan Your Day</a>
+            <button class="map-btn" data-map="https://www.google.com/maps?q=Maruthadi+Pillayar+Kovil+Jaffna">📍 View Map</button>
+        </div>
     </div>
-
+</div>
 </section>
 
+<!-- Pop-up Overlay Dialog Component: Route breakdowns and transit updates -->
+<div id="travelModal" class="cute-modal-overlay" onclick="closeTravelModal()">
+    <!-- stopPropagation ensures that clicking inside this card layout won't force modal closure actions -->
+    <div class="cute-modal-card" onclick="event.stopPropagation()">
+        <button class="close-modal-btn" onclick="closeTravelModal()"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-header-icon"><i class="fa-solid fa-compass"></i></div>
+        <h4 id="modalPlaceName">Route Breakdown</h4>
+        <p class="modal-subtitle">Estimated journey times from Navaly center</p>
+        
+        <!-- Statistics presentation block displaying filtered transit matrices -->
+        <div class="modal-grid-stats">
+            <div class="stat-row" id="rowCar">
+                <div class="stat-label-box"><i class="fa-solid fa-car" style="color: #4B6E40;"></i> Personal Drive</div>
+                <strong id="timeCar">--</strong>
+            </div>
+            <div class="stat-row" id="rowBus">
+                <div class="stat-label-box"><i class="fa-solid fa-bus" style="color: #2B5B84;"></i> Public Transit</div>
+                <strong id="timeBus">--</strong>
+            </div>
+            <div class="stat-row" id="rowWalk">
+                <div class="stat-label-box"><i class="fa-solid fa-person-walking" style="color: #A36A3B;"></i> Walk Route</div>
+                <strong id="timeWalk">--</strong>
+            </div>
+        </div>
+        
+        <div class="modal-tip-box">
+            <i class="fa-solid fa-lightbulb"></i>
+            <span id="modalLocalTip">Safe pathways via local junctions. Normal traffic conditions expected.</span>
+        </div>
+    </div>
+</div>
+
+<!-- Standard Branding Footer Layout Grid -->
 <footer>
     <div class="footer-center">
-
-        
         <h3>About Us</h3>
         <p>
             VisitNavora helps you explore the best places in Navaly with ease. 
             Discover locations, view maps, and plan your journey smoothly.
         </p>
-
-        
-        
-
-        <!-- Line -->
         <div class="footer-line"></div>
-
-        <!-- Rights -->
         <p class="footer-rights">
             © 2026 VisitNavora | Navigate. Explore. Enjoy Navaly
         </p>
-
     </div>
 </footer>
 
+<!-- Functional Operations Script Initialization Mapping -->
 <script src="places.js"></script>
 
 </body>
